@@ -32,6 +32,8 @@
 
 #include "main_functions.h"
 
-int main(int argc, char* argv) {
+int main(int argc, char* argv[]) {
+  Usage(argc, argv);
+  
   return 0;
 }

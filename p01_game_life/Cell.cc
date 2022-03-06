@@ -28,3 +28,11 @@
 
 #include "Cell.h"
 
+Cell::Cell(void) : state_(0), position_({-1, -1}), neighbors_alive_(0) {}
+
+Cell::Cell(const State& state) 
+    : state_(state), position_({-1, -1}), neighbors_alive_(0) {}
+
+Cell::Cell(const State& state, const std::pair<int, int>& position) 
+    : state_(state), position_(position), neighbors_alive_(0) {}
+

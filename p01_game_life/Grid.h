@@ -55,10 +55,11 @@ class Grid {
   const Cell& GetCell(const std::pair<int, int> postion) const;
 
   /// Funciones de la Clase (Métodos).
+  void GameLife(const int& kGameTurns);
   void NextGeneration(void);
 
   /// Operadores Sobrecargados.
-
+  Grid& operator=(const Grid& grid);
 
   /// Operador de flujo de salida.
   friend std::ostream& operator<<(std::ostream& out, const Grid& grid);

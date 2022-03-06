@@ -48,6 +48,8 @@ class Cell {
   /// Constructores.
   Cell(void);
   Cell(const State& state);
+  Cell(const State& state, const std::pair<int, int>& position);
+  Cell(const State& state, const int& posx, const int& posy);
   Cell(const Cell& cell);
 
   /// Setters.
@@ -58,9 +60,9 @@ class Cell {
   void SetPos(const int& posx, const int& posy);
 
   /// Getters.
-  const State GetState(void) const;
+  State GetState(void) const;
   const std::pair<int, int> GetPosition(void) const;
-  const int GetNeighborsAlive(void) const;
+  int GetNeighborsAlive(void) const;
 
   /// Funciones de la Clase (Métodos).
   void UpdateState(void);
