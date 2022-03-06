@@ -30,3 +30,5 @@
 
 #include "Grid.h"
 
+void Usage(const int& argc, const char* argv);
+void MainMessage(const char* argv);

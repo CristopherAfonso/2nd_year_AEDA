@@ -58,15 +58,18 @@ class Cell {
   void SetPos(const int& posx, const int& posy);
 
   /// Getters.
-  State GetState(void) const;
-  std::pair<int, int> GetPosition(void) const;
-  int GetNeighborsAlive(void) const;
+  const State GetState(void) const;
+  const std::pair<int, int> GetPosition(void) const;
+  const int GetNeighborsAlive(void) const;
 
   /// Funciones de la Clase (Métodos).
   void UpdateState(void);
   int NeighborsAlive(const Grid& grid);
 
   /// Operadores Sobrecargados.
+  Cell& operator=(const Cell& cell);
+
+  /// Operador de flujo de salida.
   friend std::ostream& operator<<(std::ostream& out, const Cell& cell);
 
  private:

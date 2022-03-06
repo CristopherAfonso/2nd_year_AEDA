@@ -42,13 +42,27 @@
 class Grid {
  public:
   /// Constructores.
-  
+  Grid(void);
+  Grid(const int& rows, const int& cols);
+  Grid(const Grid&  grid);
 
   /// Destructores.
+  ~Grid(void);
+
   /// Setters.
   /// Getters.
+  const Cell& GetCell(const int& posx, const int& posy) const;
+  const Cell& GetCell(const std::pair<int, int> postion) const;
+
   /// Funciones de la Clase (Métodos).
+  void NextGeneration(void);
+
   /// Operadores Sobrecargados.
+
+
+  /// Operador de flujo de salida.
+  friend std::ostream& operator<<(std::ostream& out, const Grid& grid);
+
  private:
   Cell** grid_;
 };
