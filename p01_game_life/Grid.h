@@ -43,8 +43,8 @@ class Grid {
  public:
   /// Constructores.
   Grid(void);
-  Grid(const int& rows, const int& cols);
-  Grid(const Grid&  grid);
+  Grid(const int& kRows, const int& kCols);
+  Grid(const Grid& grid);
 
   /// Destructores.
   ~Grid(void);
@@ -65,6 +65,6 @@ class Grid {
   friend std::ostream& operator<<(std::ostream& out, const Grid& grid);
 
  private:
-  Cell** grid_;
+  Cell** grid_{NULL};
 };
 #endif

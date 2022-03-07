@@ -153,7 +153,13 @@ int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
  * estado en el turno actual en base a las reglas de transicion
  */
 void Cell::UpdateState(void) {
+  if (state_ == 0) {
+    if (neighbors_alive_ == 3) state_ = 1;
+  }
 
+  if (state_ == 1) {
+    if (!(neighbors_alive_ == 2 || neighbors_alive_ == 3)) state_ = 0;
+  }
 }
 
 /**
@@ -167,7 +173,9 @@ void Cell::UpdateState(void) {
  * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
  */
 int Cell::NeighborsAlive(const Grid& grid) {
+  int neighbors_alive{0};
 
+  return neighbors_alive;
 }
 
 /**
@@ -181,6 +189,7 @@ Cell& Cell::operator=(const Cell& cell) {
   state_ = cell.state_;
   position_ = cell.position_;
   neighbors_alive_ = cell.neighbors_alive_;
+  return *this;
 }
 
 /**

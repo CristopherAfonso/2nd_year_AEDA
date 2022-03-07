@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Mar  6 16:10:29 2022
+# Make data base, printed on Mon Mar  7 15:37:33 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ LC_ALL = C
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f2036166-4571-4279-bf8d-7ec6c54f42c0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8b3f5f70-031e-40e9-a5d6-8607d08d175f.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -77,7 +77,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-NXsF7D3oZhb9/agent.1383
+SSH_AUTH_SOCK = /tmp/ssh-iEOJK9HHBpib/agent.1363
 # default
 .SHELLFLAGS := -c
 # automatic
@@ -95,13 +95,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 21035
+VSCODE_PID = 1811
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1525,unix/Fenix:/tmp/.ICE-unix/1525
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1505,unix/Fenix:/tmp/.ICE-unix/1505
 # automatic
 *F = $(notdir $*)
 # environment
@@ -181,7 +181,7 @@ KDE_SESSION_UID = 1000
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 1430
+SSH_AGENT_PID = 1410
 # environment
 _ = /usr/share/codium/codium
 # environment
@@ -241,9 +241,9 @@ LC_IDENTIFICATION = es_ES.UTF-8
 
 # Directories
 
-# . (device 40, inode 162428): 11 files, no impossibilities.
+# . (device 40, inode 162428): 16 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -290,6 +290,7 @@ main_game_life.o:
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -313,7 +314,6 @@ Cell.o:
 #  File has not been updated.
 
 # files hash-table stats:
- 
 # Load=10/1024=1%, Rehash=0, Collisions=0/24=0%
 # VPATH Search Paths
 
@@ -324,9 +324,9 @@ Cell.o:
 # strcache buffers: 1 (0) / strings = 24 / storage = 233 B / avg = 9 B
 # current buf: size = 8162 B / used = 233 B / count = 24 / avg = 9 B
 
-# strcache performance: lookups = 33 / hit rate = 27%
+# strcache performance: lookups = 38 / hit rate = 36%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Sun Mar  6 16:10:29 2022
+# Load=24/8192=0%, Rehash=0, Collisions=0/38=0%
+# Finished Make data base on Mon Mar  7 15:37:33 2022
 
  

@@ -28,3 +28,18 @@
 
 #include "Grid.h"
 
+Grid::Grid(void) : grid_(NULL) {
+  grid_ = new Cell*[12];
+  for (int i{0}; i < 12; ++i) 
+    grid_[i] = new Cell[12];
+}
+
+Grid::Grid(const int& kRows, const int& kCols) : grid_(NULL) {
+  grid_ = new Cell*[kRows];
+  for (int i{0}; i < kCols; ++i) 
+    grid_[i] = new Cell[kCols];
+}
+
+Grid::Grid(const Grid& grid) : grid_(NULL) {
+  
+}
