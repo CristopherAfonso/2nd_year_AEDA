@@ -61,7 +61,7 @@ class Cell {
 
   /// Getters.
   State GetState(void) const;
-  const std::pair<int, int> GetPosition(void) const;
+  std::pair<int, int> GetPosition(void) const;
   int GetNeighborsAlive(void) const;
 
   /// Funciones de la Clase (Métodos).

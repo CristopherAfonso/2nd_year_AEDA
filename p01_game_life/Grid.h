@@ -27,8 +27,8 @@
  * 06/03/22 - Funciones de la clase terminadas.
  */
 
-#ifndef _Grid_
-#define _Grid_
+#ifndef _GRID_
+#define _GRID_
 
 #include <iostream>
 #include "Cell.h"

@@ -120,3 +120,79 @@ void Cell::SetPos(const int& posx, const int& posy) {
   position_.first = posx;
   position_.second = posy;
 }
+
+/**
+ * @brief Funcion que devuelve el atributo interno state_
+ * 
+ * @return State es el atributo interno de la celula devuelto.
+ */
+State Cell::GetState(void) const {return state_;}
+
+/**
+ * @brief Función que devuelve el atributo position_ que es un
+ * std::pair<int, int> el cual, contiene la información de la posicion de la
+ * celula.
+ * 
+ * @return const std::pair<int, int> posicion de la celula, el primero es la
+ * posicion en el eje X y la segunda es la posicion en el eje Y.
+ */
+std::pair<int, int> Cell::GetPosition(void) const {return position_;}
+
+/**
+ * @brief Funcion que devuelve el atributo interno neighbors_alive_ que es un
+ * int que contiene la cantidad de celulas vecinas en el turno actual que estan
+ * en estado 'viva'
+ * 
+ * @return int es el numero de celulas vivas en el turno actual, este numero
+ * esta comprendido entre el 0 y el 8
+ */
+int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
+
+/**
+ * @brief Funcion que se encarga de hacer que la propia celula actualice su
+ * estado en el turno actual en base a las reglas de transicion
+ */
+void Cell::UpdateState(void) {
+
+}
+
+/**
+ * @brief Puesto que las reglas de transicion se definen en funcion del numero
+ * de celulas vecinas vivas a su lado, cada celula debe interactuar con sus 8
+ * celulas vecinas para consultarles sus estados, para ello sirve este metodo.
+ * 
+ * @param grid Rejilla o matriz de celulas en la cual está este objeto celula
+ * que invoca al metodo que se halla presente en la rejilla(sino el metodo no
+ * tiene sentido usarlo)
+ * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
+ */
+int Cell::NeighborsAlive(const Grid& grid) {
+
+}
+
+/**
+ * @brief Funcion que sobrecarga el operador = para la clase Cell.
+ * 
+ * @param cell Es el objeto celula el cual quiere ser copiado en el otro objeto
+ * celula que invoca al método.
+ * @return Cell& Es el valor del propio objeto Cell que invoca a la función.
+ */
+Cell& Cell::operator=(const Cell& cell) {
+  state_ = cell.state_;
+  position_ = cell.position_;
+  neighbors_alive_ = cell.neighbors_alive_;
+}
+
+/**
+ * @brief Función que sobrecarga el operador << y os permite mostrar por
+ * pantalla el estado de la celula.
+ * 
+ * @param out variable que nos permite mostrar las cadenas que le enviemos
+ * por pantalla
+ * @param cell objeto el cual queremos mostrar por pantalla
+ * @return std::ostream& objeto out el cual ya tiene los datos necesarios
+ * para mostrar las caracteristicas de la celula por pantalla
+ */
+std::ostream& operator<<(std::ostream& out, const Cell& cell) {
+  return out << ((cell.state_) ? 'X' : ' ');
+}
