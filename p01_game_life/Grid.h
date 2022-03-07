@@ -50,9 +50,17 @@ class Grid {
   ~Grid(void);
 
   /// Setters.
+  void SetCell(const int& posx, const int& posy, Cell& cell);
+  void SetCell(const std::pair<int, int> postion, Cell& cell);
+  void SetCell(const Cell&);
+  void SetRows(const int& kRows);
+  void SetCols(const int& kCols);
+
   /// Getters.
-  const Cell& GetCell(const int& posx, const int& posy) const;
-  const Cell& GetCell(const std::pair<int, int> postion) const;
+  Cell GetCell(const int& posx, const int& posy) const;
+  Cell GetCell(const std::pair<int, int> position) const;
+  int GetRows(void) const;
+  int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
   void GameLife(const int& kGameTurns);
@@ -66,5 +74,7 @@ class Grid {
 
  private:
   Cell** grid_{NULL};
+  int rows_{2};
+  int cols_{2};
 };
 #endif
