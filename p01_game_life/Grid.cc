@@ -166,13 +166,50 @@ void Grid::SetRows(const int& kRows) {
     aux_ptr[i] = new Cell[cols_];
   }
 
-  for (int i{1}; i < (aux_counter_1 - 1); ++i) {
-    for (int j{1}; j < (cols_ - 1); ++j) {
-      aux_var = this->GetCell(i, j);
+  for (int i{0}; i < aux_counter_1; ++i) {
+    Cell aux_var_cell;
+    for (int j{0}; j < cols_; ++j) {
+      if ((i == (aux_counter_1 - 1)) || (j == (cols_ - 1))) {
+        aux_var = aux_var_cell;
+      } else {
+        aux_var = this->GetCell(i, j);
+      }
       aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
       aux_ptr[i][j] = aux_var;
     }
   }
+
+  for (int i{0}; aux_counter_1; ++i) {
+    delete[] grid_[i];
+  }
+  delete[] grid_;
+  grid_ = NULL;
+
+  grid_ = new Cell*[aux_counter_1];
+  for (int i{0}; i < aux_counter_1; ++i) {
+    grid_[i] = new Cell[cols_];
+  }
+
+  for (int i{0}; i < aux_counter_1; ++i) {
+    Cell aux_var_cell;
+    for (int j{0}; j < cols_; ++j) {
+      if ((i == (aux_counter_1 - 1)) || (j == (cols_ - 1))) {
+        aux_var = aux_var_cell;
+      } else {
+        aux_var = aux_ptr[i][j];
+      }
+      aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
+      grid_[i][j] = aux_var;
+    }
+  }
+
+  for (int i{0}; aux_counter_1; ++i) {
+    delete[] aux_ptr[i];
+  }
+  delete[] aux_ptr;
+  aux_ptr = NULL;
+
+  rows_ = aux_counter_1;
 }
 
 /**
@@ -201,13 +238,50 @@ void Grid::SetCols(const int& kCols) {
     aux_ptr[i] = new Cell[aux_counter_1];
   }
 
-  for (int i{1}; i < (rows_ - 1); ++i) {
-    for (int j{1}; j < (aux_counter_1 - 1); ++j) {
-      aux_var = this->GetCell(i, j);
+  for (int i{0}; i < rows_; ++i) {
+    Cell aux_var_cell;
+    for (int j{0}; j < aux_counter_1; ++j) {
+      if ((i == (rows_ - 1)) || (j == (aux_counter_1 - 1))) {
+        aux_var = aux_var_cell;
+      } else {
+        aux_var = this->GetCell(i, j);
+      }
       aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
       aux_ptr[i][j] = aux_var;
     }
   }
+
+  for (int i{0}; aux_counter_1; ++i) {
+    delete[] grid_[i];
+  }
+  delete[] grid_;
+  grid_ = NULL;
+
+  grid_ = new Cell*[aux_counter_1];
+  for (int i{0}; i < aux_counter_1; ++i) {
+    grid_[i] = new Cell[cols_];
+  }
+
+  for (int i{0}; i < rows_; ++i) {
+    Cell aux_var_cell;
+    for (int j{0}; j < aux_counter_1; ++j) {
+      if ((i == (rows_ - 1)) || (j == (aux_counter_1 - 1))) {
+        aux_var = aux_var_cell;
+      } else {
+        aux_var = aux_ptr[i][j];
+      }
+      aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
+      grid_[i][j] = aux_var;
+    }
+  }
+
+  for (int i{0}; rows_; ++i) {
+    delete[] aux_ptr[aux_counter_1];
+  }
+  delete[] aux_ptr;
+  aux_ptr = NULL;
+
+  cols_ = aux_counter_1;
 }
 
 /**
@@ -258,16 +332,49 @@ Cell Grid::GetCell(const std::pair<int, int> position) const {
 }
 
 /**
- * @brief 
+ * @brief Metodo que devuelve el numero de filas que tiene la rejilla.
  * 
- * @return int 
+ * @return int Numero de filas que tiene la rejilla (rejillas usables).
  */
-int Grid::GetRows(void) const {return rows_;}
+int Grid::GetRows(void) const {return rows_ - 2;}
 
 /**
- * @brief 
+ * @brief Metodo que devuelve el numero de columnas que tiene la rejilla.
  * 
- * @return int 
+ * @return int Numero de columnas que tiene la rejilla (rejillas usables).
  */
-int Grid::GetCols(void) const {return cols_;}
+int Grid::GetCols(void) const {return cols_ - 2;}
+
+/**
+ * @brief Metodo que implementa El Juego de la Vida, aquí está desarrollado
+ * todo lo que debe ocurrir en el juego.
+ * 
+ * @param kGameTurns Parametro que indica cuantas veces se va a actulizar toda
+ * la rejilla (cuantos turnos van a pasar y como se va a desarrollar el juego)
+ * segun los estados de las celulas.
+ */
+void Grid::GameLife(const int& kGameTurns) {
+
+}
+
+/**
+ * @brief Metodo que actualiza todas las celulas que hay en la rejilla del
+ * estado 't' al estado 't + 1' segun las normas de transicion de estados
+ * definida en el metodo "UpdateState" de la clase 'Cell'
+ */
+void NextGeneration(void) {
+
+}
+
+/**
+ * @brief Sobrecarga del operador = en la clase Grid.
+ * 
+ * @param grid Objeto a copiar dentro del objeto que invoca el metodo.
+ * @return Grid& Objeto que invoca el metodo pero ya siendo modificado.
+ */
+Grid& Grid::operator=(const Grid& grid) {
+  Cell** aux_ptr{NULL};
+
+  return *this;
+}
 

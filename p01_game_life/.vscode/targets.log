@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Mar  7 17:05:31 2022
+# Make data base, printed on Mon Mar  7 22:41:13 2022
 
 # Variables
 
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1257,unix/themaster-VirtualBox:/tmp/.ICE-unix/1257
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1220,unix/themaster-VirtualBox:/tmp/.ICE-unix/1220
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-SVPkzKLJ3ylM/agent.1091
+SSH_AUTH_SOCK = /tmp/ssh-D1U1QgHrVqsZ/agent.1051
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1176
+SSH_AGENT_PID = 1133
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7664907b-cd8e-44b0-a5e8-2f2484c42e6b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c6f774a1-1e2b-4532-b5d7-719fbae1343e.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -249,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1571
+VSCODE_PID = 1561
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -348,6 +348,6 @@ clean:
 # strcache performance: lookups = 34 / hit rate = 29%
 # hash-table stats:
 # Load=24/8192=0%, Rehash=0, Collisions=1/34=3%
-# Finished Make data base on Mon Mar  7 17:05:31 2022
+# Finished Make data base on Mon Mar  7 22:41:13 2022
 
  
