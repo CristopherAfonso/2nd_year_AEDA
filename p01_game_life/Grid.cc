@@ -296,7 +296,7 @@ void Grid::SetCols(const int& kCols) {
  * @return Cell objeto celula que tiene como coordenadas 'posx' en el eje 'X' y
  * 'posy' en el eje 'Y'.
  */
-Cell Grid::GetCell(const int& posx, const int& posy) const {
+const Cell Grid::GetCell(const int& posx, const int& posy) const {
   if ((posx > 0) && (posy > 0) && (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_[posx][posy];
@@ -320,7 +320,7 @@ Cell Grid::GetCell(const int& posx, const int& posy) const {
  * @return Cell Objeto celula que tiene como coordenadas los valores de
  * position.
  */
-Cell Grid::GetCell(const std::pair<int, int> position) const {
+const Cell Grid::GetCell(const std::pair<int, int> position) const {
   if ((position.first > 0) && (position.second > 0) &&
       (position.first < (rows_ - 1)) && 
       (position.second < (cols_ - 1))) {
@@ -336,14 +336,14 @@ Cell Grid::GetCell(const std::pair<int, int> position) const {
  * 
  * @return int Numero de filas que tiene la rejilla (rejillas usables).
  */
-int Grid::GetRows(void) const {return rows_ - 2;}
+const int Grid::GetRows(void) const {return rows_ - 2;}
 
 /**
  * @brief Metodo que devuelve el numero de columnas que tiene la rejilla.
  * 
  * @return int Numero de columnas que tiene la rejilla (rejillas usables).
  */
-int Grid::GetCols(void) const {return cols_ - 2;}
+const int Grid::GetCols(void) const {return cols_ - 2;}
 
 /**
  * @brief Metodo que implementa El Juego de la Vida, aquí está desarrollado
@@ -363,7 +363,7 @@ void Grid::GameLife(const int& kGameTurns) {
  * definida en el metodo "UpdateState" de la clase 'Cell'
  */
 void NextGeneration(void) {
-
+  
 }
 
 /**
@@ -372,7 +372,7 @@ void NextGeneration(void) {
  * @param grid Objeto a copiar dentro del objeto que invoca el metodo.
  * @return Grid& Objeto que invoca el metodo pero ya siendo modificado.
  */
-Grid& Grid::operator=(const Grid& grid) {
+const Grid& Grid::operator=(const Grid& grid) {
   for (int i{0}; i < rows_; ++i) {
     delete[] this->grid_[i];
   }
@@ -418,3 +418,4 @@ std::ostream& operator<<(std::ostream& out, const Grid& grid) {
   
   return out;
 }
+

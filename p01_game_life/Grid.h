@@ -57,17 +57,17 @@ class Grid {
   void SetCols(const int& kCols);
 
   /// Getters.
-  Cell GetCell(const int& posx, const int& posy) const;
-  Cell GetCell(const std::pair<int, int> position) const;
-  int GetRows(void) const;
-  int GetCols(void) const;
+  const Cell GetCell(const int& posx, const int& posy) const;
+  const Cell GetCell(const std::pair<int, int> position) const;
+  const int GetRows(void) const;
+  const int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
   void GameLife(const int& kGameTurns);
   void NextGeneration(void);
 
   /// Operadores Sobrecargados.
-  Grid& operator=(const Grid& grid);
+  const Grid& operator=(const Grid& grid);
 
   /// Operador de flujo de salida.
   friend std::ostream& operator<<(std::ostream& out, const Grid& grid);

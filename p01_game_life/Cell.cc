@@ -27,6 +27,7 @@
  */
 
 #include "Cell.h"
+#include "Grid.h"
 
 /**
  * @brief Constructor por defecto definido. 
@@ -126,7 +127,7 @@ void Cell::SetPos(const int& posx, const int& posy) {
  * 
  * @return State es el atributo interno de la celula devuelto.
  */
-State Cell::GetState(void) const {return state_;}
+const State Cell::GetState(void) const {return state_;}
 
 /**
  * @brief Función que devuelve el atributo position_ que es un
@@ -136,7 +137,7 @@ State Cell::GetState(void) const {return state_;}
  * @return const std::pair<int, int> posicion de la celula, el primero es la
  * posicion en el eje X y la segunda es la posicion en el eje Y.
  */
-std::pair<int, int> Cell::GetPosition(void) const {return position_;}
+const std::pair<int, int> Cell::GetPosition(void) const {return position_;}
 
 /**
  * @brief Funcion que devuelve el atributo interno neighbors_alive_ que es un
@@ -146,7 +147,7 @@ std::pair<int, int> Cell::GetPosition(void) const {return position_;}
  * @return int es el numero de celulas vivas en el turno actual, este numero
  * esta comprendido entre el 0 y el 8
  */
-int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
+const int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
 
 /**
  * @brief Funcion que se encarga de hacer que la propia celula actualice su
@@ -172,10 +173,15 @@ void Cell::UpdateState(void) {
  * tiene sentido usarlo)
  * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
  */
-int Cell::NeighborsAlive(const Grid& grid) {
-  int neighbors_alive{0};
-
-  return neighbors_alive;
+const int Cell::NeighborsAlive(const Grid& grid) {
+  neighbors_alive_ = 0;
+  for (int i{this->position_.first - 1}; i < (this->position_.first + 2); ++i) {
+    for (int j{this->position_.first - 1}; j < (this->position_.first + 2); ++j) {
+      if ((i == this->position_.first) && (j == this->position_.second)) continue;
+      if (grid.GetCell(i, j).GetState() == 1) neighbors_alive_ += 1;
+    }
+  }
+  return neighbors_alive_;
 }
 
 /**
@@ -185,7 +191,7 @@ int Cell::NeighborsAlive(const Grid& grid) {
  * celula que invoca al método.
  * @return Cell& Es el valor del propio objeto Cell que invoca a la función.
  */
-Cell& Cell::operator=(const Cell& cell) {
+const Cell& Cell::operator=(const Cell& cell) {
   state_ = cell.state_;
   position_ = cell.position_;
   neighbors_alive_ = cell.neighbors_alive_;
@@ -205,3 +211,4 @@ Cell& Cell::operator=(const Cell& cell) {
 std::ostream& operator<<(std::ostream& out, const Cell& cell) {
   return out << ((cell.state_) ? 'X' : ' ');
 }
+
