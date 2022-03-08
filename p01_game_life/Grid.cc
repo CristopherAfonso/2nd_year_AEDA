@@ -383,12 +383,46 @@ void Grid::GameLife(const int& kGameTurns) {
       cout << "Como se ha elegido que todas las celulas esten vivas, ya se\n";
       cout << "han colocado todas las celulas de la rejilla a estado viva\n\n";
     } else {
+      std::pair<int, int> aux_position{0, 0};
+      Cell aux_cell(1);
+      cout << "Debe introducir las coordenadas X e Y para cada celula viva\n";
+      cout << "y en ese orden, primero la coordenada X y luego la Y\n";
+      cout << "separadas por uno o varios espacios\n";
+      for (int i{1}; i <= cell_alives; ++i) {
+        cout << "¿Posicion de la " << i << "º Celula viva?\n";
+        cin >> aux_position.first;
+        cin >> aux_position.second;
 
+        while (true) {
+          if (aux_position.first > 0 && aux_position.first < (rows_ - 1) &&
+              aux_position.second > 0 && aux_position.second < (cols_ - 1)) {
+            if (this->GetCell(aux_position.first, aux_position.second).GetState() == 0) {
+              break;
+            }
+          }
+          cerr << "La posición de la celula está fuera de los limites de la\n";
+          cerr << "rejilla, o se ha indicado una celula que no esta en estado";
+          cerr << "\nmuerta, intentelo de nuevo.\n\n";
+          cout << "¿Posicion de la " << i << "º Celula viva?\n";
+          cin >> aux_position.first;
+          cin >> aux_position.second;
+        }
+        this->SetCell(aux_position, aux_cell);
+      }
     }
   } else {
     cout << "Todas las celulas comenzaran muertas en el turno 0\n\n";
   }
 
+  cout << "Turno 0\n\n";
+  cout << *this;
+  for (int i{1}; i < kGameTurns; ++i) {
+    cout << "Turno " << i << "\n\n";
+    this->NextGeneration();
+    cout << *this;
+  }
+
+  cout << "\n\nFin del Juego\n";
 }
 
 /**
