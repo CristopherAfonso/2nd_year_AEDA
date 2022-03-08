@@ -50,9 +50,9 @@ class Grid {
   ~Grid(void);
 
   /// Setters.
-  void SetCell(const int& posx, const int& posy, Cell& cell);
-  void SetCell(const std::pair<int, int> postion, Cell& cell);
-  void SetCell(const Cell&);
+  void SetCell(const int& posx, const int& posy, const Cell& cell);
+  void SetCell(const std::pair<int, int> postion, const Cell& cell);
+  void SetCell(const Cell& cell);
   void SetRows(const int& kRows);
   void SetCols(const int& kCols);
 

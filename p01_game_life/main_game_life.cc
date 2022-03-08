@@ -40,6 +40,6 @@ int main(int argc, char* argv[]) {
 
   Grid grid(std::stoi(kRows), std::stoi(kCols));
   grid.GameLife(std::stoi(kGameTurns));
-  
+
   return 0;
 }

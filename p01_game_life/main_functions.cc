@@ -40,7 +40,7 @@ using std::cerr;
  */
 void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
   cout << "Modo de empleo: " << kProgramName << " [Numero de filas] ";
-  cout << "[Numero de columnas] [Numero maximo de turnos]";
+  cout << "[Numero de columnas] [Numero de turnos del juego]";
   cout << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cout << "Para más información\n";
 }
@@ -61,31 +61,31 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "\nlas muertas con el símbolo ' '. Toda celula tiene a su alrededor";
   cout << "\nexactamente 8 celulas (menos las de los bordes), y el juego se";
   cout << "\ndesarrolla de la siguiente manera.\n";
-  cout << "\nInvocas al programa con los cuatro parametros que necesita, el";
+  cout << "\nInvocas al programa con los tres parametros que necesita, el";
   cout << "\nprimero es el número de filas (un número entero mayor a cero) el";
-  cout << "\nsegundo es el número de filas (un número entero mayor a cero) y";
-  cout << "\nel tercer argumento es el número de turnos en los que se";
-  cout << "\ndesarrollará el juego (un número entero mayor a cero)\n";
+  cout << "\nsegundo es el número de columnas (un número entero mayor a cero)";
+  cout << "\ny el tercer argumento es el número de turnos en los que se";
+  cout << "\ndesarrollará el juego (un número entero mayor a cero).\n";
   cout << "\nDespués, el programa te pedirá que introduzcas el número de";
-  cout << "\ncélulas que quieres tú que estén vivas en el instante cero";
+  cout << "\ncélulas que quieres tú que estén vivas en el turno cero";
   cout << "\n(debe ser un número entero mayor a cero), y después de dar";
   cout << "\nese número, se te pedirá que introduzcas las coordenadas en 2D";
   cout << "\nde todas esas células que quieres que empiecen vivas en el turno";
   cout << "\ncero, después se aplicarán lasi siguientes normas a todas las";
   cout << "\ncélulas del juego:";
-  cout << "\n - Si una celula 'muerta' tiene exactamente 3 celulas en estado ";
-  cout << "viva a su alrededor, pasa a ser una viva en el turno siguiente.";
+  cout << "\n - Si una celula 'muerta' tiene exactamente 3 celulas en estado\n";
+  cout << "   viva a su alrededor, pasa a ser una viva en el turno siguiente.";
   cout << "\n   En cualquier otro caso permanece muerta.";
-  cout << "\n - Si una celula viva tiene 2 o 3 celulas vecinas en estado ";
-  cout << "'viva' continua viva en el siguiente turno";
-  cout << "\n   En cualquier otro caso pasa al estado de 'muerta'\n";
+  cout << "\n - Si una celula viva tiene 2 o 3 celulas vecinas en estado\n";
+  cout << "   'viva' continua viva en el siguiente turno.";
+  cout << "\n   En cualquier otro caso pasa al estado de 'muerta'.\n";
   cout << "\nEstas normas se aplicarán en todos los turnos, viendose por";
-  cout << "\npantalla todo el desarrollo del juego\n";
+  cout << "\npantalla todo el desarrollo del juego.\n";
 }
 
 /**
  * @brief Función que informa al usuario de que ha introducido un numero
- * incorrecto de mensages.
+ * incorrecto de argumentos.
  * 
  * @param kProgramName Nombre del programa.
  * @param kHelp Palabra clave para pedir instrucciones específicas al programa
@@ -127,8 +127,8 @@ bool IsItANumber(const std::string& str) {
  * usar el programa.
  */
 void WrongArguments(const std::string& kProgramName, const std::string& kHelp) {
-  cerr << "Warning!, se ha introducido uno o más argumentos al programa que";
-  cerr << "\nno son numeros enteros, o son numeros enteros negativos";
+  cerr << "Warning!, se ha introducido tres argumentos al programa, pero";
+  cerr << "\nestos no son numeros enteros, o son numeros enteros negativos";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }

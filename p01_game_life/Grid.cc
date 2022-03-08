@@ -13,7 +13,9 @@
  * @brief Donde se desarrollan las funciones de la clase Grid contenida
  * en el archivo de cabecera Grid.h
  *
- * @bug No hay bugs conocidos
+ * @bug En el metodo GameLife, cuando te piden las posiciones de las celulas
+ * si introduces caracteres en vez de numeros, entra en bucle infinito, pasa lo
+ * mismo si introduces numeros con decimales.
  * 
  * Referencias: Enlaces de Interes
  * @see
@@ -73,6 +75,15 @@ Grid::Grid(const int& kRows, const int& kCols)
  * @param grid Objeto tipo Grid que nuestro nuevo objeto Grid copiara.
  */
 Grid::Grid(const Grid& grid) : grid_(NULL), rows_(2), cols_(2) {
+  grid_ = new Cell*[rows_];
+  Cell aux;
+  for (int i{0}; i < rows_; ++i) {
+    grid_[i] = new Cell[cols_];
+    for (int j{0}; j < cols_; ++j) {
+      aux.SetPos(i, j);
+      grid_[i][j] = aux;
+    }
+  }
   *this = grid;
 }
 
@@ -96,11 +107,11 @@ Grid::~Grid(void) {
  * @param posy Posición en el eje 'Y' donde será añadida la celula
  * @param cell Celula que se añadirá a la rejilla
  */
-void Grid::SetCell(const int& posx, const int& posy, Cell& cell) {
+void Grid::SetCell(const int& posx, const int& posy, const Cell& cell) {
   if ((posx > 0) && (posy > 0) && (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     grid_[posx][posy] = cell;
-    cell.SetPos(posx, posy);
+    grid_[posx][posy].SetPos(posx, posy);
   }
 }
 
@@ -116,11 +127,11 @@ void Grid::SetCell(const int& posx, const int& posy, Cell& cell) {
  * posicion en el eje 'Y'. 
  * @param cell Es el objeto que va a ser añadido
  */
-void Grid::SetCell(const std::pair<int, int> position, Cell& cell) {
+void Grid::SetCell(const std::pair<int, int> position, const Cell& cell) {
   if ((position.first > 0) && (position.second > 0) && 
       (position.first < (rows_ - 1)) && (position.second < (cols_ - 1))) {
     grid_[position.first][position.second] = cell;
-    cell.SetPos(position.first, position.second);
+    grid_[position.first][position.second].SetPos(position.first, position.second);
   }
 }
 
@@ -179,9 +190,8 @@ void Grid::SetRows(const int& kRows) {
     }
   }
 
-  for (int i{0}; aux_counter_1; ++i) {
-    delete[] grid_[i];
-  }
+  std::cout << rows_ << '\n';
+  for (int i{0}; i < rows_; ++i) delete[] grid_[i];
   delete[] grid_;
   grid_ = NULL;
 
@@ -357,13 +367,14 @@ void Grid::GameLife(const int& kGameTurns) {
   using std::cout;
   using std::cerr;
   using std::cin;
-  cout << "En la rejilla hay " << (rows_ - 2)*(cols_ - 2) << " celulas,\n";
-  cout << "la rejilla tiene " << (rows_ - 2) << " filas y " << (cols_ - 2);
-  cout << "\ncolumnas, ahora mismo todas están muertas, indique ahora\n";
-  cout << "cuantas de esas celulas quiere que comiencen vivas en el turno 0:\n";
+  cout << "En la rejilla hay " << (rows_ - 2)*(cols_ - 2) << " celulas,";
+  cout << " la rejilla tiene " << (rows_ - 2) << " filas y " << (cols_ - 2);
+  cout << " columnas,\nahora mismo todas están muertas, indique ahora ";
+  cout << "cuantas de esas\ncelulas quiere que comiencen vivas en el turno 0: ";
 
   int cell_alives{0};
   cin >> cell_alives;
+  cout << '\n';
 
   while ((cell_alives < 0) || (cell_alives > ((rows_ - 2)*(cols_ - 2)))) {
     cerr << "Warning!, el numero de celulas elegido está fuera del rango\n";
@@ -375,8 +386,8 @@ void Grid::GameLife(const int& kGameTurns) {
   if (cell_alives != 0) {
     if (cell_alives == ((rows_ - 2)*(cols_ - 2))) {
       Cell aux(1);
-      for (int i{1}; i < (rows_ - 2); ++i) {
-        for (int j{1}; j < (cols_ - 2); ++j) {
+      for (int i{1}; i < (rows_ - 1); ++i) {
+        for (int j{1}; j < (cols_ - 1); ++j) {
           this->SetCell(i, j, aux);
         }
       }
@@ -389,7 +400,7 @@ void Grid::GameLife(const int& kGameTurns) {
       cout << "y en ese orden, primero la coordenada X y luego la Y\n";
       cout << "separadas por uno o varios espacios\n";
       for (int i{1}; i <= cell_alives; ++i) {
-        cout << "¿Posicion de la " << i << "º Celula viva?\n";
+        cout << "¿Posicion de la " << i << "º Celula viva? ";
         cin >> aux_position.first;
         cin >> aux_position.second;
 
@@ -400,10 +411,10 @@ void Grid::GameLife(const int& kGameTurns) {
               break;
             }
           }
-          cerr << "La posición de la celula está fuera de los limites de la\n";
+          cerr << "\nLa posición de la celula está fuera de los limites de la\n";
           cerr << "rejilla, o se ha indicado una celula que no esta en estado";
-          cerr << "\nmuerta, intentelo de nuevo.\n\n";
-          cout << "¿Posicion de la " << i << "º Celula viva?\n";
+          cerr << "\nmuerta, intentelo de nuevo.\n";
+          cout << "¿Posicion de la " << i << "º Celula viva? ";
           cin >> aux_position.first;
           cin >> aux_position.second;
         }
@@ -414,15 +425,15 @@ void Grid::GameLife(const int& kGameTurns) {
     cout << "Todas las celulas comenzaran muertas en el turno 0\n\n";
   }
 
-  cout << "Turno 0\n\n";
+  cout << "\nTurno 0\n";
   cout << *this;
   for (int i{1}; i < kGameTurns; ++i) {
-    cout << "Turno " << i << "\n\n";
+    cout << "Turno " << i << "\n";
     this->NextGeneration();
     cout << *this;
   }
 
-  cout << "\n\nFin del Juego\n";
+  cout << "Fin del Juego\n\n";
 }
 
 /**
@@ -433,13 +444,13 @@ void Grid::GameLife(const int& kGameTurns) {
 void Grid::NextGeneration(void) {
   for (int i{1}; i < (rows_ - 1); ++i) {
     for (int j{1}; j < (cols_ - 1); ++j) {
-      this->GetCell(i, j).NeighborsAlive(*this);
+      grid_[i][j].NeighborsAlive(*this);
     }
   }
  
   for (int i{1}; i < (rows_ - 1); ++i) {
     for (int j{1}; j < (cols_ - 1); ++j) {
-      this->GetCell(i, j).UpdateState();
+      grid_[i][j].UpdateState();
     }
   }
 }
@@ -457,12 +468,12 @@ const Grid& Grid::operator=(const Grid& grid) {
   delete[] this->grid_;
   grid_ = NULL;
 
-  grid_ = new Cell*[grid.GetRows()];
-  for (int i{0}; i < grid.GetRows(); ++i) {
-    grid_[i] = new Cell[grid.GetCols()];
+  grid_ = new Cell*[grid.GetRows() + 2];
+  for (int i{0}; i < (grid.GetRows() + 2); ++i) {
+    grid_[i] = new Cell[grid.GetCols() + 2];
   }
-  this->rows_ = grid.GetRows();
-  this->cols_ = grid.GetCols();
+  this->rows_ = grid.GetRows() + 2;
+  this->cols_ = grid.GetCols() + 2;
 
   Cell aux_var;
   for (int i{0}; i < rows_; ++i) {
@@ -473,7 +484,7 @@ const Grid& Grid::operator=(const Grid& grid) {
       } else {
         aux_var = grid.grid_[i][j];
       }
-      aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
+      aux_var.SetPos(i, j);
       grid_[i][j] = aux_var;
     }
   }
@@ -493,7 +504,29 @@ const Grid& Grid::operator=(const Grid& grid) {
  * por pantalla.
  */
 std::ostream& operator<<(std::ostream& out, const Grid& grid) {
-  
+  for (int i{0}; i < grid.rows_; ++i) {
+    for (int j{0}; j < grid.cols_; ++j) {
+      if (i == 0 || i == (grid.rows_ - 1)) {
+        out << "·";
+        for (int k{1}; k < (grid.rows_ - 1); ++k) out << '-';
+        out << "·\n";
+        break;
+      }
+
+      if (j == 0) {
+        out << '|';
+        continue;
+      }
+
+      if (j == (grid.cols_ - 1)) {
+        out << "|\n";
+        continue;
+      }
+
+      out << grid.GetCell(i, j);
+    }
+  }
+  out << '\n';
   return out;
 }
 

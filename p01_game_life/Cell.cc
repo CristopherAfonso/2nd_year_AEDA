@@ -175,12 +175,15 @@ void Cell::UpdateState(void) {
  */
 void Cell::NeighborsAlive(const Grid& grid) {
   neighbors_alive_ = 0;
-  for (int i{this->position_.first - 1}; i < (this->position_.first + 2); ++i) {
-    for (int j{this->position_.first - 1}; j < (this->position_.first + 2); ++j) {
-      if ((i == this->position_.first) && (j == this->position_.second)) continue;
-      if (grid.GetCell(i, j).GetState() == 1) neighbors_alive_ += 1;
+  for (int i{-1}; i < 2; ++i) {
+    for (int j{-1}; j < 2; ++j) {
+      if ((position_.first == position_.first + i) && 
+          (position_.second == position_.second + j)) continue;
+        if (grid.GetCell(position_.first + i, position_.second + j).GetState() == 1)
+          ++neighbors_alive_;
     }
   }
+  
 }
 
 /**

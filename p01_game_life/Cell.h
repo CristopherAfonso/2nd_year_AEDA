@@ -58,6 +58,7 @@ class Cell {
   void SetPosY(const int& posy);
   void SetPos(const std::pair<int, int> position);
   void SetPos(const int& posx, const int& posy);
+  void SetNeighborsAlive();
 
   /// Getters.
   State GetState(void) const;
