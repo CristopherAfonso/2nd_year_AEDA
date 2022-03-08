@@ -34,6 +34,12 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
+  std::string kRows{argv[1]};
+  std::string kCols{argv[2]};
+  std::string kGameTurns{argv[3]};
+
+  Grid grid(std::stoi(kRows), std::stoi(kCols));
+  grid.GameLife(std::stoi(kGameTurns));
   
   return 0;
 }
