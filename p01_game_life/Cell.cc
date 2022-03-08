@@ -28,6 +28,8 @@
 
 #include "Cell.h"
 
+using std::cout;
+
 /**
  * @brief Constructor por defecto definido. 
  */

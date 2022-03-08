@@ -373,8 +373,48 @@ void NextGeneration(void) {
  * @return Grid& Objeto que invoca el metodo pero ya siendo modificado.
  */
 Grid& Grid::operator=(const Grid& grid) {
-  Cell** aux_ptr{NULL};
+  for (int i{0}; i < rows_; ++i) {
+    delete[] this->grid_[i];
+  }
+  delete[] this->grid_;
+  grid_ = NULL;
+
+  grid_ = new Cell*[grid.GetRows()];
+  for (int i{0}; i < grid.GetRows(); ++i) {
+    grid_[i] = new Cell[grid.GetCols()];
+  }
+  this->rows_ = grid.GetRows();
+  this->cols_ = grid.GetCols();
+
+  Cell aux_var;
+  for (int i{0}; i < rows_; ++i) {
+    Cell aux_var_cell;
+    for (int j{0}; j < cols_; ++j) {
+      if ((i == (rows_ - 1)) || (j == (cols_ - 1))) {
+        aux_var = aux_var_cell;
+      } else {
+        aux_var = grid.grid_[i][j];
+      }
+      aux_var.SetPos(i, j); ///< el metodo GetCell puede devolver {-1, -1}
+      grid_[i][j] = aux_var;
+    }
+  }
 
   return *this;
 }
 
+/**
+ * @brief Sobrecarga del operador << de la clase Grid. Nos permite mostrar la
+ * matriz por pantalla.
+ * 
+ * @param out variable a la que hay que redireccionar los datos para que salgan
+ * en la pantalla, generalmente es std::cout, pero dentro de la funcion lleva
+ * el nombre que quieras.
+ * @param grid Objeto tipo rejilla que va a ser mostrado.
+ * @return std::ostream& retorno de los todos caracteres que se quieren mostrar
+ * por pantalla.
+ */
+std::ostream& operator<<(std::ostream& out, const Grid& grid) {
+  
+  return out;
+}
