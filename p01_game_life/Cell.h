@@ -60,13 +60,13 @@ class Cell {
   void SetPos(const int& posx, const int& posy);
 
   /// Getters.
-  const State GetState(void) const;
+  State GetState(void) const;
   const std::pair<int, int> GetPosition(void) const;
-  const int GetNeighborsAlive(void) const;
+  int GetNeighborsAlive(void) const;
 
   /// Funciones de la Clase (Métodos).
   void UpdateState(void);
-  const int NeighborsAlive(const Grid& grid);
+  void NeighborsAlive(const Grid& grid);
 
   /// Operadores Sobrecargados.
   const Cell& operator=(const Cell& cell);

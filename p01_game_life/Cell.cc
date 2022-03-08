@@ -127,7 +127,7 @@ void Cell::SetPos(const int& posx, const int& posy) {
  * 
  * @return State es el atributo interno de la celula devuelto.
  */
-const State Cell::GetState(void) const {return state_;}
+State Cell::GetState(void) const {return state_;}
 
 /**
  * @brief Función que devuelve el atributo position_ que es un
@@ -147,7 +147,7 @@ const std::pair<int, int> Cell::GetPosition(void) const {return position_;}
  * @return int es el numero de celulas vivas en el turno actual, este numero
  * esta comprendido entre el 0 y el 8
  */
-const int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
+int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
 
 /**
  * @brief Funcion que se encarga de hacer que la propia celula actualice su
@@ -173,7 +173,7 @@ void Cell::UpdateState(void) {
  * tiene sentido usarlo)
  * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
  */
-const int Cell::NeighborsAlive(const Grid& grid) {
+void Cell::NeighborsAlive(const Grid& grid) {
   neighbors_alive_ = 0;
   for (int i{this->position_.first - 1}; i < (this->position_.first + 2); ++i) {
     for (int j{this->position_.first - 1}; j < (this->position_.first + 2); ++j) {
@@ -181,7 +181,6 @@ const int Cell::NeighborsAlive(const Grid& grid) {
       if (grid.GetCell(i, j).GetState() == 1) neighbors_alive_ += 1;
     }
   }
-  return neighbors_alive_;
 }
 
 /**

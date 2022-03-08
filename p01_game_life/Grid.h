@@ -57,10 +57,10 @@ class Grid {
   void SetCols(const int& kCols);
 
   /// Getters.
-  const Cell GetCell(const int& posx, const int& posy) const;
+  Cell GetCell(const int& posx, const int& posy) const;
   const Cell GetCell(const std::pair<int, int> position) const;
-  const int GetRows(void) const;
-  const int GetCols(void) const;
+  int GetRows(void) const;
+  int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
   void GameLife(const int& kGameTurns);

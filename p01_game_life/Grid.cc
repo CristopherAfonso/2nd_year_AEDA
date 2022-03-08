@@ -296,7 +296,7 @@ void Grid::SetCols(const int& kCols) {
  * @return Cell objeto celula que tiene como coordenadas 'posx' en el eje 'X' y
  * 'posy' en el eje 'Y'.
  */
-const Cell Grid::GetCell(const int& posx, const int& posy) const {
+Cell Grid::GetCell(const int& posx, const int& posy) const {
   if ((posx > 0) && (posy > 0) && (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_[posx][posy];
@@ -336,14 +336,14 @@ const Cell Grid::GetCell(const std::pair<int, int> position) const {
  * 
  * @return int Numero de filas que tiene la rejilla (rejillas usables).
  */
-const int Grid::GetRows(void) const {return rows_ - 2;}
+int Grid::GetRows(void) const {return rows_ - 2;}
 
 /**
  * @brief Metodo que devuelve el numero de columnas que tiene la rejilla.
  * 
  * @return int Numero de columnas que tiene la rejilla (rejillas usables).
  */
-const int Grid::GetCols(void) const {return cols_ - 2;}
+int Grid::GetCols(void) const {return cols_ - 2;}
 
 /**
  * @brief Metodo que implementa El Juego de la Vida, aquí está desarrollado
@@ -354,6 +354,40 @@ const int Grid::GetCols(void) const {return cols_ - 2;}
  * segun los estados de las celulas.
  */
 void Grid::GameLife(const int& kGameTurns) {
+  using std::cout;
+  using std::cerr;
+  using std::cin;
+  cout << "En la rejilla hay " << (rows_ - 2)*(cols_ - 2) << " celulas,\n";
+  cout << "la rejilla tiene " << (rows_ - 2) << " filas y " << (cols_ - 2);
+  cout << "\ncolumnas, ahora mismo todas están muertas, indique ahora\n";
+  cout << "cuantas de esas celulas quiere que comiencen vivas en el turno 0:\n";
+
+  int cell_alives{0};
+  cin >> cell_alives;
+
+  while ((cell_alives < 0) || (cell_alives > ((rows_ - 2)*(cols_ - 2)))) {
+    cerr << "Warning!, el numero de celulas elegido está fuera del rango\n";
+    cerr << "aceptable, intentelo de nuevo: ";
+    cin >> cell_alives;
+    cerr << "\n";
+  }
+
+  if (cell_alives != 0) {
+    if (cell_alives == ((rows_ - 2)*(cols_ - 2))) {
+      Cell aux(1);
+      for (int i{1}; i < (rows_ - 2); ++i) {
+        for (int j{1}; j < (cols_ - 2); ++j) {
+          this->SetCell(i, j, aux);
+        }
+      }
+      cout << "Como se ha elegido que todas las celulas esten vivas, ya se\n";
+      cout << "han colocado todas las celulas de la rejilla a estado viva\n\n";
+    } else {
+
+    }
+  } else {
+    cout << "Todas las celulas comenzaran muertas en el turno 0\n\n";
+  }
 
 }
 
@@ -362,8 +396,18 @@ void Grid::GameLife(const int& kGameTurns) {
  * estado 't' al estado 't + 1' segun las normas de transicion de estados
  * definida en el metodo "UpdateState" de la clase 'Cell'
  */
-void NextGeneration(void) {
-  
+void Grid::NextGeneration(void) {
+  for (int i{1}; i < (rows_ - 1); ++i) {
+    for (int j{1}; j < (cols_ - 1); ++j) {
+      this->GetCell(i, j).NeighborsAlive(*this);
+    }
+  }
+ 
+  for (int i{1}; i < (rows_ - 1); ++i) {
+    for (int j{1}; j < (cols_ - 1); ++j) {
+      this->GetCell(i, j).UpdateState();
+    }
+  }
 }
 
 /**
