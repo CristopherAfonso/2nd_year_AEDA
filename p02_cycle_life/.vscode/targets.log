@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Mar 14 13:31:06 2022
+# Make data base, printed on Mon Mar 14 21:55:35 2022
 
 # Variables
 
@@ -89,7 +87,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1241,unix/themaster-VirtualBox:/tmp/.ICE-unix/1241
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1235,unix/themaster-VirtualBox:/tmp/.ICE-unix/1235
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +111,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-5EkOOIW1g8mB/agent.1066
+SSH_AUTH_SOCK = /tmp/ssh-zBEUq3fvbmQ8/agent.1061
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +129,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1151
+SSH_AGENT_PID = 1146
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +179,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2114037e-683c-452d-9b3e-9d1e5b5c32c4.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-150e174f-5c76-45d7-bbed-c9a74882c734.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -249,7 +247,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1528
+VSCODE_PID = 3166
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -261,9 +259,9 @@ KDE_SESSION_UID = 1000
 
 # Directories
 
-# . (device 2053, inode 2383897): 16 files, no impossibilities.
+# . (device 2053, inode 2383897): 24 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -280,8 +278,10 @@ Grid.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
+ 
+make: *** No rule to make target 'all'.  Stop.
+ 
 # Not a target:
 all:
 #  Command line target.
@@ -291,7 +291,6 @@ all:
 
 # Not a target:
 main_cycle_life.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -343,12 +342,12 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 236 B / avg = 9 B
-# current buf: size = 8162 B / used = 236 B / count = 24 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 36 / storage = 380 B / avg = 10 B
+# current buf: size = 8162 B / used = 380 B / count = 36 / avg = 10 B
 
-# strcache performance: lookups = 38 / hit rate = 36%
+# strcache performance: lookups = 46 / hit rate = 21%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=1/38=3%
-# Finished Make data base on Mon Mar 14 13:31:06 2022
+# Load=36/8192=0%, Rehash=0, Collisions=1/46=2%
+# Finished Make data base on Mon Mar 14 21:55:35 2022
 
  

@@ -32,7 +32,7 @@
 /**
  * @brief Constructor por defecto definido. 
  */
-Cell::Cell(void) : state_(0), position_({-1, -1}), neighbors_alive_(0) {}
+Cell::Cell(void) : position_({-1, -1}) {}
 
 /**
  * @brief Constructor basico, que define el estado, pero no la posicion.
@@ -40,7 +40,7 @@ Cell::Cell(void) : state_(0), position_({-1, -1}), neighbors_alive_(0) {}
  * @param state estado de la celula.
  */
 Cell::Cell(const State& state) 
-    : state_(state), position_({-1, -1}), neighbors_alive_(0) {}
+    : position_({-1, -1}) {}
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -51,7 +51,7 @@ Cell::Cell(const State& state)
  * @param position Posicion en 2D de la celula en la Rejilla.
  */
 Cell::Cell(const State& state, const std::pair<int, int>& position) 
-    : state_(state), position_(position), neighbors_alive_(0) {}
+    : position_(position) {}
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -63,7 +63,7 @@ Cell::Cell(const State& state, const std::pair<int, int>& position)
  * @param posy Posición en el eje 'Y'
  */
 Cell::Cell(const State& state, const int& posx, const int& posy)
-    : state_(state), position_({posx, posy}), neighbors_alive_(0) {}
+    : position_({posx, posy}) {}
 
 /**
  * @brief Constructor de copia de la celula, el constructor llama al operador =
@@ -77,12 +77,11 @@ Cell::Cell(const Cell& cell) {
 }
 
 /**
- * @brief Funcion que cambia el atributo interno de la celula llamado 'state_'
- * por el dado al método (State es un int).
+ * @brief 
  * 
- * @param state Dato de tipo int que sustituirá al state_ de la celula.
+ * @param state 
  */
-void Cell::SetState(const State& state) {state_ = state;}
+void Cell::SetState(State* state) {}
 
 /**
  * @brief Función que solo modifica la posición en el eje 'X' de la celula.
@@ -123,11 +122,11 @@ void Cell::SetPos(const int& posx, const int& posy) {
 }
 
 /**
- * @brief Funcion que devuelve el atributo interno state_
+ * @brief 
  * 
- * @return State es el atributo interno de la celula devuelto.
+ * @return char 
  */
-State Cell::GetState(void) const {return state_;}
+char Cell::GetState(void) const {return state_->GetState();}
 
 /**
  * @brief Función que devuelve el atributo position_ que es un
@@ -140,28 +139,10 @@ State Cell::GetState(void) const {return state_;}
 const std::pair<int, int> Cell::GetPosition(void) const {return position_;}
 
 /**
- * @brief Funcion que devuelve el atributo interno neighbors_alive_ que es un
- * int que contiene la cantidad de celulas vecinas en el turno actual que estan
- * en estado 'viva'
+ * @brief 
  * 
- * @return int es el numero de celulas vivas en el turno actual, este numero
- * esta comprendido entre el 0 y el 8
  */
-int Cell::GetNeighborsAlive(void) const {return neighbors_alive_;}
-
-/**
- * @brief Funcion que se encarga de hacer que la propia celula actualice su
- * estado en el turno actual en base a las reglas de transicion
- */
-void Cell::UpdateState(void) {
-  if (state_ == 0) {
-    if (neighbors_alive_ == 3) state_ = 1;
-  }
-
-  if (state_ == 1) {
-    if (!(neighbors_alive_ == 2 || neighbors_alive_ == 3)) state_ = 0;
-  }
-}
+void Cell::UpdateState(void) {}
 
 /**
  * @brief Puesto que las reglas de transicion se definen en funcion del numero
@@ -173,16 +154,18 @@ void Cell::UpdateState(void) {
  * tiene sentido usarlo)
  * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
  */
-void Cell::NeighborsAlive(const Grid& grid) {
-  neighbors_alive_ = 0;
-  for (int i{-1}; i < 2; ++i) {
-    for (int j{-1}; j < 2; ++j) {
-      if ((position_.first == position_.first + i) && 
-          (position_.second == position_.second + j)) continue;
-        if (grid.GetCell(position_.first + i, position_.second + j).GetState() == 1)
-          ++neighbors_alive_;
-    }
-  }
+int Cell::NeighborsAlive(const Grid& grid) {
+  // neighbors_alive_ = 0;
+  // for (int i{-1}; i < 2; ++i) {
+  //   for (int j{-1}; j < 2; ++j) {
+  //     if ((position_.first == position_.first + i) && 
+  //         (position_.second == position_.second + j)) continue;
+  //       if (grid.GetCell(position_.first + i, position_.second + j).GetState() == 1)
+  //         ++neighbors_alive_;
+  //   }
+  // }
+
+  
   
 }
 
@@ -196,7 +179,6 @@ void Cell::NeighborsAlive(const Grid& grid) {
 const Cell& Cell::operator=(const Cell& cell) {
   state_ = cell.state_;
   position_ = cell.position_;
-  neighbors_alive_ = cell.neighbors_alive_;
   return *this;
 }
 
@@ -211,6 +193,6 @@ const Cell& Cell::operator=(const Cell& cell) {
  * para mostrar las caracteristicas de la celula por pantalla
  */
 std::ostream& operator<<(std::ostream& out, const Cell& cell) {
-  return out << ((cell.state_) ? 'X' : ' ');
+  return out << cell.state_->GetState();
 }
 
