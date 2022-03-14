@@ -57,6 +57,8 @@ class Grid {
   /// Getters.
   Cell GetCell(const int& posx, const int& posy) const;
   const Cell GetCell(const std::pair<int, int> position) const;
+  int GetRows(void) const;
+  int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
   void GameLife(const int& kGameTurns);

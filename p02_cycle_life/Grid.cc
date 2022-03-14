@@ -200,6 +200,20 @@ const Cell Grid::GetCell(const std::pair<int, int> position) const {
 }
 
 /**
+ * @brief Metodo que devuelve el numero de filas que tiene la rejilla.
+ * 
+ * @return int Numero de filas que tiene la rejilla (rejillas usables).
+ */
+int Grid::GetRows(void) const {return rows_ - 2;}
+
+/**
+ * @brief Metodo que devuelve el numero de columnas que tiene la rejilla.
+ * 
+ * @return int Numero de columnas que tiene la rejilla (rejillas usables).
+ */
+int Grid::GetCols(void) const {return cols_ - 2;}
+
+/**
  * @brief Metodo que implementa El Juego de la Vida, aquí está desarrollado
  * todo lo que debe ocurrir en el juego.
  * 
