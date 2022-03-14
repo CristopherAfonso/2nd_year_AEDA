@@ -5,13 +5,11 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [
-        ""
-      ],
-      "stopAtEntry": false,
+      "args": ["5", "5", "4"],
+      "stopAtEntry": true,
       "cwd": "/home/themaster/Documentos/2nd_year_AEDA/p01_game_life",
       "environment": [],
-      "program": "/home/themaster/Documentos/2nd_year_AEDA/p01_game_life/build/Debug/outDebug",
+      "program": "/home/themaster/Documentos/2nd_year_AEDA/p01_game_life/game_life",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",

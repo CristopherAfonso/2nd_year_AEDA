@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Mar 13 13:23:36 2022
+# Make data base, printed on Mon Mar 14 13:31:06 2022
 
 # Variables
 
@@ -19,7 +21,7 @@ DESKTOP_SESSION = plasma
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 29)
-OBJ = main_functions.o Cell.o Grid.o main_game_life.o
+OBJ = main_functions.o Cell.o Grid.o main_cycle_life.o
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -39,7 +41,7 @@ XAUTHORITY = /home/themaster/.Xauthority
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/themaster/Documentos/2nd_year_AEDA/p01_game_life
+CURDIR := /home/themaster/Documentos/2nd_year_AEDA/p02_cycle_life
 # makefile
 SHELL = /bin/sh
 # environment
@@ -75,7 +77,7 @@ VSCODE_CWD = /home/themaster
 # environment
 PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/91/usr/share/glib-2.0/schemas
 # default
@@ -87,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1234,unix/themaster-VirtualBox:/tmp/.ICE-unix/1234
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1241,unix/themaster-VirtualBox:/tmp/.ICE-unix/1241
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-AN8ucaVIWAfU/agent.1061
+SSH_AUTH_SOCK = /tmp/ssh-5EkOOIW1g8mB/agent.1066
 # automatic
 %F = $(notdir $%)
 # environment
@@ -121,7 +123,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/themaster/Documentos/2nd_year_AEDA/p01_game_life
+PWD = /home/themaster/Documentos/2nd_year_AEDA/p02_cycle_life
 # environment
 KDE_SESSION_VERSION = 5
 # default
@@ -129,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1143
+SSH_AGENT_PID = 1151
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -179,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-abf1247b-47c4-4400-8e9a-1c08ea17ae34.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2114037e-683c-452d-9b3e-9d1e5b5c32c4.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -187,7 +189,7 @@ USER = themaster
 # environment
 SNAP_REVISION = 91
 # makefile
-.DEFAULT_GOAL := game_life
+.DEFAULT_GOAL := cycle_life
 # environment
 XDG_CURRENT_DESKTOP = KDE
 # automatic
@@ -247,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1522
+VSCODE_PID = 1528
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -259,7 +261,7 @@ KDE_SESSION_UID = 1000
 
 # Directories
 
-# . (device 2053, inode 2394135): 16 files, no impossibilities.
+# . (device 2053, inode 2383897): 16 files, no impossibilities.
 
 # 16 files, no impossibilities in 1 directories.
 
@@ -279,20 +281,19 @@ Grid.o:
 #  Modification time never checked.
 #  File has not been updated.
  
-make: *** No rule to make target 'all'.  Stop.
- 
-
-# Not a target:
-main_game_life.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+main_cycle_life.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -310,22 +311,22 @@ main_functions.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-05 21:45:56.978128373
+#  Last modified 2022-03-13 20:16:39.864999395
 #  File has been updated.
 #  Successfully updated.
-
-game_life: main_functions.o Cell.o Grid.o main_game_life.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 35):
-	$(CC) $(CFLAGS) -o $@ $^
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+cycle_life: main_functions.o Cell.o Grid.o main_cycle_life.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 #  Implicit rule search has not been done.
@@ -342,12 +343,12 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 233 B / avg = 9 B
-# current buf: size = 8162 B / used = 233 B / count = 24 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 24 / storage = 236 B / avg = 9 B
+# current buf: size = 8162 B / used = 236 B / count = 24 / avg = 9 B
 
 # strcache performance: lookups = 38 / hit rate = 36%
 # hash-table stats:
 # Load=24/8192=0%, Rehash=0, Collisions=1/38=3%
-# Finished Make data base on Sun Mar 13 13:23:36 2022
+# Finished Make data base on Mon Mar 14 13:31:06 2022
 
  
