@@ -288,7 +288,7 @@ void Grid::GameLife(const int& kGameTurns) {
 void Grid::NextGeneration(void) {
   for (int i{1}; i < (rows_ - 1); ++i) {
     for (int j{1}; j < (cols_ - 1); ++j) {
-      grid_[i][j].NeighborsAlive(*this);
+      grid_[i][j].Neighbors(*this);
     }
   }
  

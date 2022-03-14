@@ -28,19 +28,55 @@
 
 #include "Cell.h"
 #include "Grid.h"
+#include "StateDead.h"
+#include "StateEgg.h"
+#include "StateLarva.h"
+#include "StatePupa.h"
+#include "StateAdult.h"
+
 
 /**
  * @brief Constructor por defecto definido. 
  */
-Cell::Cell(void) : position_({-1, -1}) {}
+Cell::Cell(void) : state_(NULL), position_({-1, -1}) {}
 
 /**
  * @brief Constructor basico, que define el estado, pero no la posicion.
  * 
  * @param state estado de la celula.
  */
-Cell::Cell(const State& state) 
-    : position_({-1, -1}) {}
+Cell::Cell(const char& state) 
+    : state_(NULL), position_({-1, -1}) {
+      switch(state) {
+        case 'A':
+          StateAdult aux;
+          state_ = &aux;
+          break;
+
+        case 'P':
+          StatePupa aux;
+          state_ = &aux;
+          break;
+
+        case 'E':
+          StateEgg aux;
+          state_ = &aux;
+          break;
+
+        case 'L':
+          StateLarva aux;
+          state_ = &aux;
+          break;
+
+        case ' ':
+          StateDead aux;
+          state_ = &aux;
+          break;
+        
+        default:
+          break;
+      }
+    }
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -50,8 +86,38 @@ Cell::Cell(const State& state)
  * @param state Estado de la celula.
  * @param position Posicion en 2D de la celula en la Rejilla.
  */
-Cell::Cell(const State& state, const std::pair<int, int>& position) 
-    : position_(position) {}
+Cell::Cell(const char& state, const std::pair<int, int>& position) 
+    : state_(NULL), position_(position) {
+      switch(state) {
+        case 'A':
+          StateAdult aux;
+          state_ = &aux;
+          break;
+
+        case 'P':
+          StatePupa aux;
+          state_ = &aux;
+          break;
+
+        case 'E':
+          StateEgg aux;
+          state_ = &aux;
+          break;
+
+        case 'L':
+          StateLarva aux;
+          state_ = &aux;
+          break;
+
+        case ' ':
+          StateDead aux;
+          state_ = &aux;
+          break;
+        
+        default:
+          break;
+      }
+    }
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -62,8 +128,38 @@ Cell::Cell(const State& state, const std::pair<int, int>& position)
  * @param posx Posición en el eje 'X'
  * @param posy Posición en el eje 'Y'
  */
-Cell::Cell(const State& state, const int& posx, const int& posy)
-    : position_({posx, posy}) {}
+Cell::Cell(const char& state, const int& posx, const int& posy)
+    : state_(NULL), position_({posx, posy}) {
+      switch(state) {
+        case 'A':
+          StateAdult aux;
+          state_ = &aux;
+          break;
+
+        case 'P':
+          StatePupa aux;
+          state_ = &aux;
+          break;
+
+        case 'E':
+          StateEgg aux;
+          state_ = &aux;
+          break;
+
+        case 'L':
+          StateLarva aux;
+          state_ = &aux;
+          break;
+
+        case ' ':
+          StateDead aux;
+          state_ = &aux;
+          break;
+        
+        default:
+          break;
+      }
+    }
 
 /**
  * @brief Constructor de copia de la celula, el constructor llama al operador =
@@ -77,11 +173,12 @@ Cell::Cell(const Cell& cell) {
 }
 
 /**
- * @brief 
+ * @brief Método que sustituye el valor del atributo interno state_ por el
+ * valor que se le pasa al método.
  * 
- * @param state 
+ * @param state es el nuevo valor del altributo interno state_
  */
-void Cell::SetState(State* state) {}
+void Cell::SetState(State* state) {state_ = state;}
 
 /**
  * @brief Función que solo modifica la posición en el eje 'X' de la celula.
@@ -122,9 +219,12 @@ void Cell::SetPos(const int& posx, const int& posy) {
 }
 
 /**
- * @brief 
+ * @brief Método que muestra por pantalla el estado de la célula, este puede
+ * variar entre 5 posibles estados y son Muerta ( ), Huevo (H), Larva (L), 
+ * Pupa (P) y Adulta (A).
  * 
- * @return char 
+ * @return char es uno de los 5 carácteres que representa a cada uno de los
+ * 5 posibles estados en los que puede estar una celula.
  */
 char Cell::GetState(void) const {return state_->GetState();}
 
@@ -139,10 +239,9 @@ char Cell::GetState(void) const {return state_->GetState();}
 const std::pair<int, int> Cell::GetPosition(void) const {return position_;}
 
 /**
- * @brief 
- * 
+ * @brief Método que ayuda a la celula a pasar al siguiente estado.
  */
-void Cell::UpdateState(void) {}
+void Cell::UpdateState(void) {state_->NextState();}
 
 /**
  * @brief Puesto que las reglas de transicion se definen en funcion del numero
@@ -152,21 +251,12 @@ void Cell::UpdateState(void) {}
  * @param grid Rejilla o matriz de celulas en la cual está este objeto celula
  * que invoca al metodo que se halla presente en la rejilla(sino el metodo no
  * tiene sentido usarlo)
- * @return int Numero de celulas vivas vecinas a la que invoca el metodo.
+ * @return int Numero de celulas que cumplen un requisito, dependiendo del
+ * estado actual de la célula, ese número significará una cosa u otra y ayudará
+ * a interpretar el próximo estado que la célula adoptará.
  */
-int Cell::NeighborsAlive(const Grid& grid) {
-  // neighbors_alive_ = 0;
-  // for (int i{-1}; i < 2; ++i) {
-  //   for (int j{-1}; j < 2; ++j) {
-  //     if ((position_.first == position_.first + i) && 
-  //         (position_.second == position_.second + j)) continue;
-  //       if (grid.GetCell(position_.first + i, position_.second + j).GetState() == 1)
-  //         ++neighbors_alive_;
-  //   }
-  // }
-
-  
-  
+int Cell::Neighbors(const Grid& grid) {
+  return state_->Neighbors(grid, position_.first, position_.second);  
 }
 
 /**

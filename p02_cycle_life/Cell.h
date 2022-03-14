@@ -47,9 +47,9 @@ class Cell {
  public:
   /// Constructores.
   Cell(void);
-  Cell(const State& state);
-  Cell(const State& state, const std::pair<int, int>& position);
-  Cell(const State& state, const int& posx, const int& posy);
+  Cell(const char& state);
+  Cell(const char& state, const std::pair<int, int>& position);
+  Cell(const char& state, const int& posx, const int& posy);
   Cell(const Cell& cell);
 
   /// Setters.
@@ -58,7 +58,6 @@ class Cell {
   void SetPosY(const int& posy);
   void SetPos(const std::pair<int, int> position);
   void SetPos(const int& posx, const int& posy);
-  void SetNeighborsAlive();
 
   /// Getters.
   char GetState(void) const;
@@ -66,7 +65,7 @@ class Cell {
 
   /// Funciones de la Clase (Métodos).
   void UpdateState(void);
-  int NeighborsAlive(const Grid& grid);
+  int Neighbors(const Grid& grid);
 
   /// Operadores Sobrecargados.
   const Cell& operator=(const Cell& cell);
@@ -75,7 +74,7 @@ class Cell {
   friend std::ostream& operator<<(std::ostream& out, const Cell& cell);
 
  private:
-  State* state_;
+  State* state_{NULL};
   std::pair<int, int> position_{-1, -1}; ///< Posiciones positivas siempre
 };
 #endif
