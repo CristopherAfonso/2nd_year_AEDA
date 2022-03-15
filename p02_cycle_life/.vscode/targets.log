@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Mar 15 18:00:53 2022
+# Make data base, printed on Tue Mar 15 21:43:17 2022
 
 # Variables
 
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1247,unix/themaster-VirtualBox:/tmp/.ICE-unix/1247
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1265,unix/themaster-VirtualBox:/tmp/.ICE-unix/1265
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-MCEayJs8OWlv/agent.1072
+SSH_AUTH_SOCK = /tmp/ssh-l2RjJSjiRVnK/agent.1099
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1157
+SSH_AGENT_PID = 1183
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-45b4d122-310d-4509-9dd2-3602d7a5f895.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9b7e52d1-3f20-4ac3-bef2-9ac016fe264e.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -249,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5850
+VSCODE_PID = 1568
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -261,9 +261,9 @@ KDE_SESSION_UID = 1000
 
 # Directories
 
-# . (device 2053, inode 2383897): 25 files, no impossibilities.
+# . (device 2053, inode 2383897): 24 files, no impossibilities.
 
-# 25 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -280,7 +280,6 @@ Grid.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 all:
@@ -305,6 +304,7 @@ StateDead.o:
 Cell.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -381,9 +381,9 @@ StateAdult.o:
 # strcache buffers: 1 (0) / strings = 42 / storage = 449 B / avg = 10 B
 # current buf: size = 8162 B / used = 449 B / count = 42 / avg = 10 B
 
-# strcache performance: lookups = 59 / hit rate = 28%
+# strcache performance: lookups = 58 / hit rate = 27%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=1/59=2%
-# Finished Make data base on Tue Mar 15 18:00:53 2022
+# Load=42/8192=1%, Rehash=0, Collisions=1/58=2%
+# Finished Make data base on Tue Mar 15 21:43:17 2022
 
  
