@@ -32,6 +32,8 @@
 
 #include <iostream>
 #include "State.h"
+#include "Grid.h"
+#include "Cell.h"
 
 class StateAdult : public State {
  public:

@@ -33,13 +33,16 @@
 #define _STATE_
 
 #include <iostream>
-#include "Grid.h"
+#include "Cell.h"
+
+class Grid;
 
 class State {
  public:
   virtual int Neighbors(const Grid& grid, const int& i, const int& j) = 0;
   virtual State* NextState(void) = 0;
   virtual char GetState(void) const = 0;
+  virtual ~State(void) = default;
 };
 
 #endif

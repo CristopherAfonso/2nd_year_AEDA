@@ -66,15 +66,8 @@ int StatePupa::Neighbors(const Grid& grid, const int& i, const int& j) {
  * @return State* objeto que representa el cambio de estado de nuestra celula
  */
 State* StatePupa::NextState(void) {
-  State* result{NULL};
-  if (neighbors_pupa_ >= 0) {
-    StateAdult aux;
-    result = &aux;
-  } else {
-    StateDead aux;
-    result = &aux;
-  }
-  return result;
+  if (neighbors_pupa_ >= 0) return new StateAdult;
+  else return new StateDead;
 }
 
 /**

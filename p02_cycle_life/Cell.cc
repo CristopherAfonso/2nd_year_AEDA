@@ -38,45 +38,20 @@
 /**
  * @brief Constructor por defecto definido. 
  */
-Cell::Cell(void) : state_(NULL), position_({-1, -1}) {}
+Cell::Cell(void) : state_(new StateDead), position_({-1, -1}) {}
 
 /**
  * @brief Constructor basico, que define el estado, pero no la posicion.
  * 
  * @param state estado de la celula.
  */
-Cell::Cell(const char& state) 
-    : state_(NULL), position_({-1, -1}) {
-      switch(state) {
-        case 'A':
-          StateAdult aux;
-          state_ = &aux;
-          break;
-
-        case 'P':
-          StatePupa aux;
-          state_ = &aux;
-          break;
-
-        case 'E':
-          StateEgg aux;
-          state_ = &aux;
-          break;
-
-        case 'L':
-          StateLarva aux;
-          state_ = &aux;
-          break;
-
-        case ' ':
-          StateDead aux;
-          state_ = &aux;
-          break;
-        
-        default:
-          break;
-      }
-    }
+Cell::Cell(const char& state) : state_(NULL), position_({-1, -1}) {
+  if (state == 'A') state_ = new StateAdult;
+  if (state == 'P') state_ = new StatePupa;
+  if (state == 'H') state_ = new StateEgg;
+  if (state == 'L') state_ = new StateLarva;
+  if (state == ' ') state_ = new StateDead;
+}
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -88,36 +63,12 @@ Cell::Cell(const char& state)
  */
 Cell::Cell(const char& state, const std::pair<int, int>& position) 
     : state_(NULL), position_(position) {
-      switch(state) {
-        case 'A':
-          StateAdult aux;
-          state_ = &aux;
-          break;
-
-        case 'P':
-          StatePupa aux;
-          state_ = &aux;
-          break;
-
-        case 'E':
-          StateEgg aux;
-          state_ = &aux;
-          break;
-
-        case 'L':
-          StateLarva aux;
-          state_ = &aux;
-          break;
-
-        case ' ':
-          StateDead aux;
-          state_ = &aux;
-          break;
-        
-        default:
-          break;
-      }
-    }
+  if (state == 'A') state_ = new StateAdult;
+  if (state == 'P') state_ = new StatePupa;
+  if (state == 'H') state_ = new StateEgg;
+  if (state == 'L') state_ = new StateLarva;
+  if (state == ' ') state_ = new StateDead;
+}
 
 /**
  * @brief Constructor basico que define el estado y la posicion de la celula
@@ -130,36 +81,12 @@ Cell::Cell(const char& state, const std::pair<int, int>& position)
  */
 Cell::Cell(const char& state, const int& posx, const int& posy)
     : state_(NULL), position_({posx, posy}) {
-      switch(state) {
-        case 'A':
-          StateAdult aux;
-          state_ = &aux;
-          break;
-
-        case 'P':
-          StatePupa aux;
-          state_ = &aux;
-          break;
-
-        case 'E':
-          StateEgg aux;
-          state_ = &aux;
-          break;
-
-        case 'L':
-          StateLarva aux;
-          state_ = &aux;
-          break;
-
-        case ' ':
-          StateDead aux;
-          state_ = &aux;
-          break;
-        
-        default:
-          break;
-      }
-    }
+  if (state == 'A') state_ = new StateAdult;
+  if (state == 'P') state_ = new StatePupa;
+  if (state == 'H') state_ = new StateEgg;
+  if (state == 'L') state_ = new StateLarva;
+  if (state == ' ') state_ = new StateDead;
+}
 
 /**
  * @brief Constructor de copia de la celula, el constructor llama al operador =
@@ -179,6 +106,19 @@ Cell::Cell(const Cell& cell) {
  * @param state es el nuevo valor del altributo interno state_
  */
 void Cell::SetState(State* state) {state_ = state;}
+
+/**
+ * @brief Método que asigna un nuevo estado a la celula.
+ * 
+ * @param state es el carácter que dice que tipo de estado tendrá la celula.
+ */
+void Cell::SetState(const char& state) {
+  if (state == 'A') state_ = new StateAdult;
+  if (state == 'P') state_ = new StatePupa;
+  if (state == 'L') state_ = new StateLarva;
+  if (state == 'H') state_ = new StateEgg;
+  if (state == ' ') state_ = new StateDead;
+}
 
 /**
  * @brief Función que solo modifica la posición en el eje 'X' de la celula.
@@ -241,7 +181,9 @@ const std::pair<int, int> Cell::GetPosition(void) const {return position_;}
 /**
  * @brief Método que ayuda a la celula a pasar al siguiente estado.
  */
-void Cell::UpdateState(void) {state_->NextState();}
+void Cell::UpdateState(void) {
+  state_ = state_->NextState();
+}
 
 /**
  * @brief Puesto que las reglas de transicion se definen en funcion del numero

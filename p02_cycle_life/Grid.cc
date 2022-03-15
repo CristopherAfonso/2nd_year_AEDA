@@ -221,61 +221,73 @@ int Grid::GetCols(void) const {return cols_ - 2;}
  * la rejilla (cuantos turnos van a pasar y como se va a desarrollar el juego)
  * segun los estados de las celulas.
  */
-void Grid::GameLife(const int& kGameTurns) {
+void Grid::CycleLife(const int& kGameTurns) {
   using std::cout;
   using std::cerr;
   using std::cin;
   cout << "En la rejilla hay " << (rows_ - 2)*(cols_ - 2) << " celulas,";
   cout << " la rejilla tiene " << (rows_ - 2) << " filas y " << (cols_ - 2);
   cout << " columnas,\nahora mismo todas están muertas, indique ahora ";
-  cout << "cuantas de esas\ncelulas quiere que comiencen vivas en el turno 0: ";
+  cout << "cuantas de esas\ncelulas quiere que comiencen en estado huevo, ";
+  cout << "larva, pupa o adulta\nen el turno 0: ";
 
-  int cell_alives{0};
-  cin >> cell_alives;
+  int cell_not_dies{0};
+  cin >> cell_not_dies;
   cout << '\n';
 
-  while ((cell_alives < 0) || (cell_alives > ((rows_ - 2)*(cols_ - 2)))) {
+  while ((cell_not_dies < 0) || (cell_not_dies > ((rows_ - 2)*(cols_ - 2)))) {
     cerr << "Warning!, el numero de celulas elegido está fuera del rango\n";
     cerr << "aceptable, intentelo de nuevo: ";
-    cin >> cell_alives;
+    cin >> cell_not_dies;
     cerr << "\n";
   }
 
-  if (cell_alives != 0) {
-    if (cell_alives == ((rows_ - 2)*(cols_ - 2))) {
-      Cell aux(1);
-      for (int i{1}; i < (rows_ - 1); ++i) {
-        for (int j{1}; j < (cols_ - 1); ++j) {
-          this->SetCell(i, j, aux);
-        }
-      }
-      cout << "Como se ha elegido que todas las celulas esten vivas, ya se\n";
-      cout << "han colocado todas las celulas de la rejilla a estado viva\n\n";
-    } else {
+  if (cell_not_dies != 0) {
+    if (cell_not_dies <= ((rows_ - 2)*(cols_ - 2))) {
       std::pair<int, int> aux_position{0, 0};
-      Cell aux_cell(1);
-      cout << "Debe introducir las coordenadas X e Y para cada celula viva\n";
-      cout << "y en ese orden, primero la coordenada X y luego la Y\n";
-      cout << "separadas por uno o varios espacios\n";
-      for (int i{1}; i <= cell_alives; ++i) {
-        cout << "¿Posicion de la " << i << "º Celula viva? ";
+      Cell aux_cell;
+      cout << "Debe introducir las coordenadas X e Y para cada celula a la\n";
+      cout << "que le quiera definir su estado y en ese orden, primero la\n";
+      cout << "coordenada X y luego la Y separadas por uno o varios espacios,\n";
+      cout << "tras indicar unas coordenadas correctas, debe introducir uno\n";
+      cout << "de los siguientes carácteres para indicar el estado que\n";
+      cout << "quiere que se establezca en la posición indicada, y esos\n";
+      cout << "carácteres son: A->Adulta, P->Pupa, L->Larva, H->Huevo\n\n";
+
+      for (int i{1}; i <= cell_not_dies; ++i) {
+        cout << "¿Posicion de la " << i << "º Celula a definir su estado? ";
         cin >> aux_position.first;
         cin >> aux_position.second;
 
         while (true) {
           if (aux_position.first > 0 && aux_position.first < (rows_ - 1) &&
               aux_position.second > 0 && aux_position.second < (cols_ - 1)) {
-            if (this->GetCell(aux_position.first, aux_position.second).GetState() == 0) {
+            if (this->GetCell(aux_position.first, aux_position.second).GetState() == ' ') {
               break;
             }
           }
           cerr << "\nLa posición de la celula está fuera de los limites de la\n";
-          cerr << "rejilla, o se ha indicado una celula que no esta en estado";
-          cerr << "\nmuerta, intentelo de nuevo.\n";
-          cout << "¿Posicion de la " << i << "º Celula viva? ";
+          cerr << "rejilla, o se ha indicado una celula que no esta en estado\n";
+          cerr << "muerta, intentelo de nuevo.\n";
+          cout << "¿Posicion de la " << i << "º Celula a definir su estado? ";
           cin >> aux_position.first;
           cin >> aux_position.second;
         }
+
+        cout << "\n¿Estado de la célula? (Opciones: 'A', 'P', 'L', 'H'): ";
+        char aux_state{' '};
+        cin >> aux_state;
+        cout << '\n';
+
+        while (aux_state != 'A' && aux_state != 'P' && aux_state != 'L' && aux_state != 'H') {
+          cerr << "Warning!, el estado de la célula elegido no corresponde\n";
+          cerr << "con los aceptables, intentelo de nuevo: ";
+          cin >> aux_state;
+          cerr << "\n";
+        }
+
+        aux_cell.SetState(aux_state);
+
         this->SetCell(aux_position, aux_cell);
       }
     }

@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
   std::string kGameTurns{argv[3]};
 
   Grid grid(std::stoi(kRows), std::stoi(kCols));
-  grid.GameLife(std::stoi(kGameTurns));
+  grid.CycleLife(std::stoi(kGameTurns));
 
   return 0;
 }

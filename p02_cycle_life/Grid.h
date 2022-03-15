@@ -33,6 +33,8 @@
 #include <iostream>
 #include "Cell.h"
 
+class Cell;
+
 /**
  * @class Grid.
  * @brief El Juego de la Vida consiste en una Rejilla (Grid en ingles), la cual
@@ -61,7 +63,7 @@ class Grid {
   int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
-  void GameLife(const int& kGameTurns);
+  void CycleLife(const int& kGameTurns);
   void NextGeneration(void);
 
   /// Operadores Sobrecargados.

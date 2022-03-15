@@ -60,15 +60,8 @@ int StateAdult::Neighbors(const Grid& grid, const int& i, const int& j) {
  * @return State* objeto que representa el cambio de estado de nuestra celula 
  */
 State* StateAdult::NextState(void) {
-  State* result{NULL};
-  if (neighbors_adult_ >= 1) {
-    StateEgg aux;
-    result = &aux;
-  } else {
-    StateDead aux;
-    result = &aux;
-  }
-  return result;
+  if (neighbors_adult_ >= 1) return new StateEgg;
+  else return new StateDead;
 }
 
 /**

@@ -35,7 +35,9 @@
 
 #include <iostream>
 #include "State.h"
+#include "Grid.h"
 
+class State;
 class Grid; ///< Así solucionamos el problema de la Dependencia Ciclica
 
 /**
@@ -54,6 +56,7 @@ class Cell {
 
   /// Setters.
   void SetState(State* state);
+  void SetState(const char& state);
   void SetPosX(const int& posx);
   void SetPosY(const int& posy);
   void SetPos(const std::pair<int, int> position);
