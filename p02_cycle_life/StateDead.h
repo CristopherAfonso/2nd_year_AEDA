@@ -40,7 +40,7 @@ class StateDead : public State {
   char GetState(void) const override;
   
  private:
-  int neighbors_adult_{0}; ///< Vecinos que en el turno anterior eran adultos.
+  int neighbors_dead_{0}; ///< Vecinos que en el turno anterior eran adultos.
 };
 
 #endif

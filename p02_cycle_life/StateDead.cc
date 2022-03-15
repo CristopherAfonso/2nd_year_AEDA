@@ -39,15 +39,15 @@
  * @return int Número de celulas que tienen un estado adulta.
  */
 int StateDead::Neighbors(const Grid& grid, const int& i, const int& j) {
-  neighbors_adult_ = 0;
+  neighbors_dead_ = 0;
   for (int offset_x{-1}; offset_x < 2; ++offset_x) {
     for (int offset_y{-1}; offset_y < 2; ++offset_y) {
       if (offset_x == 0 && offset_y == 0) continue;
-      if (grid.GetCell(i + offset_x, j + offset_y).GetState() == 'A') ++neighbors_adult_;
+      if (grid.GetCell(i + offset_x, j + offset_y).GetState() == 'A') ++neighbors_dead_;
     }
   }
 
-  return neighbors_adult_;
+  return neighbors_dead_;
 }
 
 /**
@@ -57,7 +57,7 @@ int StateDead::Neighbors(const Grid& grid, const int& i, const int& j) {
  * @return State* objeto que representa el cambio de estado de nuestra celula
  */
 State* StateDead::NextState(void) {
-  if (neighbors_adult_ > 1) return new StateEgg;
+  if (neighbors_dead_ > 1) return new StateEgg;
   else return new StateDead;
 }
 

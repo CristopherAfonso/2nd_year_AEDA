@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Mar 15 21:43:17 2022
+# Make data base, printed on Tue Mar 15 23:08:25 2022
 
 # Variables
 
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1265,unix/themaster-VirtualBox:/tmp/.ICE-unix/1265
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1288,unix/themaster-VirtualBox:/tmp/.ICE-unix/1288
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-l2RjJSjiRVnK/agent.1099
+SSH_AUTH_SOCK = /tmp/ssh-PTlVb4Qhpcbf/agent.1122
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1183
+SSH_AGENT_PID = 1206
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9b7e52d1-3f20-4ac3-bef2-9ac016fe264e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-0f2b7e3b-9c30-4afe-ab0b-6f1ae147c08d.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -249,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1568
+VSCODE_PID = 1595
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -285,6 +285,7 @@ Grid.o:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
+ 
 #  File does not exist.
 #  File has not been updated.
 
@@ -304,7 +305,6 @@ StateDead.o:
 Cell.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -384,6 +384,6 @@ StateAdult.o:
 # strcache performance: lookups = 58 / hit rate = 27%
 # hash-table stats:
 # Load=42/8192=1%, Rehash=0, Collisions=1/58=2%
-# Finished Make data base on Tue Mar 15 21:43:17 2022
+# Finished Make data base on Tue Mar 15 23:08:25 2022
 
  
