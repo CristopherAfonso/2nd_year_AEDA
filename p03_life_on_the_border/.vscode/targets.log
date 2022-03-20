@@ -8,10 +8,12 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Mar 20 23:05:36 2022
+# Make data base, printed on Sun Mar 20 23:07:54 2022
 
 # Variables
 
+# environment
+VSCODE_GIT_ASKPASS_MAIN = /snap/code/91/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -41,15 +43,13 @@ XAUTHORITY = /home/themaster/.Xauthority
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/themaster/Documentos/2nd_year_AEDA/p02_cycle_life
+CURDIR := /home/themaster/Documentos/2nd_year_AEDA/p03_life_on_the_border
 # makefile
 SHELL = /bin/sh
 # environment
 SNAP_DATA = /var/snap/code/91
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"38d6863bc8bac5cd479824798eb9b71e.es","_translationsConfigFile":"/home/themaster/.config/Code/clp/38d6863bc8bac5cd479824798eb9b71e.es/tcf.json","_cacheRoot":"/home/themaster/.config/Code/clp/38d6863bc8bac5cd479824798eb9b71e.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/Code/clp/38d6863bc8bac5cd479824798eb9b71e.es/c722ca6c7eed3d7987c0d5c3df5c45f6b15e77d1","_corruptedFile":"/home/themaster/.config/Code/clp/38d6863bc8bac5cd479824798eb9b71e.es/corrupted.info","_languagePackSupport":true}
-# environment
-_ = /snap/code/91/usr/share/code/code
+VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"1c7d4088dff685881be37383c425e401.es","_translationsConfigFile":"/home/themaster/.config/Code/clp/1c7d4088dff685881be37383c425e401.es/tcf.json","_cacheRoot":"/home/themaster/.config/Code/clp/1c7d4088dff685881be37383c425e401.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/Code/clp/1c7d4088dff685881be37383c425e401.es/c722ca6c7eed3d7987c0d5c3df5c45f6b15e77d1","_corruptedFile":"/home/themaster/.config/Code/clp/1c7d4088dff685881be37383c425e401.es/corrupted.info","_languagePackSupport":true}
 # environment
 QT_AUTO_SCREEN_SCALE_FACTOR = 0
 # makefile (from 'Makefile', line 27)
@@ -73,7 +73,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /home/themaster
+VSCODE_CWD = /home/themaster/Documentos/2nd_year_AEDA/p03_life_on_the_border
 # environment
 PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
 # environment
@@ -109,7 +109,7 @@ GDK_PIXBUF_MODULEDIR = /snap/code/91/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
@@ -123,7 +123,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/themaster/Documentos/2nd_year_AEDA/p02_cycle_life
+PWD = /home/themaster/Documentos/2nd_year_AEDA/p03_life_on_the_border
 # environment
 KDE_SESSION_VERSION = 5
 # default
@@ -149,7 +149,7 @@ VSCODE_CODE_CACHE_PATH = /home/themaster/.config/Code/CachedData/c722ca6c7eed3d7
 # environment
 LOGNAME = themaster
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -170,6 +170,10 @@ XDG_VTNR = 1
 MAKELEVEL := 0
 # environment
 SNAP_REAL_HOME = /home/themaster
+# environment
+VSCODE_GIT_IPC_HANDLE = /run/user/1000/vscode-git-9c05b331d6.sock
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -177,11 +181,11 @@ MAKECMDGOALS := all
 # environment
 SNAP_USER_DATA = /home/themaster/snap/code/91
 # environment
-SHLVL = 0
+SHLVL = 1
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3ea9d513-c6fa-4bd5-a3d1-092c9476dbce.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6b82ecb7-1a58-46a1-b609-d042d7abd090.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -196,6 +200,10 @@ XDG_CURRENT_DESKTOP = KDE
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
+# environment
+VSCODE_GIT_ASKPASS_EXTRA_ARGS = --ms-enable-electron-run-as-node
+# environment
+TERM_PROGRAM = vscode
 # default
 .VARIABLES := 
 # automatic
@@ -207,6 +215,8 @@ XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-9b8d5325-1.65.2-main.sock
 # environment
+VSCODE_GIT_ASKPASS_NODE = /snap/code/91/usr/share/code/code
+# environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
 MAKEFLAGS = pqrR
@@ -214,6 +224,8 @@ MAKEFLAGS = pqrR
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 1.65.2
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -221,7 +233,11 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
+# environment
+GIT_ASKPASS = /snap/code/91/usr/share/code/resources/app/extensions/git/dist/askpass.sh
 # default
 MAKEFILES := 
 # environment
@@ -249,11 +265,13 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
+TERM = xterm-256color
+# environment
 VSCODE_PID = 1681
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
-# Load=120/1024=12%, Rehash=0, Collisions=13/147=9%
+# Load=129/1024=13%, Rehash=0, Collisions=14/156=9%
 
 # Pattern-specific Variable Values
 
@@ -261,9 +279,10 @@ KDE_SESSION_UID = 1000
 
 # Directories
 
-# . (device 2053, inode 2383897): 24 files, no impossibilities.
+# . (device 2053, inode 2383849): 24 files, no impossibilities.
 
 # 24 files, no impossibilities in 1 directories.
+ 
 
 # Implicit Rules
 
@@ -289,7 +308,6 @@ all:
 #  File has not been updated.
 
 # Not a target:
- 
 main_cycle_life.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -316,7 +334,7 @@ main_functions.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-15 18:00:42.943227733
+#  Last modified 2022-03-20 23:06:59.266207318
 #  File has been updated.
 #  Successfully updated.
 
@@ -384,6 +402,6 @@ StateAdult.o:
 # strcache performance: lookups = 58 / hit rate = 27%
 # hash-table stats:
 # Load=42/8192=1%, Rehash=0, Collisions=1/58=2%
-# Finished Make data base on Sun Mar 20 23:05:36 2022
+# Finished Make data base on Sun Mar 20 23:07:54 2022
 
  
