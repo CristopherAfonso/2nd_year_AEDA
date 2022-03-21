@@ -221,7 +221,7 @@ int Grid::GetCols(void) const {return cols_ - 2;}
  * la rejilla (cuantos turnos van a pasar y como se va a desarrollar el juego)
  * segun los estados de las celulas.
  */
-void Grid::CycleLife(const int& kGameTurns) {
+void Grid::LifeBorder(const int& kGameTurns) {
   using std::cout;
   using std::cerr;
   using std::cin;

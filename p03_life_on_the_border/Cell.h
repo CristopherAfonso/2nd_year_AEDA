@@ -37,6 +37,7 @@
 #include "State.h"
 #include "Grid.h"
 
+class State; ///< requiere ser declarado para que el make no nos dé error
 class Grid; ///< Así solucionamos el problema de la Dependencia Ciclica
 
 /**

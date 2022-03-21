@@ -39,8 +39,8 @@ using std::cerr;
  * primer caracter de cada argumento del programa.
  */
 void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
-  cout << "Modo de empleo: " << kProgramName << " [Numero de filas] ";
-  cout << "[Numero de columnas] [Numero de turnos del juego]";
+  cout << "Modo de empleo: " << kProgramName << " [tipo de Grid] ";
+  cout << "[Numero de filas] [Numero de columnas] [Numero de turnos]";
   cout << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cout << "Para más información\n";
 }
@@ -56,18 +56,27 @@ void HelpMessage(const std::string& kProgramName) {
   cout << kProgramName.substr(2) << " es un programa que simula a un automata";
   cout << "\ncelular, concretamente a 'El Juego de la Vida' de John Horton";
   cout << "\nConway. El programa se basa en una rejilla (matriz) en 2D, donde";
-  cout << "\nse almacenaran celulas con 5 posibles estados, muerta, huevo,";
-  cout << "\nlarva, pupa y adulta, las celulas muertas se representan";
-  cout << "\ncon el símbolo ' ', las que están en estado huevo con el símbolo";
-  cout << "\n'H', las que están en estado larva con el símbolo 'L', las que";
-  cout << "\nestán en estado pupa con el símbolo 'P', y las que están en";
-  cout << "\nestado adulta con el símbolo 'A'. Toda celula tiene a su";
+  cout << "\nse almacenaran celulas con 2 posibles estados, muerta y viva,";
+  cout << "\nlas celulas muertas se representan con el símbolo ' ' y las que";
+  cout << "\nestán en estado viva con el símbolo 'X'. Toda celula tiene a su";
   cout << "\nalrededor exactamente 8 celulas (menos las de los bordes), y el";
   cout << "\njuego se desarrolla de la siguiente manera.\n";
-  cout << "\nInvocas al programa con los tres parametros que necesita, el";
-  cout << "\nprimero es el número de filas (un número entero mayor a cero) el";
-  cout << "\nsegundo es el número de columnas (un número entero mayor a cero)";
-  cout << "\ny el tercer argumento es el número de turnos en los que se";
+  cout << "\nInvocas al programa con los cuatro parametros que necesita, el";
+  cout << "\nprimero es el tipo de rejilla o 'Grid' que usarás en la";
+  cout << "\ninvocación actual del programa, si invocas al programa con un";
+  cout << "\n'-p' la rejilla será una 'frontera periódica' la cual sus bordes";
+  cout << "\nson las células de las esquinas contrarias, si invoca al";
+  cout << "\nal programa con un '-r' la rejilla o grid usará una 'frontera";
+  cout << "\nreflectora', la cual hará que sus bordes adopten el estado de la";
+  cout << "\ncélula más cercana que tengan, por ejemplo, la célula [0,0]";
+  cout << "\ntendrá el estado de la [1,1], pero la [0,1] y la [1,0] harán lo";
+  cout << "\nmismo, por último, si invocamos al programa con un '-n' como";
+  cout << "\nprimer argumento, la grid o rejilla será 'sin fronteras',";
+  cout << "\no sea, esta será creada dinámicamente cuando se requiera";
+  cout << "\ninteractuar con células fuera de la frontera.";
+  cout << "\nSegundo es el número de filas (número entero mayor a cero). El";
+  cout << "\ntercero es el número de columnas (un número entero mayor a cero)";
+  cout << "\ny el cuarto argumento es el número de turnos en los que se";
   cout << "\ndesarrollará el juego (un número entero mayor a cero).\n";
   cout << "\nDespués, el programa te pedirá que introduzcas el número de";
   cout << "\ncélulas que quieres tú que estén vivas en el turno cero";
@@ -76,20 +85,10 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "\nde todas esas células que quieres que empiecen vivas en el turno";
   cout << "\ncero, después se aplicarán las siguientes normas a todas las";
   cout << "\ncélulas del juego:";
-  cout << "\n - Una celula muerta pasa a huevo cuando a su alrededor tiene\n";
-  cout << "   dos celulas adultas. En cualquier otro caso permanece muerta.";
-  cout << "\n - Una celula en estado huevo pasa a muerta cuando a su\n";
-  cout << "   alrededor hay más celulas en estado larva que estado huevo. En";
-  cout << "\n   cualquier otro caso pasa a estado larva.";
-  cout << "\n - Una celula en estado larva pasa a muerta cuando a su\n";
-  cout << "   alrededor hay más celulas en estado larva que estado huevo,";
-  cout << "\n   pupa y adulta juntas. En cualquier otro caso pasa a estado pupa";
-  cout << "\n - Una celula en estado pupa pasa a muerta cuando a su\n";
-  cout << "   alrededor hay más celulas en estado larva que de otros tipos. En";
-  cout << "\n   cualquier otro caso pasa a estado adulta.";
-  cout << "\n - Una celula en estado adulta pasa a huevo cuando a su\n";
-  cout << "   alrededor al menos 1 celula adulta más. En cualquier otro caso";
-  cout << "\n   pasa a estado muerta.";
+  cout << "\n - Una celula muerta pasa a viva cuando a su alrededor tiene\n";
+  cout << "   tres células vivas. En cualquier otro caso permanece muerta.";
+  cout << "\n - Una celula en estado viva sigue viva cuando a su alrededor\n";
+  cout << "   hay 2 ó 3 células vivas. En cualquier otro caso pasa a muerta.";
   cout << "\nEstas normas se aplicarán en todos los turnos, viendose por";
   cout << "\npantalla todo el desarrollo del juego.\n";
 }
@@ -106,6 +105,23 @@ void WrongNumberOfArguments(const std::string& kProgramName,
                             const std::string& kHelp) {
   cerr << "Warning!, se ha pasado al programa un número incorrecto de ";
   cerr << "argumentos";
+  cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
+  cerr << "para mas información\n";
+}
+
+/**
+ * @brief Función que informa al usuario de que el primer argumento que le pasó
+ * al programa no es un tipo válido de Grid, y esta función actua como mensaje
+ * de error.
+ * 
+ * @param kProgramName Nombre del programa.
+ * @param kHelp Palabra clave para pedir instrucciones específicas al programa
+ * tras invocarlo.
+ */
+void WrongTypeOfGrid(const std::string& kProgramName, 
+                     const std::string& kHelp) {
+  cerr << "Warning!, se ha introducido al programa como primer argumento un";
+  cerr << "\nflag distinto de '-p', '-r' ó '-n'";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }
@@ -138,8 +154,9 @@ bool IsItANumber(const std::string& str) {
  * usar el programa.
  */
 void WrongArguments(const std::string& kProgramName, const std::string& kHelp) {
-  cerr << "Warning!, se ha introducido tres argumentos al programa, pero";
-  cerr << "\nestos no son numeros enteros, o son numeros enteros negativos";
+  cerr << "Warning!, se ha introducido cuatro argumentos al programa, pero";
+  cerr << "\nlos 3 últimos no son numeros enteros, o son numeros enteros ";
+  cerr << "negatvos";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }
@@ -192,20 +209,26 @@ void Usage(const int& argc, char* argv[]) {
     exit(EXIT_SUCCESS);
   }
 
-  const std::string kRows{argv[1]};
+  const std::string kKindOfGrid{argv[1]};
 
-  if ((argc == 2) && (kHelp == kRows)) {
+  if ((argc == 2) && (kHelp == kKindOfGrid)) {
     HelpMessage(kProgramName);
     exit(EXIT_SUCCESS);
   }
 
-  if (argc != 4) {
+  if (argc != 5) {
     WrongNumberOfArguments(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
 
-  const std::string kCols{argv[2]};
-  const std::string kTurns{argv[3]};
+  const std::string kRows{argv[2]};
+  const std::string kCols{argv[3]};
+  const std::string kTurns{argv[4]};
+
+  if (kKindOfGrid != "-p" && kKindOfGrid != "-r" && kKindOfGrid != "-n") {
+    WrongTypeOfGrid(kProgramName, kHelp);
+    exit(EXIT_FAILURE);
+  }
 
   if (!(IsItANumber(kRows)) || !(IsItANumber(kCols)) || !(IsItANumber(kTurns))) {
     WrongArguments(kProgramName, kHelp);
@@ -217,4 +240,3 @@ void Usage(const int& argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 }
-

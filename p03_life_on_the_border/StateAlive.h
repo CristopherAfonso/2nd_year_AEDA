@@ -34,6 +34,9 @@
 #include "State.h"
 #include "Cell.h"
 
+/**
+ * @brief Clase que define lo que es estar en "estado viva". 
+ */
 class StateAlive : public State {
  public:
   int Neighbors(const Grid& grid, const int& i, const int& j) override;

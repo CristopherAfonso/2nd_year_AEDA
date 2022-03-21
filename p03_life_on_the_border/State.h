@@ -35,6 +35,12 @@
 #include <iostream>
 #include "Cell.h"
 
+class Grid;
+
+/**
+ * @brief Clase abstracta que define en nuestro programa que requerimientos
+ * necesita tener un "estado".
+ */
 class State {
  public:
   virtual int Neighbors(const Grid& grid, const int& i, const int& j) = 0;

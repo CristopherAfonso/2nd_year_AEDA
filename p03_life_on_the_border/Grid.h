@@ -33,7 +33,7 @@
 #include <iostream>
 #include "Cell.h"
 
-class Cell;
+class Cell; ///< requiere ser declarado para que el make no nos dé error
 
 /**
  * @class Grid.
@@ -63,7 +63,7 @@ class Grid {
   int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
-  void CycleLife(const int& kGameTurns);
+  void LifeBorder(const int& kGameTurns);
   void NextGeneration(void);
 
   /// Operadores Sobrecargados.

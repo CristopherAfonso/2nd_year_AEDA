@@ -37,12 +37,13 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-  std::string kRows{argv[1]};
-  std::string kCols{argv[2]};
-  std::string kGameTurns{argv[3]};
+  std::string kKindOfGrid{argv[1]};
+  std::string kRows{argv[2]};
+  std::string kCols{argv[3]};
+  std::string kGameTurns{argv[4]};
 
   Grid grid(std::stoi(kRows), std::stoi(kCols));
-  grid.CycleLife(std::stoi(kGameTurns));
+  grid.LifeBorder(std::stoi(kGameTurns));
 
   return 0;
 }

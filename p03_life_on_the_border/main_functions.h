@@ -35,6 +35,8 @@ void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);
 void WrongNumberOfArguments(const std::string& kProgramName, 
                             const std::string& kHelp);
+void WrongTypeOfGrid(const std::string& kProgramName, 
+                     const std::string& kHelp);
 bool IsItANumber(const std::string& str);
 void WrongArguments(const std::string& kProgramName, const std::string& kHelp);
 bool IsItAZero(const std::string& str);
