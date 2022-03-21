@@ -4,10 +4,10 @@
  * Grado en Ingenierıa Informatica
  * Asignatura: Algorítmos y Estructuras de Datos Avanzados
  * Curso: 2º
- * Practica 2: El Ciclo de la Vida
+ * Practica 3: La Vida en la Frontera
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 13/03/2022
+ * @date 21/03/2022
  * 
  * @file Cell.cc
  * @brief Donde se desarrollan las funciones de la clase Cell contenida
@@ -20,19 +20,16 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 13/03/22 - Creacion (primera version) del codigo:
+ * 21/03/22 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include.
- * 15/03/22 - Funciones de la clase terminadas.
+ * 22/03/22 - Funciones de la clase terminadas.
  */
 
 #include "Cell.h"
 #include "Grid.h"
 #include "StateDead.h"
-#include "StateEgg.h"
-#include "StateLarva.h"
-#include "StatePupa.h"
-#include "StateAdult.h"
+#include "StateAlive.h"
 
 
 /**
@@ -46,10 +43,7 @@ Cell::Cell(void) : state_(new StateDead), position_({-1, -1}) {}
  * @param state estado de la celula.
  */
 Cell::Cell(const char& state) : state_(NULL), position_({-1, -1}) {
-  if (state == 'A') state_ = new StateAdult;
-  if (state == 'P') state_ = new StatePupa;
-  if (state == 'H') state_ = new StateEgg;
-  if (state == 'L') state_ = new StateLarva;
+  if (state == 'X') state_ = new StateAlive;
   if (state == ' ') state_ = new StateDead;
 }
 
@@ -63,10 +57,7 @@ Cell::Cell(const char& state) : state_(NULL), position_({-1, -1}) {
  */
 Cell::Cell(const char& state, const std::pair<int, int>& position) 
     : state_(NULL), position_(position) {
-  if (state == 'A') state_ = new StateAdult;
-  if (state == 'P') state_ = new StatePupa;
-  if (state == 'H') state_ = new StateEgg;
-  if (state == 'L') state_ = new StateLarva;
+  if (state == 'X') state_ = new StateAlive;
   if (state == ' ') state_ = new StateDead;
 }
 
@@ -81,10 +72,7 @@ Cell::Cell(const char& state, const std::pair<int, int>& position)
  */
 Cell::Cell(const char& state, const int& posx, const int& posy)
     : state_(NULL), position_({posx, posy}) {
-  if (state == 'A') state_ = new StateAdult;
-  if (state == 'P') state_ = new StatePupa;
-  if (state == 'H') state_ = new StateEgg;
-  if (state == 'L') state_ = new StateLarva;
+  if (state == 'X') state_ = new StateAlive;
   if (state == ' ') state_ = new StateDead;
 }
 
@@ -113,10 +101,7 @@ void Cell::SetState(State* state) {state_ = state;}
  * @param state es el carácter que dice que tipo de estado tendrá la celula.
  */
 void Cell::SetState(const char& state) {
-  if (state == 'A') state_ = new StateAdult;
-  if (state == 'P') state_ = new StatePupa;
-  if (state == 'L') state_ = new StateLarva;
-  if (state == 'H') state_ = new StateEgg;
+  if (state == 'X') state_ = new StateAlive;
   if (state == ' ') state_ = new StateDead;
 }
 
@@ -160,11 +145,10 @@ void Cell::SetPos(const int& posx, const int& posy) {
 
 /**
  * @brief Método que muestra por pantalla el estado de la célula, este puede
- * variar entre 5 posibles estados y son Muerta ( ), Huevo (H), Larva (L), 
- * Pupa (P) y Adulta (A).
+ * variar entre 2 posibles estados y son Muerta ( ) y Viva (X)
  * 
- * @return char es uno de los 5 carácteres que representa a cada uno de los
- * 5 posibles estados en los que puede estar una celula.
+ * @return char es uno de los 2 carácteres que representa a cada uno de los
+ * 2 posibles estados en los que puede estar una celula.
  */
 char Cell::GetState(void) const {return state_->GetState();}
 

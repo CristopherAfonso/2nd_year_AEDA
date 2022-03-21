@@ -4,14 +4,14 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Algorítmos y Estructuras de Datos Avanzados
  * Curso: 2º
- * Practica 2: El Ciclo de la Vida
+ * Practica 3: La Vida en la Frontera
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 13/03/2021
+ * @date 21/03/2021
  * 
- * @file StateDead2.h 
- * @brief Donde se aloja la declaración de la clase StateDead2 y la declaracion
- * de sus metodos. La clase StateDead2 es una clase de 2 clases de las cuales
+ * @file StateAlive.h 
+ * @brief Donde se aloja la declaración de la clase StateAlive y la declaracion
+ * de sus metodos. La clase StateAlive es una clase de 2 clases de las cuales
  * cada una representa un estado de una celula.
  *
  * @bug No hay bugs conocidos
@@ -21,21 +21,20 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 13/03/22 - Creacion (primera version) del codigo:
+ * 21/03/22 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include.
- * 15/03/22 - Funciones de la clase terminadas.
+ * 22/03/22 - Funciones de la clase terminadas.
  */
 
-#ifndef _STATEDEAD2_
-#define _STATEDEAD2_
+#ifndef _STATEALIVE_
+#define _STATEALIVE_
 
 #include <iostream>
 #include "State.h"
-#include "Grid.h"
 #include "Cell.h"
 
-class StateDead2 : public State {
+class StateAlive : public State {
  public:
   int Neighbors(const Grid& grid, const int& i, const int& j) override;
   State* NextState(void) override;
@@ -43,6 +42,7 @@ class StateDead2 : public State {
 
  private:
   int neighbors_alive_{0};
+  const char state_{'X'};
 };
 
 #endif

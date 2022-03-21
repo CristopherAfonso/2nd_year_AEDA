@@ -1,15 +1,12 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/themaster/Documentos/2nd_year_AEDA/p03_life_on_the_border'
-g++    -c -o main_functions.o main_functions.cc
-g++    -c -o Cell.o Cell.cc
-g++    -c -o Grid.o Grid.cc
-g++    -c -o State.o State.cc
-g++    -c -o main_cycle_life.o main_cycle_life.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o main_functions.o main_functions.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o Cell.o Cell.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o Grid.o Grid.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o State.o State.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o StateDead.o StateDead.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o StateAlive.o StateAlive.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o main_life_border.o main_life_border.cc
+g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -o life_border main_functions.o Cell.o Grid.o State.o StateDead.o StateAlive.o main_life_border.o
 make: Leaving directory '/home/themaster/Documentos/2nd_year_AEDA/p03_life_on_the_border'
- 
-make: *** No rule to make target 'StateDead.o', needed by 'cycle_life'.
-make: *** No rule to make target 'StateEgg.o', needed by 'cycle_life'.
-make: *** No rule to make target 'StateLarva.o', needed by 'cycle_life'.
-make: *** No rule to make target 'StatePupa.o', needed by 'cycle_life'.
-make: *** No rule to make target 'StateAdult.o', needed by 'cycle_life'.
  

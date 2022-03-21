@@ -4,17 +4,17 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Algorítmos y Estructuras de Datos Avanzados
  * Curso: 2º
- * Practica 2: El Ciclo de la Vida
+ * Practica 3: La Vida en la Frontera
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 13/03/2022
+ * @date 21/03/2022
  * 
  * @file main_cycle_life.cc (programa cliente)
  * @brief Programa que simula el famoso "Juego de la Vida" de John Horton
  * Conway, creado en 1970, es un ejemplo de "Autómata Celular". Este programa
- * es una extensión del juego de la vida, ya que en vez de representar solo los
- * estados de "viva" y "muerta", se representan los estados de "muerta", 
- * "huevo", "larva", "pupa" y "adulta".
+ * es una extensión del juego de la vida, representar solo los estados de
+ * "viva" y "muerta". A parte de la rejilla o Grid tiene diferentes
+ * implementaciones, cosa que antes no tenía.
  * 
  * Si quiere saber mas detalles sobre como usar el programa ejecutable,
  * ejecute: ./main_game_life --help
@@ -27,10 +27,10 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 13/03/22 - Creacion (primera version) del codigo:
+ * 21/03/22 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include.
- * 15/03/22 - Proyecto terminado.
+ * 22/03/22 - Proyecto terminado.
  */
 
 #include "main_functions.h"
