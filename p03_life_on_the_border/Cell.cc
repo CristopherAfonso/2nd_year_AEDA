@@ -31,7 +31,6 @@
 #include "StateDead.h"
 #include "StateAlive.h"
 
-
 /**
  * @brief Constructor por defecto definido. 
  */

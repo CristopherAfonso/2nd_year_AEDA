@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Mar 21 11:25:20 2022
+# Make data base, printed on Mon Mar 21 12:22:31 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ LC_ALL = C
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ae762858-207a-44a1-b7fc-07b556d049f5.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-90fac8ed-ebc0-4bf7-8bdc-e6a36f70d133.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -95,7 +95,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 6760
+VSCODE_PID = 16367
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -131,6 +131,7 @@ PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bi
 # default
 MAKEFILES := 
 # environment
+ 
 LANGUAGE = 
 # environment
 LC_MONETARY = es_ES.UTF-8
@@ -205,6 +206,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.63.2-main.sock
 # environment
+ 
 XDG_SESSION_ID = 2
 # environment
 XCURSOR_SIZE = 24
@@ -302,7 +304,6 @@ State.o:
 # Not a target:
 Grid.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -323,6 +324,7 @@ Cell.o:
 main_life_border.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -345,6 +347,6 @@ StateAlive.o:
 # strcache performance: lookups = 45 / hit rate = 26%
 # hash-table stats:
 # Load=33/8192=0%, Rehash=0, Collisions=0/45=0%
-# Finished Make data base on Mon Mar 21 11:25:20 2022
+# Finished Make data base on Mon Mar 21 12:22:31 2022
 
  
