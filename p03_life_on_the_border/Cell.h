@@ -35,10 +35,10 @@
 
 #include <iostream>
 #include "State.h"
-#include "Grid.h"
+#include "GridWithOpenBorder.h"
 
 class State; ///< requiere ser declarado para que el make no nos dé error
-class Grid; ///< Así solucionamos el problema de la Dependencia Ciclica
+class GridWithOpenBorder; ///< Así solucionamos el problema de la Dependencia Ciclica
 
 /**
  * @class Cell.
@@ -68,7 +68,7 @@ class Cell {
 
   /// Funciones de la Clase (Métodos).
   void UpdateState(void);
-  int Neighbors(const Grid& grid);
+  int Neighbors(const GridWithOpenBorder& grid_with_open_border);
 
   /// Operadores Sobrecargados.
   const Cell& operator=(const Cell& cell);

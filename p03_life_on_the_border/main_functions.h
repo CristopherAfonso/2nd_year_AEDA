@@ -29,7 +29,7 @@
 #include <iostream>
 #include <string>
 
-#include "Grid.h"
+#include "GridWithOpenBorder.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);

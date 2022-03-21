@@ -70,10 +70,13 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "\nreflectora', la cual hará que sus bordes adopten el estado de la";
   cout << "\ncélula más cercana que tengan, por ejemplo, la célula [0,0]";
   cout << "\ntendrá el estado de la [1,1], pero la [0,1] y la [1,0] harán lo";
-  cout << "\nmismo, por último, si invocamos al programa con un '-n' como";
-  cout << "\nprimer argumento, la grid o rejilla será 'sin fronteras',";
-  cout << "\no sea, esta será creada dinámicamente cuando se requiera";
-  cout << "\ninteractuar con células fuera de la frontera.";
+  cout << "\nmismo, si invocamos al programa con un '-n' como primer";
+  cout << "\nargumento, la grid o rejilla será 'sin fronteras', o sea, esta";
+  cout << "\nserá creada dinámicamente cuando se requiera interactuar con";
+  cout << "\ncélulas fuera de la frontera, por último, si invoca al programa";
+  cout << "\ncon '-o' la rejilla usará un 'borde abierto' el cual solo deja";
+  cout << "\ninteractuar con las células dentro de la rejilla y las celulas";
+  cout << "\ndel borde todas están en estado muerta.";
   cout << "\nSegundo es el número de filas (número entero mayor a cero). El";
   cout << "\ntercero es el número de columnas (un número entero mayor a cero)";
   cout << "\ny el cuarto argumento es el número de turnos en los que se";
@@ -121,7 +124,7 @@ void WrongNumberOfArguments(const std::string& kProgramName,
 void WrongTypeOfGrid(const std::string& kProgramName, 
                      const std::string& kHelp) {
   cerr << "Warning!, se ha introducido al programa como primer argumento un";
-  cerr << "\nflag distinto de '-p', '-r' ó '-n'";
+  cerr << "\nflag distinto de '-p', '-r', '-o' ó '-n'";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }
@@ -225,7 +228,8 @@ void Usage(const int& argc, char* argv[]) {
   const std::string kCols{argv[3]};
   const std::string kTurns{argv[4]};
 
-  if (kKindOfGrid != "-p" && kKindOfGrid != "-r" && kKindOfGrid != "-n") {
+  if (kKindOfGrid != "-p" && kKindOfGrid != "-r" && kKindOfGrid != "-n"
+      || kKindOfGrid != "-o") {
     WrongTypeOfGrid(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }

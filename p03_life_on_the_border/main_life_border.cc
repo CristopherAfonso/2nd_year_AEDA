@@ -35,6 +35,10 @@
 
 #include "main_functions.h"
 
+  using std::cout;
+  using std::cerr;
+  using std::cin;
+
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
   std::string kKindOfGrid{argv[1]};
@@ -42,8 +46,10 @@ int main(int argc, char* argv[]) {
   std::string kCols{argv[3]};
   std::string kGameTurns{argv[4]};
 
-  Grid grid(std::stoi(kRows), std::stoi(kCols));
-  grid.LifeBorder(std::stoi(kGameTurns));
+  
+
+  GridWithOpenBorder grid_with_open_border(std::stoi(kRows), std::stoi(kCols));
+  grid_with_open_border.LifeBorder(std::stoi(kGameTurns));
 
   return 0;
 }

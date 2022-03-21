@@ -40,12 +40,12 @@
  * @return int Número de celulas en estado viva que hay a nuestro alrededor
  * en un momento X.
  */
-int StateAlive::Neighbors(const Grid& grid, const int& i, const int& j) {
+int StateAlive::Neighbors(const GridWithOpenBorder& grid_with_open_border, const int& i, const int& j) {
   neighbors_alive_ = 0;
   for (int offset_x{-1}; offset_x < 2; ++offset_x) {
     for (int offset_y{-1}; offset_y < 2; ++offset_y) {
       if (offset_x == 0 && offset_y == 0) continue;
-      if (grid.GetCell(i + offset_x, j + offset_y).GetState() == 'X') 
+      if (grid_with_open_border.GetCell(i + offset_x, j + offset_y).GetState() == 'X') 
         ++neighbors_alive_;
     }
   }

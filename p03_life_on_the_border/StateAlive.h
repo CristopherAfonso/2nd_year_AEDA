@@ -39,7 +39,7 @@
  */
 class StateAlive : public State {
  public:
-  int Neighbors(const Grid& grid, const int& i, const int& j) override;
+  int Neighbors(const GridWithOpenBorder& grid_with_open_border, const int& i, const int& j) override;
   State* NextState(void) override;
   char GetState(void) const override;
 
