@@ -11,9 +11,9 @@
  * 
  * @file GridWithOpenBorder.h 
  * @brief Donde se aloja la declaración de la clase GridWithOpenBorder y la
- * declaración de sus metodos. La clase Grid es una matriz dinámica de
- * objetos Cell, la cual será el escenario de nuestro programa
- * "El Juego de la Vida".
+ * declaración de sus metodos. La clase GridWithOpenBorder es una matriz
+ * dinámica de objetos Cell, la cual será el escenario de nuestro programa
+ * "El Juego de la Vida" para un caso concreto de rejillas o grid.
  *
  * @bug No hay bugs conocidos
  * 
@@ -52,7 +52,7 @@ class GridWithOpenBorder : public Grid {
   GridWithOpenBorder(const GridWithOpenBorder& grid_with_open_border);
 
   /// Destructores.
-  ~GridWithOpenBorder(void);
+  ~GridWithOpenBorder(void) override;
 
   /// Setters.
   void SetCell(const int& posx, const int& posy, const Cell& cell) override;

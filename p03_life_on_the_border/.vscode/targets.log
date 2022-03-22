@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Mar 21 23:30:22 2022
+# Make data base, printed on Tue Mar 22 14:55:44 2022
 
 # Variables
 
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1299,unix/themaster-VirtualBox:/tmp/.ICE-unix/1299
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1301,unix/themaster-VirtualBox:/tmp/.ICE-unix/1301
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-PcL7tDtRQkol/agent.1123
+SSH_AUTH_SOCK = /tmp/ssh-AkeVESl0qE1Z/agent.1127
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1208
+SSH_AGENT_PID = 1212
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-af1d7cae-f6c9-417d-88b2-10508b6ecd31.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-20706196-1920-4194-a328-03fb4881fdad.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -249,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 18293
+VSCODE_PID = 1616
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -280,6 +280,7 @@ all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -297,7 +298,6 @@ Cell.o:
 # Not a target:
 main_functions.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -366,6 +366,6 @@ life_border: main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o St
 # strcache performance: lookups = 61 / hit rate = 31%
 # hash-table stats:
 # Load=42/8192=1%, Rehash=0, Collisions=1/61=2%
-# Finished Make data base on Mon Mar 21 23:30:22 2022
+# Finished Make data base on Tue Mar 22 14:55:44 2022
 
  

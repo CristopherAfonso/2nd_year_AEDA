@@ -32,8 +32,8 @@
 #include "GridWithOpenBorder.h"
 
 /**
- * @brief Constructor por defecto, crear un objeto Grid de tamaño 10x10 visible
- * al usuario.
+ * @brief Constructor por defecto, crear un objeto GridWithOpenBorder de tamaño
+ * 10x10 visible al usuario.
  */
 GridWithOpenBorder::GridWithOpenBorder(void) 
     : grid_with_open_border_(NULL), rows_(2), cols_(2) {
@@ -151,7 +151,10 @@ Cell& GridWithOpenBorder::GetCell(const int& posx, const int& posy) {
   if ((posx > 0) && (posy > 0) && (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_with_open_border_[posx][posy];
-  } else return new Cell;
+  } else {
+    Cell aux;
+    return aux;
+  }
 }
 
 /**
@@ -171,7 +174,10 @@ const Cell& GridWithOpenBorder::GetCell(const int& posx, const int& posy) const 
       (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_with_open_border_[posx][posy];
-  } else return new Cell;
+  } else {
+    Cell aux;
+    return aux;
+  }
 }
 
 /**

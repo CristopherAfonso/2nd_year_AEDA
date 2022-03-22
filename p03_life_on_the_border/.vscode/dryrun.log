@@ -5,6 +5,7 @@ g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o Cell.o Cell
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o GridWithOpenBorder.o GridWithOpenBorder.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o State.o State.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o StateDead.o StateDead.cc
+ 
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o StateAlive.o StateAlive.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o main_life_border.o main_life_border.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -o life_border main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o StateAlive.o main_life_border.o
