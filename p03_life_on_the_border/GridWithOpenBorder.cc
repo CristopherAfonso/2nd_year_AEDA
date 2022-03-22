@@ -28,6 +28,7 @@
  * 22/03/22 - Funciones de la clase terminadas.
  */
 
+#include "Cell.h"
 #include "GridWithOpenBorder.h"
 
 /**
@@ -118,26 +119,6 @@ void GridWithOpenBorder::SetCell(const int& posx, const int& posy, const Cell& c
 }
 
 /**
- * @brief Añade un nuevo objeto Cell a la posición en la rejilla indicada por
- * position, position.first es la posicion de la celula en el eje 'X', y
- * position.second en el eje 'Y', si la posicion cae fuera de las dimensiones
- * de la rejilla, directamente no la añade y no avisa de si ha sido o no ha 
- * sido añadida correctamente.
- * 
- * @param position objeto std::pair<int, int> el cual en su primer elemento,
- * contiene la position en el eje 'X' de la celula y en el segundo la
- * posicion en el eje 'Y'. 
- * @param cell Es el objeto que va a ser añadido
- */
-void GridWithOpenBorder::SetCell(const std::pair<int, int> position, const Cell& cell) {
-  if ((position.first > 0) && (position.second > 0) && 
-      (position.first < (rows_ - 1)) && (position.second < (cols_ - 1))) {
-    grid_with_open_border_[position.first][position.second] = cell;
-    grid_with_open_border_[position.first][position.second].SetPos(position.first, position.second);
-  }
-}
-
-/**
  * @brief Añade un nuevo objeto Cell a la posicion indicada en el atributo
  * privado position_ del objeto cell que va a ser añadido al objeto Grid, si la
  * posicion cae fuera de las dimensiones de la rejilla, directamente no la añade
@@ -170,10 +151,7 @@ Cell& GridWithOpenBorder::GetCell(const int& posx, const int& posy) {
   if ((posx > 0) && (posy > 0) && (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_with_open_border_[posx][posy];
-  } else {
-    Cell aux;
-    return aux;
-  }
+  } else return new Cell;
 }
 
 /**
@@ -193,10 +171,7 @@ const Cell& GridWithOpenBorder::GetCell(const int& posx, const int& posy) const 
       (posx < (rows_ - 1)) && 
       (posy < (cols_ - 1))) {
     return grid_with_open_border_[posx][posy];
-  } else {
-    Cell aux;
-    return aux;
-  }
+  } else return new Cell;
 }
 
 /**
@@ -222,88 +197,15 @@ int GridWithOpenBorder::GetCols(void) const {return cols_ - 2;}
  * segun los estados de las celulas.
  */
 void GridWithOpenBorder::LifeBorder(const int& kGameTurns) {
-  using std::cout;
-  using std::cerr;
-  using std::cin;
-  cout << "En la rejilla hay " << (rows_ - 2)*(cols_ - 2) << " celulas,";
-  cout << " la rejilla tiene " << (rows_ - 2) << " filas y " << (cols_ - 2);
-  cout << " columnas,\nahora mismo todas están muertas, indique ahora ";
-  cout << "cuantas de esas\ncelulas quiere que comiencen en estado viva, ";
-  cout << "en el turno 0: ";
-
-  int cell_not_dies{0};
-  cin >> cell_not_dies;
-  cout << '\n';
-
-  while ((cell_not_dies < 0) || (cell_not_dies > ((rows_ - 2)*(cols_ - 2)))) {
-    cerr << "Warning!, el numero de celulas elegido está fuera del rango\n";
-    cerr << "aceptable, intentelo de nuevo: ";
-    cin >> cell_not_dies;
-    cerr << "\n";
-  }
-
-  if (cell_not_dies != 0) {
-    if (cell_not_dies <= ((rows_ - 2)*(cols_ - 2))) {
-      std::pair<int, int> aux_position{0, 0};
-      Cell aux_cell;
-      cout << "Debe introducir las coordenadas X e Y para cada celula a la\n";
-      cout << "que le quiera definir su estado y en ese orden, primero la\n";
-      cout << "coordenada X y luego la Y separadas por uno o varios espacios,\n";
-      cout << "tras indicar unas coordenadas correctas, debe introducir uno\n";
-      cout << "de los siguientes carácteres para indicar el estado que\n";
-      cout << "quiere que se establezca en la posición indicada, y esos\n";
-      cout << "carácteres son: A->Adulta, P->Pupa, L->Larva, H->Huevo\n\n";
-
-      for (int i{1}; i <= cell_not_dies; ++i) {
-        cout << "¿Posicion de la " << i << "º Celula a definir su estado? ";
-        cin >> aux_position.first;
-        cin >> aux_position.second;
-
-        while (true) {
-          if (aux_position.first > 0 && aux_position.first < (rows_ - 1) &&
-              aux_position.second > 0 && aux_position.second < (cols_ - 1)) {
-            if (this->GetCell(aux_position.first, aux_position.second).GetState() == ' ') {
-              break;
-            }
-          }
-          cerr << "\nLa posición de la celula está fuera de los limites de la\n";
-          cerr << "rejilla, o se ha indicado una celula que no esta en estado\n";
-          cerr << "muerta, intentelo de nuevo.\n";
-          cout << "¿Posicion de la " << i << "º Celula a definir su estado? ";
-          cin >> aux_position.first;
-          cin >> aux_position.second;
-        }
-
-        cout << "\n¿Estado de la célula? (Opciones: 'X'): ";
-        char aux_state{' '};
-        cin >> aux_state;
-        cout << '\n';
-
-        while (aux_state != 'X') {
-          cerr << "Warning!, el estado de la célula elegido no corresponde\n";
-          cerr << "con los aceptables, intentelo de nuevo: ";
-          cin >> aux_state;
-          cerr << "\n";
-        }
-
-        aux_cell.SetState(aux_state);
-
-        this->SetCell(aux_position, aux_cell);
-      }
-    }
-  } else {
-    cout << "Todas las celulas comenzaran muertas en el turno 0\n\n";
-  }
-
-  cout << "\nTurno 0\n";
-  cout << *this;
+  std::cout << "\nTurno 0\n";
+  std::cout << *this;
   for (int i{1}; i < kGameTurns; ++i) {
-    cout << "Turno " << i << "\n";
+    std::cout << "Turno " << i << "\n";
     this->NextGeneration();
-    cout << *this;
+    std::cout << *this;
   }
 
-  cout << "Fin del Juego\n\n";
+  std::cout << "Fin del Juego\n\n";
 }
 
 /**

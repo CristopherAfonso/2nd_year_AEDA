@@ -55,18 +55,17 @@ class GridWithOpenBorder : public Grid {
   ~GridWithOpenBorder(void);
 
   /// Setters.
-  void SetCell(const int& posx, const int& posy, const Cell& cell);
-  void SetCell(const std::pair<int, int> postion, const Cell& cell);
-  void SetCell(const Cell& cell);
+  void SetCell(const int& posx, const int& posy, const Cell& cell) override;
+  void SetCell(const Cell& cell) override;
 
   /// Getters.
   Cell& GetCell(const int& posx, const int& posy) override;
   const Cell& GetCell(const int& posx, const int& posy) const override;
-  int GetRows(void) const;
-  int GetCols(void) const;
+  int GetRows(void) const override;
+  int GetCols(void) const override;
 
   /// Funciones de la Clase (Métodos).
-  void LifeBorder(const int& kGameTurns);
+  void LifeBorder(const int& kGameTurns) override;
   void NextGeneration(void) override;
 
   /// Operadores Sobrecargados.

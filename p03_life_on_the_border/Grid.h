@@ -35,10 +35,22 @@
 
 class Grid {
  public:
+  /// Destructores.
+  virtual ~Grid(void) {};
+
+  /// Setters.
+  virtual void SetCell(const int& posx, const int& posy, const Cell& cell) = 0;
+  virtual void SetCell(const Cell& cell) = 0;
+  
+  /// Getters.
   virtual Cell& GetCell(const int& posx, const int& posy) = 0;
   virtual const Cell& GetCell(const int& posx, const int& posy) const = 0;
+  virtual int GetRows(void) const = 0;
+  virtual int GetCols(void) const = 0;
+  
+  /// Funciones de la clase abstracta (Métodos).
+  virtual void LifeBorder(const int& kGameTurns) = 0;
   virtual void NextGeneration(void) = 0;
-  virtual ~Grid(void) {};
 };
 
 #endif
