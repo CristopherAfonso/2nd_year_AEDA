@@ -31,7 +31,6 @@
 #ifndef _GRIDWITHOPENBORDER_
 #define _GRIDWITHOPENBORDER_
 
-#include <iostream>
 #include "Grid.h"
 #include "Cell.h"
 
@@ -52,21 +51,21 @@ class GridWithOpenBorder : public Grid {
   GridWithOpenBorder(const GridWithOpenBorder& grid_with_open_border);
 
   /// Destructores.
-  ~GridWithOpenBorder(void) override;
+  ~GridWithOpenBorder(void);
 
   /// Setters.
-  void SetCell(const int& posx, const int& posy, const Cell& cell) override;
-  void SetCell(const Cell& cell) override;
+  void SetCell(const int& posx, const int& posy, const Cell& cell);
+  void SetCell(const Cell& cell);
 
   /// Getters.
-  Cell& GetCell(const int& posx, const int& posy) override;
-  const Cell& GetCell(const int& posx, const int& posy) const override;
-  int GetRows(void) const override;
-  int GetCols(void) const override;
+  Cell& GetCell(const int& posx, const int& posy);
+  const Cell& GetCell(const int& posx, const int& posy) const;
+  int GetRows(void) const;
+  int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
-  void LifeBorder(const int& kGameTurns) override;
-  void NextGeneration(void) override;
+  void LifeBorder(const int& kGameTurns);
+  void NextGeneration(void);
 
   /// Operadores Sobrecargados.
   const GridWithOpenBorder& operator=(const GridWithOpenBorder& grid_with_open_border);

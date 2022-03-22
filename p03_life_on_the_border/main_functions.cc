@@ -228,8 +228,8 @@ void Usage(const int& argc, char* argv[]) {
   const std::string kCols{argv[3]};
   const std::string kTurns{argv[4]};
 
-  if (kKindOfGrid != "-p" && kKindOfGrid != "-r" && kKindOfGrid != "-n"
-      || kKindOfGrid != "-o") {
+  if ((kKindOfGrid != "-p") && (kKindOfGrid != "-r") && (kKindOfGrid != "-n")
+      && (kKindOfGrid != "-o")) {
     WrongTypeOfGrid(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }

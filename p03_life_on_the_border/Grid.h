@@ -30,13 +30,14 @@
 #ifndef _GRID_
 #define _GRID_
 
-#include <iostream>
 #include "Cell.h"
+
+class Cell;
 
 class Grid {
  public:
   /// Destructores.
-  virtual ~Grid(void) {};
+  virtual ~Grid(void) = default;
 
   /// Setters.
   virtual void SetCell(const int& posx, const int& posy, const Cell& cell) = 0;
@@ -52,5 +53,4 @@ class Grid {
   virtual void LifeBorder(const int& kGameTurns) = 0;
   virtual void NextGeneration(void) = 0;
 };
-
 #endif

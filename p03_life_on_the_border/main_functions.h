@@ -28,8 +28,15 @@
 
 #include <iostream>
 #include <string>
-
+#include "State.h"
+#include "StateAlive.h"
+#include "StateDead.h"
+#include "Cell.h"
+#include "Grid.h"
 #include "GridWithOpenBorder.h"
+#include "GridWithoutBorder.h"
+#include "GridWithPeriodicBorder.h"
+#include "GridWithReflectiveBorder.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);

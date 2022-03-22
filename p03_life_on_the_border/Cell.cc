@@ -180,8 +180,8 @@ void Cell::UpdateState(void) {
  * estado actual de la célula, ese número significará una cosa u otra y ayudará
  * a interpretar el próximo estado que la célula adoptará.
  */
-int Cell::Neighbors(const GridWithOpenBorder& grid_with_open_border) {
-  return state_->Neighbors(grid_with_open_border, position_.first, position_.second);  
+int Cell::Neighbors(const Grid& grid) {
+  return state_->Neighbors(grid, position_.first, position_.second);  
 }
 
 /**

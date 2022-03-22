@@ -34,10 +34,6 @@
  */
 
 #include "main_functions.h"
-#include "GridWithOpenBorder.h"
-#include "GridWithoutBorder.h"
-#include "GridWithPeriodicBorder.h"
-#include "GridWithReflectiveBorder.h"
 
   using std::cout;
   using std::cerr;
@@ -52,21 +48,10 @@ int main(int argc, char* argv[]) {
 
   Grid* grid{NULL};
 
-  if (kKindOfGrid == "-p") {
-
-  }
-
-  if (kKindOfGrid == "-r") {
-    
-  }
-
-  if (kKindOfGrid == "-n") {
-    
-  }
-
-  if (kKindOfGrid == "-o") {
-    grid = new GridWithOpenBorder(std::stoi(kRows), std::stoi(kCols));
-  }
+  if (kKindOfGrid == "-p") grid = new GridWithPeriodicBorder(std::stoi(kRows), std::stoi(kCols));
+  if (kKindOfGrid == "-o") grid = new GridWithOpenBorder(std::stoi(kRows), std::stoi(kCols));
+  if (kKindOfGrid == "-r") grid = new GridWithReflectiveBorder(std::stoi(kRows), std::stoi(kCols));
+  if (kKindOfGrid == "-n") grid = new GridWithOpenBorder(std::stoi(kRows), std::stoi(kCols));
 
   cout << "En la rejilla hay " << (grid->GetRows())*(grid->GetCols()) << " celulas,";
   cout << " la rejilla tiene " << (grid->GetRows()) << " filas y " << (grid->GetCols());

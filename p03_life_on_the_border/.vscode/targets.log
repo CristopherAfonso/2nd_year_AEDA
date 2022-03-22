@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Mar 22 14:55:44 2022
+# Make data base, printed on Tue Mar 22 22:50:50 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ DESKTOP_SESSION = plasma
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 29)
-OBJ = main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o StateAlive.o main_life_border.o
+OBJ = main_functions.o Cell.o Grid.o GridWithOpenBorder.o GridWithPeriodicBorder.o GridWithReflectiveBorder.o GridWithoutBorder.o State.o StateDead.o StateAlive.o main_life_border.o
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -89,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1301,unix/themaster-VirtualBox:/tmp/.ICE-unix/1301
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1252,unix/themaster-VirtualBox:/tmp/.ICE-unix/1252
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-AkeVESl0qE1Z/agent.1127
+SSH_AUTH_SOCK = /tmp/ssh-JSG30YoaHT9N/agent.1078
 # automatic
 %F = $(notdir $%)
 # environment
@@ -131,7 +131,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1212
+SSH_AGENT_PID = 1162
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-20706196-1920-4194-a328-03fb4881fdad.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9dbc99fa-b94b-4e16-b79e-cf4e9d3c8d97.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -235,7 +235,7 @@ LC_ALL = C
 # automatic
 ^F = $(notdir $^)
 # makefile (from 'Makefile', line 28)
-DEPS = main_functions.h Cell.h GridWithOpenBorder.h State.h StateDead.h StateAlive.h
+DEPS = main_functions.h Cell.h Grid.h GridWithOpenBorder.h GridWithPeriodicBorder.h GridWithReflectiveBorder.h GridWithoutBorder.h State.h StateDead.h StateAlive.h
 # default
 SUFFIXES := 
 # environment
@@ -249,7 +249,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1616
+VSCODE_PID = 5444
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -267,7 +267,7 @@ KDE_SESSION_UID = 1000
 
 # Implicit Rules
 
-%.o: %.cc main_functions.h Cell.h GridWithOpenBorder.h State.h StateDead.h StateAlive.h
+%.o: %.cc main_functions.h Cell.h Grid.h GridWithOpenBorder.h GridWithPeriodicBorder.h GridWithReflectiveBorder.h GridWithoutBorder.h State.h StateDead.h StateAlive.h
 #  recipe to execute (from 'Makefile', line 32):
 	$(CC) $(CFLAGS) -c -o $@ $<
 
@@ -276,11 +276,28 @@ KDE_SESSION_UID = 1000
 # Files
 
 # Not a target:
+Grid.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GridWithReflectiveBorder.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
- 
+#  File has not been updated.
+
+# Not a target:
+GridWithoutBorder.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -310,9 +327,16 @@ StateAlive.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-21 20:15:26.195507
+ 
+#  Last modified 2022-03-22 22:49:38.07411709
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+GridWithPeriodicBorder.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 GridWithOpenBorder.o:
@@ -345,7 +369,7 @@ State.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-life_border: main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o StateAlive.o main_life_border.o
+life_border: main_functions.o Cell.o Grid.o GridWithOpenBorder.o GridWithPeriodicBorder.o GridWithReflectiveBorder.o GridWithoutBorder.o State.o StateDead.o StateAlive.o main_life_border.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -353,19 +377,19 @@ life_border: main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o St
 	$(CC) $(CFLAGS) -o $@ $^
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/30=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/38=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 552 B / avg = 13 B
-# current buf: size = 8162 B / used = 552 B / count = 42 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 45 / storage = 624 B / avg = 13 B
+# current buf: size = 8162 B / used = 624 B / count = 45 / avg = 13 B
 
-# strcache performance: lookups = 61 / hit rate = 31%
+# strcache performance: lookups = 69 / hit rate = 34%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=1/61=2%
-# Finished Make data base on Tue Mar 22 14:55:44 2022
+# Load=45/8192=1%, Rehash=0, Collisions=1/69=1%
+# Finished Make data base on Tue Mar 22 22:50:50 2022
 
  

@@ -25,8 +25,8 @@
 
 CC = g++
 CFLAGS = -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror
-DEPS = main_functions.h Cell.h GridWithOpenBorder.h State.h StateDead.h StateAlive.h
-OBJ = main_functions.o Cell.o GridWithOpenBorder.o State.o StateDead.o StateAlive.o main_life_border.o
+DEPS = main_functions.h Cell.h Grid.h GridWithOpenBorder.h GridWithPeriodicBorder.h GridWithReflectiveBorder.h GridWithoutBorder.h State.h StateDead.h StateAlive.h
+OBJ = main_functions.o Cell.o Grid.o GridWithOpenBorder.o GridWithPeriodicBorder.o GridWithReflectiveBorder.o GridWithoutBorder.o State.o StateDead.o StateAlive.o main_life_border.o
 
 %.o: %.cc $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<

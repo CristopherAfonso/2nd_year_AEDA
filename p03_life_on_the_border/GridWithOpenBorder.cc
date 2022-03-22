@@ -28,7 +28,6 @@
  * 22/03/22 - Funciones de la clase terminadas.
  */
 
-#include "Cell.h"
 #include "GridWithOpenBorder.h"
 
 /**
