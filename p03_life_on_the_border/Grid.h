@@ -51,6 +51,10 @@ class Grid {
   
   /// Funciones de la clase abstracta (Métodos).
   virtual void LifeBorder(const int& kGameTurns) = 0;
-  virtual void NextGeneration(void) = 0;
+  virtual void NextGeneration(void);
+
+ protected:
+  int rows_;
+  int cols_;
 };
 #endif

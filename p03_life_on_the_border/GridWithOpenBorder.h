@@ -64,7 +64,7 @@ class GridWithOpenBorder : public Grid {
   int GetCols(void) const;
 
   /// Funciones de la Clase (Métodos).
-  void LifeBorder(const int& kGameTurns);
+  void LifeBorder(const int& kGameTurns) override;
   void NextGeneration(void);
 
   /// Operadores Sobrecargados.
@@ -75,7 +75,5 @@ class GridWithOpenBorder : public Grid {
 
  private:
   Cell** grid_with_open_border_{NULL};
-  int rows_{2};
-  int cols_{2};
 };
 #endif

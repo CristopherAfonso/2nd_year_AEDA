@@ -245,25 +245,6 @@ void GridWithPeriodicBorder::LifeBorder(const int& kGameTurns) {
 }
 
 /**
- * @brief Metodo que actualiza todas las celulas que hay en la rejilla del
- * estado 't' al estado 't + 1' segun las normas de transicion de estados
- * definida en el metodo "UpdateState" de la clase 'Cell'
- */
-void GridWithPeriodicBorder::NextGeneration(void) {
-  for (int i{1}; i < (rows_ - 1); ++i) {
-    for (int j{1}; j < (cols_ - 1); ++j) {
-      grid_with_periodic_border_[i][j].Neighbors(*this);
-    }
-  }
- 
-  for (int i{1}; i < (rows_ - 1); ++i) {
-    for (int j{1}; j < (cols_ - 1); ++j) {
-      grid_with_periodic_border_[i][j].UpdateState();
-    }
-  }
-}
-
-/**
  * @brief Sobrecarga del operador = en la clase GridWithPeriodicBorder.
  * 
  * @param grid Objeto a copiar dentro del objeto que invoca el metodo.

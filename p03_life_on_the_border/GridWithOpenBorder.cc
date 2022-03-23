@@ -35,7 +35,7 @@
  * 10x10 visible al usuario.
  */
 GridWithOpenBorder::GridWithOpenBorder(void) 
-    : grid_with_open_border_(NULL), rows_(2), cols_(2) {
+    : Grid(), grid_with_open_border_(NULL), rows_(2), cols_(2) {
   grid_with_open_border_ = new Cell*[rows_];
   Cell aux;
   for (int i{0}; i < rows_; ++i) {
