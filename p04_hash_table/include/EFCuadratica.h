@@ -31,3 +31,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _EFCUADRATICA_
+#define _EFCUADRATICA_
+
+
+
+#endif

@@ -29,3 +29,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _SBLOCK_
+#define _SBLOCK_
+
+
+
+#endif

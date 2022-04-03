@@ -27,3 +27,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _SEQUENCE_
+#define _SEQUENCE_
+
+
+
+#endif

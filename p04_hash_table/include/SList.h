@@ -29,3 +29,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _SLIST_
+#define _SLIST_
+
+
+
+#endif

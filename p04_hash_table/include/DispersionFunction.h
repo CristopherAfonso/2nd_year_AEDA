@@ -28,3 +28,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _DISPERSIONFUNCTION_
+#define _DISPERSIONFUNCTION_
+
+
+
+#endif

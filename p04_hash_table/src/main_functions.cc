@@ -56,12 +56,11 @@ void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
 void HelpMessage(const std::string& kProgramName) {
   cout << kProgramName.substr(2) << " es un programa que simula a una";
   cout << "\ntabla hash, es una tabla que contiene datos, pero la forma de";
-  cout << "\nbuscar los datos esta muy optimizada para lograr hallalos y";
-  cout << "\ndevolverlos en tiempo constante. Para que funcione, a este";
+  cout << "\nbuscar los datos esta muy optimizada para lograr hallarlos y";
+  cout << "\ndevolverlos en un tiempo constante. Para que funcione, a este";
   cout << "\nprograma se le deben pasar 4 argumentos.";
-  cout << "\n\nLos dos primeros argumentos deben ser numeros no negativos o";
-  cout << "\nno negativos ni tampoco cero, eso depende de si la tabla es";
-  cout << "\ndinamica o no.";
+  cout << "\n\nLos dos primeros argumentos deben ser numeros no negativos,";
+  cout << "\ny tambien distintos de cero.";
   cout << "\nEl tercer argumento es el tipo de funcion de dispersion y solo";
   cout << "\nse admite como entradas a estos argumentos '-M' o '-R', el";
   cout << "\nargumento '-M' es de Modulo, la funcion de dispersion será una";
@@ -72,7 +71,7 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "\ncuadratica, devuelve el numero cuadrado del intento de acceder a";
   cout << "\nun bloque de la tabla hash.";
   cout << "\n\nEjemplo: ";
-  cout << "\n" << kProgramName << " 3 4 [-M|-R] [-c]\n";
+  cout << "\n" << kProgramName << " 3 4 [-M|-R] [-c]\n\n";
 }
 
 /**

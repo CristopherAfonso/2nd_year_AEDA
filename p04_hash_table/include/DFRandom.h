@@ -29,3 +29,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _DFRANDOM_
+#define _DFRANDOM_
+
+
+
+#endif

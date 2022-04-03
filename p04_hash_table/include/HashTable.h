@@ -31,3 +31,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _HASHTABLE_
+#define _HASHTABLE_
+
+
+
+#endif

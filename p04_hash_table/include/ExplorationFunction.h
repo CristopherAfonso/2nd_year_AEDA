@@ -32,3 +32,9 @@
  * 03/04/22 - Archivo terminado.
  */
 
+#ifndef _EXPLORATIONFUNCTION_
+#define _EXPLORATIONFUNCTION_
+
+
+
+#endif
