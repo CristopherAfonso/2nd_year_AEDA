@@ -34,6 +34,22 @@
 #ifndef _EFCUADRATICA_
 #define _EFCUADRATICA_
 
+#include "ExplorationFunction.h"
 
+/**
+ * @brief Clase que representa a una implementacion concreta de una funcion
+ * de exploracion, la cual se encarga de buscar nuevos bloques para introducir
+ * un dato a una tabla hash, en el caso de que el primer bloque que nos diga la
+ * funcion de dispersion este lleno, esta clase hija implementa la funcion
+ * cuadratica, simplemente retornamos el cuadrado del intento de la llamada a
+ * esta funcion.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class EFCuadratica: public ExplorationFunction<Key> {
+ public:
+  unsigned operator()(const Key& k, unsigned i) const override;
+};
 
 #endif

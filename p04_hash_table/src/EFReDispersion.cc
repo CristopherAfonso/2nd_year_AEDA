@@ -28,3 +28,13 @@
 
 #include "../include/EFReDispersion.h"
 
+template<class Key>
+EFReDispersion<Key>::EFReDispersion(const unsigned& n) : table_size_(n) {}
+
+template<class Key>
+unsigned EFReDispersion<Key>::operator()(const Key& k, unsigned i) const {
+  srand(k);
+  unsigned aux{0};
+  for (int j{0}; j < i; ++j) aux = unsigned(rand() % table_size_);
+  return aux;
+}

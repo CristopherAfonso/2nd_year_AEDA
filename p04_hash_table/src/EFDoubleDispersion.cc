@@ -28,3 +28,10 @@
 
 #include "../include/EFDoubleDispersion.h"
 
+template<class Key>
+EFDoubleDispersion<Key>::EFDoubleDispersion(const unsigned& n) : table_size_(n) {}
+
+template<class Key>
+unsigned EFDoubleDispersion<Key>::operator()(const Key& k, unsigned i) const {
+  return ((k % table_size_) + i * ((k % (table_size_ - 1)) + 1)) % table_size_;
+}

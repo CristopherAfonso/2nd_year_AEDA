@@ -28,3 +28,5 @@
 
 #include "../include/EFCuadratica.h"
 
+template<class Key>
+unsigned EFCuadratica<Key>::operator()(const Key& k, unsigned i) const {return i * i;}

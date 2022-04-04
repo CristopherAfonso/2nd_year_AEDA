@@ -32,6 +32,27 @@
 #ifndef _EFREDISPERSION_
 #define _EFREDISPERSION_
 
+#include "ExplorationFunction.h"
+#include <stdlib.h>
+#include <ctime>
 
+/**
+ * @brief Clase que representa a una implementacion concreta de una funcion
+ * de exploracion, la cual se encarga de buscar nuevos bloques para introducir
+ * un dato a una tabla hash, en el caso de que el primer bloque que nos diga la
+ * funcion de dispersion este lleno, esta clase hija implementa la funcion
+ * lineal, simplemente retornamos el intento de la llamada a esta funcion.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class EFReDispersion: public ExplorationFunction<Key> {
+ public:
+  EFReDispersion(const unsigned& n);
+  unsigned operator()(const Key& k, unsigned i) const override;
+ 
+ private:
+  unsigned table_size_;
+};
 
 #endif

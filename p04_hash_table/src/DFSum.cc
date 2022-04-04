@@ -34,7 +34,7 @@ DFSum<Key>::DFSum(const unsigned& n) : table_size_(n) {}
 template<class Key>
 unsigned DFSum<Key>::operator()(const Key& k) const {
   int result_sum{0};
-  for (const char* i = static_cast<char*>(static_cast<void*>(&k)); i < (i + sizeof(k)); ++i) {
+  for (const char* i{static_cast<char*>(static_cast<void*>(&k))}; i < (i + sizeof(k)); ++i) {
     result_sum += int(*i);
   }
 

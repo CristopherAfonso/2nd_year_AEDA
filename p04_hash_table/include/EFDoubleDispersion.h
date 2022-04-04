@@ -34,6 +34,26 @@
 #ifndef _EFDOUBLEDISPERSION_
 #define _EFDOUBLEDISPERSION_
 
+#include "ExplorationFunction.h"
 
+/**
+ * @brief Clase que representa a una implementacion concreta de una funcion
+ * de exploracion, la cual se encarga de buscar nuevos bloques para introducir
+ * un dato a una tabla hash, en el caso de que el primer bloque que nos diga la
+ * funcion de dispersion este lleno, esta clase hija implementa la funcion
+ * de doble dispersion, la cual usa dos funciones de dispersion y el numero del
+ * intento al que se llama a la funcion para devolver una posicion de la tabla.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class EFDoubleDispersion: public ExplorationFunction<Key> {
+ public:
+  EFDoubleDispersion(const unsigned& n);
+  unsigned operator()(const Key& k, unsigned i) const override;
+
+ private:
+  unsigned table_size_;
+};
 
 #endif
