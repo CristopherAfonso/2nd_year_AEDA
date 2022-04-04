@@ -1,5 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/themaster/Documentos/2nd_year_AEDA/p04_hash_table'
+ 
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/DFModulo.o src/DFModulo.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/DFRandom.o src/DFRandom.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/DispersionFunction.o src/DispersionFunction.cc
@@ -11,6 +12,7 @@ g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/SList.o
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/Sequence.o src/Sequence.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/main_functions.o src/main_functions.cc
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -c -o src/main_hash_table.o src/main_hash_table.cc
+ 
 g++ -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror -o bin/hash_table src/DFModulo.o src/DFRandom.o src/DispersionFunction.o src/EFCuadratica.o src/ExplorationFunction.o src/HashTable.o src/SBlock.o src/SList.o src/Sequence.o src/main_functions.o src/main_hash_table.o
 echo ""
 echo ARCHIVOS .o: src/DFModulo.o src/DFRandom.o src/DispersionFunction.o src/EFCuadratica.o src/ExplorationFunction.o src/HashTable.o src/SBlock.o src/SList.o src/Sequence.o src/main_functions.o src/main_hash_table.o

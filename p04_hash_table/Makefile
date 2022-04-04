@@ -1,48 +1,56 @@
-#​Compilador 
+#Compilador
 CC = g++
 
-#​Flags 
-CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
- 
-#​Variables 
-EJECUTABLE = hash_table 
-DEPSSRC = include        #​En DEPSSRC va la dirección de los .h
-OBJSRC = src             #​En OBJSRC va la dirección de los .cc
-OBJDIR = build           #​Dirección donde se ponen los .o
-BINDIR = bin             #​Dirección donde se ponen los ejecutables/archivos binarios
- 
-#​############################################################################### 
-#​#########################    NO TOCAR NADA DE ABAJO    ######################## 
-#​############################################################################### 
-  
-#​############################ ARCHIVOS H ####################################### 
-#​En DEPS van los archivos .h 
-DEPS = $(DEPSSRC)/*.h   
+#Flags
+CFLAGS = -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror
+
+#Variables
+EJECUTABLE = hash_table
+
+
+################################################################################
+##########################    NO TOCAR NADA DE ABAJO    ########################
+################################################################################
+
+#En DEPSSRC va la dirección de los .h 
+DEPSSRC = include
+
+#En OBJSRC va la dirección de los .cc 
+OBJSRC = src
+
+############################# ARCHIVOS H #######################################
+#En DEPS van los archivos .h
+DEPS = $(DEPSSRC)/*.h
 DEPSCPY = $(DEPS)
 
-#​############################ ARCHIVOS CC ###################################### 
-#​Obtenemos los archivos .cc y le ponemos .o 
-AUX=$(OBJSRC)/*.cc 
-OBJ=$(shell echo $(AUX) | sed -r 's/.cc/.o/g' | sed -r 's/$(OBJSRC)/$(OBJDIR)/g') 
+############################# ARCHIVOS CC ######################################
+#Obtenemos los archivos .cc y le ponemos .o
+AUX=$(OBJSRC)/*.cc
+OBJ=$(shell echo $(AUX) | sed -r 's/.cc/.o/g')
 
+############################# DIRECCIONES DE DESTINO ###########################
+#Dirección donde se ponen los .o
+OBJDIR = build
 
-#​############################ PROGRAMA #########################################
+#Dirección donde se ponen los ejecutables/archivos binarios
+BINDIR = bin
 
-$(OBJDIR)/%.o: src/%.cc $(DEPS) 
-	$(CC) $(CFLAGS) -c -o $@ $< 
+############################# PROGRAMA #########################################
+%.o: %.cc $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(BINDIR)/$(EJECUTABLE): $(OBJ) 
-	$(CC) -o $@ $^ $(CFLAGS) 
-  
-	@echo "" 
-  @echo ARCHIVOS .o: $(OBJ) 
-  @echo ARCHIVOS .h: $(DEPSCPY) 
-  @echo "" 
+$(BINDIR)/$(EJECUTABLE): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+	@echo ""
+	@echo ARCHIVOS .o: $(OBJ)
+	@echo ARCHIVOS .h: $(DEPSCPY)
+	@echo ""
 
 clean: 
-	rm -rf $(OBJDIR)/*.o 
+	rm -rf $(OBJSRC)/*.o
 
-cleaner: 
+cleaner:
 	rm -rf $(BINDIR)/*
 
 template:
@@ -50,9 +58,9 @@ template:
 	mkdir $(OBJDIR)
 	mkdir $(DEPSSRC)
 	mkdir $(OBJSRC)
-	@echo "Plantilla creada correctamente" 
+	@echo "Plantilla creada correctamente"
 
-show: 
+show:
 	@echo $(AUX)
 	@echo $(OBJ)
 	@echo $(DEPSCPY)

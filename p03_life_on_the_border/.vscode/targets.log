@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Mar 23 10:28:45 2022
+# Make data base, printed on Mon Apr  4 08:43:28 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ LC_ALL = C
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c3467aa0-594e-4daf-80d1-d065dc278d36.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-da74469b-1842-4547-8740-0d9498a59823.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -77,7 +77,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-ppY5eOs0PiLw/agent.1398
+SSH_AUTH_SOCK = /tmp/ssh-QxXLCyVDVty7/agent.1391
 # default
 .SHELLFLAGS := -c
 # automatic
@@ -95,13 +95,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 85557
+VSCODE_PID = 2776
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1540,unix/Fenix:/tmp/.ICE-unix/1540
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1650,unix/Fenix:/tmp/.ICE-unix/1650
 # automatic
 *F = $(notdir $*)
 # environment
@@ -181,7 +181,7 @@ KDE_SESSION_UID = 1000
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 1445
+SSH_AGENT_PID = 1438
 # environment
 _ = /usr/share/codium/codium
 # environment
@@ -241,9 +241,9 @@ LC_IDENTIFICATION = es_ES.UTF-8
 
 # Directories
 
-# . (device 40, inode 208381): 28 files, no impossibilities.
+# . (device 40, inode 240893): 26 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -257,7 +257,7 @@ LC_IDENTIFICATION = es_ES.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-23 09:57:25.76000011
+#  Last modified 2022-04-04 08:43:10.024976795
 #  File has been updated.
 #  Successfully updated.
 
@@ -279,7 +279,6 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 38):
- 
 	rm -rf *.o
 
 # Not a target:
@@ -297,6 +296,7 @@ State.o:
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -366,9 +366,9 @@ StateAlive.o:
 # strcache buffers: 1 (0) / strings = 45 / storage = 624 B / avg = 13 B
 # current buf: size = 8162 B / used = 624 B / count = 45 / avg = 13 B
 
-# strcache performance: lookups = 64 / hit rate = 29%
+# strcache performance: lookups = 62 / hit rate = 27%
 # hash-table stats:
-# Load=45/8192=1%, Rehash=0, Collisions=0/64=0%
-# Finished Make data base on Wed Mar 23 10:28:46 2022
+# Load=45/8192=1%, Rehash=0, Collisions=0/62=0%
+# Finished Make data base on Mon Apr  4 08:43:28 2022
 
  
