@@ -62,16 +62,25 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "\n\nLos dos primeros argumentos deben ser numeros no negativos,";
   cout << "\ny tambien distintos de cero.";
   cout << "\nEl tercer argumento es el tipo de funcion de dispersion y solo";
-  cout << "\nse admite como entradas a estos argumentos '-M' o '-R', el";
+  cout << "\nse admite como entradas a estos argumentos '-M', '-R' o '-S', el";
   cout << "\nargumento '-M' es de Modulo, la funcion de dispersion será una";
-  cout << "\nfuncion de modulo, y la '-R' es de random, sera una funcion que";
-  cout << "\ndevuelva un valor aleatorio dentro de un intervalo.";
+  cout << "\nfuncion de modulo, la '-R' es de random, sera una funcion que";
+  cout << "\ndevuelva un valor aleatorio dentro de un intervalo y la '-S' es";
+  cout << "\nde suma, la funcion suma los valores ASCII de la entrada, y ese";
+  cout << "\nvalor se divide por el tamaño de la tabla y se obtiene el resto";
+  cout << "\nque sera la posicion.";
   cout << "\nEl cuarto argumento es el tipo de funcion de exploracion y solo";
   cout << "\nse admiten como entradas '-c' que significa que la funcion es";
   cout << "\ncuadratica, devuelve el numero cuadrado del intento de acceder a";
-  cout << "\nun bloque de la tabla hash.";
+  cout << "\nun bloque de la tabla hash, luego '-d' significa doble";
+  cout << "\ndispersion, se aplica usa serie de formulas para obtener una";
+  cout << "\nposicion nueva, despues '-l' es de lineal, la funcion de";
+  cout << "\nexploracion es simple, solo consulta el siguiente bloque, y si";
+  cout << "\nesta lleno, el siguiente, hasta hallar uno, y por ultimo '-r' es";
+  cout << "\nde Redispersion, la cual elige una formula de dispersion";
+  cout << "\nentre las que disponga y la usa para hallar el nuevo bloque.";
   cout << "\n\nEjemplo: ";
-  cout << "\n" << kProgramName << " 3 4 [-M|-R] [-c]\n\n";
+  cout << "\n" << kProgramName << " 3 4 [-M|-R|-S] [-c|-d|-l|-r]\n\n";
 }
 
 /**
@@ -167,7 +176,7 @@ void ArgumentsEqualZero(const std::string& kProgramName,
 void WrongTypeOfDispersionFunction(const std::string& kProgramName, 
                                    const std::string& kHelp) {
   cerr << "Warning!, se ha introducido al programa como tercer argumento un";
-  cerr << "\nflag distinto de '-M' o '-R'";
+  cerr << "\nflag distinto de '-M', '-R' o '-S'";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }
@@ -184,7 +193,7 @@ void WrongTypeOfDispersionFunction(const std::string& kProgramName,
 void WrongTypeOfExplorationFunction(const std::string& kProgramName, 
                                     const std::string& kHelp) {
   cerr << "Warning!, se ha introducido al programa como cuarto argumento un";
-  cerr << "\nflag distinto de '-c'";
+  cerr << "\nflag distinto de '-c', '-d', '-l' o '-r'";
   cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cerr << "para mas información\n";
 }
@@ -233,12 +242,16 @@ void Usage(const int& argc, char* argv[]) {
   }
 
   if ((kKindOfDispersionFunction != "-M") && 
-      (kKindOfDispersionFunction != "-R")) {
+      (kKindOfDispersionFunction != "-R") && 
+      (kKindOfDispersionFunction != "-S")) {
     WrongTypeOfDispersionFunction(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
 
-  if ((kKindOfExplorationFunction != "-c")) {
+  if ((kKindOfExplorationFunction != "-c") &&
+      (kKindOfExplorationFunction != "-d") &&
+      (kKindOfExplorationFunction != "-l") &&
+      (kKindOfExplorationFunction != "-r")) {
     WrongTypeOfExplorationFunction(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
