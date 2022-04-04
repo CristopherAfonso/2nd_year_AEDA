@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Apr  3 23:45:10 2022
+# Make data base, printed on Mon Apr  4 15:51:29 2022
 
 # Variables
 
@@ -91,7 +91,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1289,unix/themaster-VirtualBox:/tmp/.ICE-unix/1289
+SESSION_MANAGER = local/themaster-VirtualBox:@/tmp/.ICE-unix/1445,unix/themaster-VirtualBox:/tmp/.ICE-unix/1445
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -117,7 +117,7 @@ AUX = $(OBJSRC)/*.cc
 # environment
 XDG_SESSION_DESKTOP = KDE
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-8sFR4464cTFW/agent.1113
+SSH_AUTH_SOCK = /tmp/ssh-GSGagJ4AJNGm/agent.1275
 # automatic
 %F = $(notdir $%)
 # environment
@@ -135,7 +135,7 @@ KDE_SESSION_VERSION = 5
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1198
+SSH_AGENT_PID = 1360
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # environment
@@ -189,7 +189,7 @@ BINDIR = bin
 # makefile (from 'Makefile', line 2)
 CC = g++
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a381caf6-af04-4d5c-881f-87f2b95219e6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3dd97de1-49e2-44fb-ac52-63e707259155.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -265,7 +265,7 @@ OBJSRC = src
 # environment
 LANG = C
 # environment
-VSCODE_PID = 30195
+VSCODE_PID = 1764
 # environment
 KDE_SESSION_UID = 1000
 # variable set hash-table stats:
@@ -284,13 +284,13 @@ KDE_SESSION_UID = 1000
 
 # Implicit Rules
 
+ 
 %.o: %.cc include/SBlock.h include/ExplorationFunction.h include/SList.h include/DFModulo.h include/main_functions.h include/EFCuadratica.h include/HashTable.h include/DispersionFunction.h include/Sequence.h include/DFRandom.h
 #  recipe to execute (from 'Makefile', line 40):
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
- 
 # Files
 
 # Not a target:
@@ -438,6 +438,6 @@ src/ExplorationFunction.o:
 # strcache performance: lookups = 63 / hit rate = 19%
 # hash-table stats:
 # Load=51/8192=1%, Rehash=0, Collisions=2/63=3%
-# Finished Make data base on Sun Apr  3 23:45:10 2022
+# Finished Make data base on Mon Apr  4 15:51:29 2022
 
  
