@@ -47,10 +47,10 @@ template<class Key>
 class DFModule: public DispersionFunction<Key> {
  public:
   DFModule(const unsigned& n);
-  unsigned operator()(const Key& k) const;
+  unsigned operator()(const Key& k) const override;
 
  private:
-  unsigned tableSize_;
+  unsigned table_size_;
 };
 
 #endif

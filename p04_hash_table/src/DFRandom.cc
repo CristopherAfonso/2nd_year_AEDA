@@ -28,3 +28,11 @@
 
 #include "../include/DFRandom.h"
 
+template<class Key>
+DFRandom<Key>::DFRandom(const unsigned& n) : table_size_(n) {}
+
+template<class Key>
+unsigned DFRandom<Key>::operator()(const Key& k) const {
+  srand(k);
+  return rand() % table_size_;
+}

@@ -35,6 +35,26 @@
 #ifndef _DFSUM_
 #define _DFSUM_
 
+#include "DispersionFunction.h"
 
+/**
+ * @brief Clase que representa a un caso concreto de funcion de dispersion,
+ * la cual se encarga de indicar el primer bloque en el que se deberia meter
+ * el dato dado a la tabla hash, en este caso esa funcion es suma, se suman los
+ * codigos ASCII de todos los caracteres de la entrada, y cuando ya los tienes
+ * todos sumandos, haces el modulo entre ese numero y el tamaño de la tabla y
+ * retornas ese numero.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class DFSum: public DispersionFunction<Key> {
+ public:
+  DFSum(const unsigned& n);
+  unsigned operator()(const Key& k) const override;
+
+ private:
+  unsigned table_size_;
+};
 
 #endif

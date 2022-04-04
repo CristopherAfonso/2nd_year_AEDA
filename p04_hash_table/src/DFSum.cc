@@ -28,3 +28,15 @@
 
 #include "../include/DFSum.h"
 
+template<class Key>
+DFSum<Key>::DFSum(const unsigned& n) : table_size_(n) {}
+
+template<class Key>
+unsigned DFSum<Key>::operator()(const Key& k) const {
+  int result_sum{0};
+  for (const char* i = static_cast<char*>(static_cast<void*>(&k)); i < (i + sizeof(k)); ++i) {
+    result_sum += int(*i);
+  }
+
+  return result_sum % table_size_;
+}

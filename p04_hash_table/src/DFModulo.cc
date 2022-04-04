@@ -29,9 +29,7 @@
 #include "../include/DFModulo.h"
 
 template<class Key>
-DFModule<Key>::DFModule(const unsigned& n): tableSize(n) {}
+DFModule<Key>::DFModule(const unsigned& n) : table_size_(n) {}
 
 template<class Key>
-unsigned DFModule<Key>::operator()(const Key& k) const {
-    return k % tableSize_;
-}
+unsigned DFModule<Key>::operator()(const Key& k) const {return k % table_size_;}
