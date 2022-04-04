@@ -46,9 +46,9 @@
  * @tparam Key es el tipo de dato que guardara la tabla hash.
  */
 template<class Key>
-class EFLineal: public FuncionExploracion<Key> {
+class EFLineal: public ExplorationFunction<Key> {
  public:
-  unsigned operator()(const Key& k, unsigned i) const;
+  unsigned operator()(const Key& k, unsigned i) const override;
 };
 
 #endif
