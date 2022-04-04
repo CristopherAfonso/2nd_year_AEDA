@@ -31,6 +31,17 @@
 #ifndef _DISPERSIONFUNCTION_
 #define _DISPERSIONFUNCTION_
 
-
+/**
+ * @brief Clase que representa a una funcion de dispersion, la cual se encarga
+ * de indicar el primer bloque en el que se deberia meter el dato dado a la
+ * tabla hash.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class DispersionFunction {
+ public:
+  unsigned operator()(const Key& k) const = 0;
+};
 
 #endif

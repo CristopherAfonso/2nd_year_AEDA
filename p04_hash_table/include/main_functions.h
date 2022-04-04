@@ -28,12 +28,12 @@
 
 #include <iostream>
 #include <string>
-#include "../include/DFModulo.h"
-#include "../include/DFRandom.h"
-#include "../include/EFCuadratica.h"
-#include "../include/HashTable.h"
-#include "../include/SBlock.h"
-#include "../include/SList.h"
+#include "DFModulo.h"
+#include "DFRandom.h"
+#include "EFCuadratica.h"
+#include "HashTable.h"
+#include "SBlock.h"
+#include "SList.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);

@@ -35,6 +35,18 @@
 #ifndef _EXPLORATIONFUNCTION_
 #define _EXPLORATIONFUNCTION_
 
-
+/**
+ * @brief Clase que representa a una funcion de exploracion, la cual se encarga
+ * de buscar nuevos bloques para introducir un dato a una tabla hash, en el
+ * caso de que el primer bloque que nos diga la funcion de dispersion este
+ * lleno.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class ExplorationFunction {
+ public:
+  unsigned operator()(const Key& k, unsigned i) const = 0;
+};
 
 #endif

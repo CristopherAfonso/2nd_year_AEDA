@@ -33,6 +33,24 @@
 #ifndef _DFMODULO_
 #define _DFMODULO_
 
+#include "DispersionFunction.h"
 
+/**
+ * @brief Clase que representa a un caso concreto de funcion de dispersion,
+ * la cual se encarga de indicar el primer bloque en el que se deberia meter
+ * el dato dado a la tabla hash, en este caso esa funcion es el modulo, el dato
+ * pasado al objeto se le aplica el modulo de una division entera y lo retorna.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class DFModule: public DispersionFunction<Key> {
+ public:
+  DFModule(const unsigned& n);
+  unsigned operator()(const Key& k) const;
+
+ private:
+  unsigned tableSize_;
+};
 
 #endif

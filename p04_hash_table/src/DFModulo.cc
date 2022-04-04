@@ -28,3 +28,10 @@
 
 #include "../include/DFModulo.h"
 
+template<class Key>
+DFModule<Key>::DFModule(const unsigned& n): tableSize(n) {}
+
+template<class Key>
+unsigned DFModule<Key>::operator()(const Key& k) const {
+    return k % tableSize_;
+}

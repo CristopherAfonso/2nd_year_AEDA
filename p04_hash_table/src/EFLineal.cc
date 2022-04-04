@@ -28,3 +28,5 @@
 
 #include "../include/EFLineal.h"
 
+template<class Key>
+unsigned EFLineal<Key>::operator()(const Key& k, unsigned i) const {return i;}
