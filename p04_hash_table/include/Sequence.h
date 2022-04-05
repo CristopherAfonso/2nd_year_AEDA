@@ -30,6 +30,31 @@
 #ifndef _SEQUENCE_
 #define _SEQUENCE_
 
+#include <iostream>
+#include <vector>
 
+#include "DispersionFunction.h"
+#include "ExplorationFunction.h"
+
+/**
+ * @brief Clase que representa a un almacen donde se contendran los valores de
+ * claves sinonimos.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash. 
+ */
+template<class Key>
+class Sequence {
+ public:
+  bool Search(const Key& k, const DispersionFunction<Key>* df, 
+              const ExplorationFunction<Key>* ef) const = 0;
+  bool Insert(const Key& k, const DispersionFunction<Key>* df, 
+              const ExplorationFunction<Key>* ef) = 0;
+  bool IsFull(void) const = 0;
+  virtual ~Sequence(void) = default;
+
+ protected:
+  unsigned table_size_;
+  std::vector<std::vector<Key>> table_;
+};
 
 #endif

@@ -47,6 +47,7 @@ template<class Key>
 class ExplorationFunction {
  public:
   unsigned operator()(const Key& k, unsigned i) const = 0;
+  virtual ~ExplorationFunction(void) = default;
 };
 
 #endif

@@ -42,6 +42,7 @@ template<class Key>
 class DispersionFunction {
  public:
   unsigned operator()(const Key& k) const = 0;
+  virtual ~DispersionFunction(void) = default;
 };
 
 #endif

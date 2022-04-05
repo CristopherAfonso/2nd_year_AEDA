@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Apr  4 21:22:07 2022
+# Make data base, printed on Tue Apr  5 01:21:09 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ OBJSRC = src
 # makefile (from 'Makefile', line 36)
 BINDIR = bin
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7df7ed84-96bc-4628-8c6f-fa95ddc37072.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-fc942d17-df47-4d4d-941e-dc25bc6b5aa6.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -63,7 +63,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
+VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/e18005f0f1b33c29e81d732535d8c0e47cafb0b5
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
@@ -95,8 +95,6 @@ SSH_AUTH_SOCK = /tmp/ssh-SAmcyT60TWwQ/agent.1405
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCodium","submitURL":"","uploadToServer":false}
-# environment
 XDG_SESSION_DESKTOP = plasma
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
@@ -105,7 +103,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1869
+VSCODE_PID = 182544
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -123,9 +121,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"1a0efdb61e44124e1e10edd3da0bcd30.es","_translationsConfigFile":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/tcf.json","_cacheRoot":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/899d46d82c4c95423fb7e10e68eba52050e30ba3","_corruptedFile":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/corrupted.info","_languagePackSupport":true}
-# environment
-BREAKPAD_DUMP_LOCATION = /home/themaster/.config/VSCodium/exthost Crash Reports
+VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"52008e6c8462a436096c40d64a7cb71d.es","_translationsConfigFile":"/home/themaster/.config/VSCodium/clp/52008e6c8462a436096c40d64a7cb71d.es/tcf.json","_cacheRoot":"/home/themaster/.config/VSCodium/clp/52008e6c8462a436096c40d64a7cb71d.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/VSCodium/clp/52008e6c8462a436096c40d64a7cb71d.es/e18005f0f1b33c29e81d732535d8c0e47cafb0b5","_corruptedFile":"/home/themaster/.config/VSCodium/clp/52008e6c8462a436096c40d64a7cb71d.es/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # makefile
@@ -141,7 +137,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/themaster/.dotnet/tools
+PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/themaster/.local/bin:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/themaster/.dotnet/tools
 # default
 MAKEFILES := 
 # environment
@@ -211,7 +207,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XDG_SESSION_CLASS = user
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/themaster/.gtkrc-2.0:/home/themaster/.config/gtkrc-2.0
 # environment
@@ -219,7 +215,7 @@ HOME = /home/themaster
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.63.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.66.0-main.sock
 # environment
 XDG_SESSION_ID = 2
 # environment
@@ -249,7 +245,7 @@ GDMSESSION = plasma
 # environment
 LC_IDENTIFICATION = es_ES.UTF-8
 # variable set hash-table stats:
-# Load=118/1024=12%, Rehash=0, Collisions=8/158=5%
+# Load=116/1024=11%, Rehash=0, Collisions=7/156=4%
 
 # Pattern-specific Variable Values
 
@@ -279,7 +275,6 @@ src/EFDoubleDispersion.o:
 
 # Not a target:
 src/DFSum.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -288,6 +283,7 @@ src/DFSum.o:
 src/HashTable.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -441,6 +437,6 @@ src/DFModulo.o:
 # strcache performance: lookups = 75 / hit rate = 16%
 # hash-table stats:
 # Load=63/8192=1%, Rehash=0, Collisions=0/75=0%
-# Finished Make data base on Mon Apr  4 21:22:07 2022
+# Finished Make data base on Tue Apr  5 01:21:09 2022
 
  

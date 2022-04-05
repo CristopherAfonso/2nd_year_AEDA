@@ -28,3 +28,20 @@
 
 #include "../include/SList.h"
 
+template<class Key>
+SList<Key>::SList(const unsigned& table_size) : table_() {
+  table_.resize(table_size);
+}
+
+template<class Key>
+bool SList<Key>::Search(const Key& k) const {
+
+}
+
+template<class Key>
+bool SList<Key>::Insert(const Key& k) {
+
+}
+
+template<class Key>
+bool SList<Key>::IsFull(void) const {return false;}

@@ -35,6 +35,7 @@
 #define _EFDOUBLEDISPERSION_
 
 #include "ExplorationFunction.h"
+#include "DispersionFunction.h"
 
 /**
  * @brief Clase que representa a una implementacion concreta de una funcion
@@ -49,11 +50,12 @@
 template<class Key>
 class EFDoubleDispersion: public ExplorationFunction<Key> {
  public:
-  EFDoubleDispersion(const unsigned& n);
+  EFDoubleDispersion(const unsigned& n, const DispersionFunction<Key>* df);
   unsigned operator()(const Key& k, unsigned i) const override;
 
  private:
   unsigned table_size_;
+  DispersionFunction<Key>* df_;
 };
 
 #endif

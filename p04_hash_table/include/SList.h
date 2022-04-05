@@ -32,6 +32,25 @@
 #ifndef _SLIST_
 #define _SLIST_
 
+#include "Sequence.h"
 
+/**
+ * Clase que representa a una implementacion concreta de una clase Sequence que
+ * es un contenedor de datos optimizado o una version concreta de la tabla hash
+ * la cual tiene bloques de longitud dinamina.
+ * 
+ * @tparam Key es el tipo de dato que guardara la tabla hash.
+ */
+template<class Key>
+class SList : public Sequence<Key> {
+ public:
+  SList(const unsigned& table_size);
+  bool Search(const Key& k) const override;
+  bool Insert(const Key& k) override;
+  bool IsFull(void) const override;
+
+ private:
+  
+};
 
 #endif

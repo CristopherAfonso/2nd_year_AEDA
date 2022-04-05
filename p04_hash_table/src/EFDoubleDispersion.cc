@@ -29,9 +29,11 @@
 #include "../include/EFDoubleDispersion.h"
 
 template<class Key>
-EFDoubleDispersion<Key>::EFDoubleDispersion(const unsigned& n) : table_size_(n) {}
+EFDoubleDispersion<Key>::EFDoubleDispersion(const unsigned& n,
+                                            const DispersionFunction<Key>* df)
+    : table_size_(n), df_(df) {}
 
 template<class Key>
 unsigned EFDoubleDispersion<Key>::operator()(const Key& k, unsigned i) const {
-  return ((k % table_size_) + i * ((k % (table_size_ - 1)) + 1)) % table_size_;
+  return ((k % table_size_) + i * df_(k)) % table_size_;
 }
