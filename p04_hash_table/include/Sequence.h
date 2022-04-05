@@ -51,10 +51,6 @@ class Sequence {
               const ExplorationFunction<Key>* ef) = 0;
   bool IsFull(void) const = 0;
   virtual ~Sequence(void) = default;
-
- protected:
-  unsigned table_size_;
-  std::vector<std::vector<Key>> table_;
 };
 
 #endif

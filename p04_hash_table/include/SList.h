@@ -45,12 +45,14 @@ template<class Key>
 class SList : public Sequence<Key> {
  public:
   SList(const unsigned& table_size);
-  bool Search(const Key& k) const override;
-  bool Insert(const Key& k) override;
+  bool Search(const Key& k, const DispersionFunction<Key>* df, 
+              const ExplorationFunction<Key>* ef) const override;
+  bool Insert(const Key& k, const DispersionFunction<Key>* df, 
+              const ExplorationFunction<Key>* ef) override;
   bool IsFull(void) const override;
 
  private:
-  
+  std::vector<std::vector<Key>> table_;
 };
 
 #endif

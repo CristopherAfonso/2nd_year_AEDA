@@ -34,13 +34,30 @@ SList<Key>::SList(const unsigned& table_size) : table_() {
 }
 
 template<class Key>
-bool SList<Key>::Search(const Key& k) const {
+bool SList<Key>::Search(const Key& k, const DispersionFunction<Key>* df, 
+                        const ExplorationFunction<Key>* ef) const {
+  bool result{false};
+  unsigned aux{df(k)};
+  for (auto i: table_[aux]) {
+    if (k == i) {
+      result = true;
+      break;
+    }
+  }
 
+  return result;
 }
 
 template<class Key>
-bool SList<Key>::Insert(const Key& k) {
+bool SList<Key>::Insert(const Key& k, const DispersionFunction<Key>* df, 
+                        const ExplorationFunction<Key>* ef) {
+  unsigned aux{df(k)};
+  for (auto i: table_[aux]) {
+    if (k == i) return false;
+  }
 
+  table_[aux].emplace_back(k);
+  return true;
 }
 
 template<class Key>
