@@ -1,6 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
- 
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Mar  6 02:37:51 2022
+# Make data base, printed on Thu Apr  7 11:17:22 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ NO_AT_BRIDGE = 1
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-012ee0f0-726f-4eeb-ac2e-5410a6f7ef7b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9dd9bccb-17ea-410d-b03f-195a64f6cb32.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -57,7 +57,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
+VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/e18005f0f1b33c29e81d732535d8c0e47cafb0b5
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
@@ -81,7 +81,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-ECD1qNO5PYhT/agent.1384
+SSH_AUTH_SOCK = /tmp/ssh-Cz6LG5rV96dR/agent.1383
 # default
 .SHELLFLAGS := -c
 # automatic
@@ -91,8 +91,6 @@ GIT_ASKPASS = /usr/share/codium/resources/app/extensions/git/dist/askpass.sh
 # environment
 XCURSOR_THEME = breeze_cursors
 # environment
-VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCodium","submitURL":"","uploadToServer":false}
-# environment
 XDG_SESSION_DESKTOP = plasma
 # makefile
 MAKEFILE_LIST := 
@@ -101,13 +99,13 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1806
+VSCODE_PID = 1854
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1526,unix/Fenix:/tmp/.ICE-unix/1526
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1527,unix/Fenix:/tmp/.ICE-unix/1527
 # automatic
 *F = $(notdir $*)
 # environment
@@ -117,9 +115,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"1a0efdb61e44124e1e10edd3da0bcd30.es","_translationsConfigFile":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/tcf.json","_cacheRoot":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/899d46d82c4c95423fb7e10e68eba52050e30ba3","_corruptedFile":"/home/themaster/.config/VSCodium/clp/1a0efdb61e44124e1e10edd3da0bcd30.es/corrupted.info","_languagePackSupport":true}
-# environment
-BREAKPAD_DUMP_LOCATION = /home/themaster/.config/VSCodium/exthost Crash Reports
+VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{"*":"es"},"_languagePackId":"5d43453d01f9713e08b1ad8e43f0ede0.es","_translationsConfigFile":"/home/themaster/.config/VSCodium/clp/5d43453d01f9713e08b1ad8e43f0ede0.es/tcf.json","_cacheRoot":"/home/themaster/.config/VSCodium/clp/5d43453d01f9713e08b1ad8e43f0ede0.es","_resolvedLanguagePackCoreLocation":"/home/themaster/.config/VSCodium/clp/5d43453d01f9713e08b1ad8e43f0ede0.es/e18005f0f1b33c29e81d732535d8c0e47cafb0b5","_corruptedFile":"/home/themaster/.config/VSCodium/clp/5d43453d01f9713e08b1ad8e43f0ede0.es/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # makefile
@@ -133,11 +129,11 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/themaster/.local/bin:/snap/bin:/home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/themaster/.local/bin:/snap/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/themaster/.dotnet/tools
 # default
 MAKEFILES := 
 # environment
-VSCODE_GIT_IPC_HANDLE = /run/user/1000/vscode-git-1fd42a0643.sock
+VSCODE_GIT_IPC_HANDLE = /run/user/1000/vscode-git-8b2e52d31b.sock
 # environment
 LANGUAGE = 
 # environment
@@ -195,7 +191,7 @@ KDE_SESSION_UID = 1000
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 1431
+SSH_AGENT_PID = 1430
 # environment
 _ = /usr/bin/codium
 # environment
@@ -209,7 +205,7 @@ COLORTERM = truecolor
 # environment
 XDG_SESSION_CLASS = user
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/themaster/.gtkrc-2.0:/home/themaster/.config/gtkrc-2.0
 # environment
@@ -217,11 +213,11 @@ HOME = /home/themaster
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.63.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.66.0-main.sock
 # environment
 TERM = xterm-256color
 # environment
-XDG_SESSION_ID = 2
+XDG_SESSION_ID = 3
 # environment
 XCURSOR_SIZE = 24
 # default
@@ -245,13 +241,13 @@ KDE_SESSION_VERSION = 5
 # environment
 KDE_FULL_SESSION = true
 # environment
-TERM_PROGRAM_VERSION = 1.63.2
+TERM_PROGRAM_VERSION = 1.66.0
 # environment
 GDMSESSION = plasma
 # environment
 LC_IDENTIFICATION = es_ES.UTF-8
 # variable set hash-table stats:
-# Load=119/1024=12%, Rehash=0, Collisions=5/146=3%
+# Load=117/1024=11%, Rehash=0, Collisions=4/144=3%
 
 # Pattern-specific Variable Values
 
@@ -259,9 +255,9 @@ LC_IDENTIFICATION = es_ES.UTF-8
 
 # Directories
 
-# . (device 40, inode 162367): 7 files, no impossibilities.
+# . (device 40, inode 257026): 10 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -283,7 +279,6 @@ Makefile:
 #  File has not been updated.
 
 # Not a target:
- 
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -298,6 +293,7 @@ makefile:
 #  Failed to be updated.
 
 # Not a target:
+ 
 GNUmakefile:
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -312,12 +308,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 138 B / avg = 9 B
-# current buf: size = 8162 B / used = 138 B / count = 15 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 191 B / avg = 10 B
+# current buf: size = 8162 B / used = 191 B / count = 18 / avg = 10 B
 
-# strcache performance: lookups = 18 / hit rate = 16%
+# strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=0/18=0%
-# Finished Make data base on Sun Mar  6 02:37:51 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/21=0%
+# Finished Make data base on Thu Apr  7 11:17:22 2022
 
  
