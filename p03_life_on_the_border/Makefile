@@ -1,38 +1,63 @@
-# Universidad de La Laguna (ULL)
-# Escuela Superior de Ingenieria y Tecnologia (ESIT)
-# Grado en Ingeniera Informatica
-# Asignatura: Algorítmos y Estructuras de Datos Avanzados
-# Curso: 2º
-# Practica 3: La Vida en la Frontera
-# @author Cristopher Manuel Afonso Mora
-# Correo: alu0101402031@ull.edu.es
-# @date 21/03/22
-# 
-# @file Makefile
-# @brief Programa que permite automatizar el proceso de compilación para 
-#        agilizar el desarrollo del código
-# 
-# @bug No hay bugs conocidos
-# 
-# Historial de Revisiones 
-# 21/03/22 - Creacion (primera version) del codigo:
-#            Cree el archivo, y tras crear todos los archivos que mi ejecutable
-#            necesitara (vacios, pero creados), terminé este archivo, solo
-#            tiene dos ordenes, y son "make life_border" y "make clean"
-#            la primera compila el programa, y la segunda limpia de la carpeta
-#            actual todos los archivos ".o" que existan
-#
-
+#Compilador
 CC = g++
-CFLAGS = -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror
-DEPS = main_functions.h Cell.h Grid.h GridWithOpenBorder.h GridWithPeriodicBorder.h GridWithReflectiveBorder.h GridWithoutBorder.h State.h StateDead.h StateAlive.h
-OBJ = main_functions.o Cell.o Grid.o GridWithOpenBorder.o GridWithPeriodicBorder.o GridWithReflectiveBorder.o GridWithoutBorder.o State.o StateDead.o StateAlive.o main_life_border.o
+#Flags
+CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
 
-%.o: %.cc $(DEPS)
+#Variables
+EJECUTABLE = life_on_the_border
+
+#Dirección donde se ponen los ejecutables/archivos binarios
+BINDIR = bin
+
+#Dirección donde se ponen los .o
+OBJDIR = build
+
+#En DEPSSRC va la dirección de los .h 
+DEPSSRC = include
+
+#En OBJSRC va la dirección de los .cc 
+OBJSRC = src
+
+################################################################################
+##########################    NO TOCAR NADA DE ABAJO    ########################
+################################################################################
+
+############################# ARCHIVOS H #######################################
+#En DEPS van los archivos .h
+DEPS = $(DEPSSRC)/*.h
+DEPSCPY = $(DEPS)
+
+############################# ARCHIVOS CC ######################################
+#Obtenemos los archivos .cc y le ponemos .o
+AUX=$(OBJSRC)/*.cc
+OBJ=$(shell echo $(AUX) | sed -r 's/.cc/.o/g' | sed -r 's/$(OBJSRC)/$(OBJDIR)/g')
+
+############################# PROGRAMA #########################################
+$(OBJDIR)/%.o: src/%.cc $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-life_border: $(OBJ)
+$(BINDIR)/$(EJECUTABLE): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-clean:
-	rm -rf *.o
+	@echo ""
+	@echo ARCHIVOS .o: $(OBJ)
+	@echo ARCHIVOS .h: $(DEPSCPY)
+	@echo ""
+
+clean: 
+	rm -rf $(OBJDIR)/*.o
+
+cleaner:
+	rm -rf $(BINDIR)/*
+
+template:
+	mkdir $(BINDIR)
+	mkdir $(OBJDIR)
+	mkdir $(DEPSSRC)
+	mkdir $(OBJSRC)
+	@echo "Plantilla creada correctamente"
+
+show:
+	@echo $(AUX)
+	@echo $(OBJ)
+	@echo $(DEPSCPY)

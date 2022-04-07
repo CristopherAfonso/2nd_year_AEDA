@@ -1,22 +1,26 @@
 #Compilador
 CC = g++
-
 #Flags
-CFLAGS = -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror
+CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
 
 #Variables
 EJECUTABLE = hash_table
 
+#Dirección donde se ponen los ejecutables/archivos binarios
+BINDIR = bin
 
-################################################################################
-##########################    NO TOCAR NADA DE ABAJO    ########################
-################################################################################
+#Dirección donde se ponen los .o
+OBJDIR = build
 
 #En DEPSSRC va la dirección de los .h 
 DEPSSRC = include
 
 #En OBJSRC va la dirección de los .cc 
 OBJSRC = src
+
+################################################################################
+##########################    NO TOCAR NADA DE ABAJO    ########################
+################################################################################
 
 ############################# ARCHIVOS H #######################################
 #En DEPS van los archivos .h
@@ -26,17 +30,10 @@ DEPSCPY = $(DEPS)
 ############################# ARCHIVOS CC ######################################
 #Obtenemos los archivos .cc y le ponemos .o
 AUX=$(OBJSRC)/*.cc
-OBJ=$(shell echo $(AUX) | sed -r 's/.cc/.o/g')
-
-############################# DIRECCIONES DE DESTINO ###########################
-#Dirección donde se ponen los .o
-OBJDIR = build
-
-#Dirección donde se ponen los ejecutables/archivos binarios
-BINDIR = bin
+OBJ=$(shell echo $(AUX) | sed -r 's/.cc/.o/g' | sed -r 's/$(OBJSRC)/$(OBJDIR)/g')
 
 ############################# PROGRAMA #########################################
-%.o: %.cc $(DEPS)
+$(OBJDIR)/%.o: src/%.cc $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(BINDIR)/$(EJECUTABLE): $(OBJ)
@@ -48,7 +45,7 @@ $(BINDIR)/$(EJECUTABLE): $(OBJ)
 	@echo ""
 
 clean: 
-	rm -rf $(OBJSRC)/*.o
+	rm -rf $(OBJDIR)/*.o
 
 cleaner:
 	rm -rf $(BINDIR)/*
