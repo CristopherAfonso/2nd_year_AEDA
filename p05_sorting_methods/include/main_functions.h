@@ -38,4 +38,8 @@ bool IsItANumberIntPositive(const std::string& str);
 void WrongArguments(const std::string& kProgramName, const std::string& kHelp);
 bool IsItAPossibleAlpha(const std::string& str);
 void Usage(const int& argc, char* argv[]);
-
+template<class Key> void Selection(std::vector<Key>& vec, const int& size_vec);
+template<class Key> void QuickSort(std::vector<Key>& vec, const int& size_vec);
+template<class Key> void ShellSort(std::vector<Key>& vec, const int& size_vec);
+template<class Key> void HeapSort(std::vector<Key>& vec, const int& size_vec);
+template<class Key> void RadixSort(std::vector<Key>& vec, const int& size_vec);

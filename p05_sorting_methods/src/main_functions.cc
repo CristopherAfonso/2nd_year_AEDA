@@ -41,7 +41,7 @@ using std::cerr;
 void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
   cout << "Modo de empleo: " << kProgramName << " [Forma de elegir elementos ";
   cout << "del vector] [Numero de elementos del vector] [Tipo de algoritmo de";
-  cout << " ordenacion] (Alpha)";
+  cout << " ordenacion]";
   cout << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
   cout << "Para más información\n";
 }
@@ -54,7 +54,7 @@ void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
  * @param kProgramName Es el nombre del actual programa, usado por el mensaje
  */
 void HelpMessage(const std::string& kProgramName) {
-  cout << "\n" << kProgramName << " [-R|-C] (N) [-s|-q|-S|-h|-r] (A)\n\n";
+  cout << "\n" << kProgramName << " [-R|-C] (N) [-s|-q|-S|-h|-r]\n\n";
   cout << "-R ==> Los elementos del vector a ordenar se generan aleatoriamente\n";
   cout << "-C ==> Los elementos del vector a ordenar los introduce el usuario";
   cout << " manualmente uno a uno\n\n";
@@ -66,10 +66,6 @@ void HelpMessage(const std::string& kProgramName) {
   cout << "-S ==> Tipo de algoritmo de ordenacion: \"ShellSort\"\n";
   cout << "-h ==> Tipo de algoritmo de ordenacion: \"HeapSort\"\n";
   cout << "-r ==> Tipo de algoritmo de ordenacion: \"RadixSort\"\n\n";
-  cout << "A  ==> Numero decimal positivo entre cero y uno, el cual es el parametro\n";
-  cout << "   alpha usado SOLO en el algoritmo ShellSort, si elige ese algoritmo\n";
-  cout << "   es obligado que introduzca este parametro A, sino no debe\n";
-  cout << "   introducirlo, tenga en cuenta que: (0 < A < 1)\n\n";
 }
 
 /**
@@ -158,21 +154,13 @@ void Usage(const int& argc, char* argv[]) {
     exit(EXIT_SUCCESS);
   }
 
-  if ((argc < 4) || (argc > 5)) {
+  if (argc < 4) {
     WrongNumberOfArguments(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
 
   const std::string kNumberOfElements{argv[2]};
   const std::string kTypeOfAlgorithm{argv[3]};
-
-  if (argc == 5) {
-    const std::string aux{argv[4]};
-    if (!((kTypeOfAlgorithm == "-S") && (IsItAPossibleAlpha(aux)))) {
-      WrongArguments(kProgramName, kHelp);
-      exit(EXIT_FAILURE);
-    }
-  }
 
   if (!(kWayToIntroduceElements == "-R" || kWayToIntroduceElements == "-C")) {
     WrongArguments(kProgramName, kHelp);
@@ -192,3 +180,75 @@ void Usage(const int& argc, char* argv[]) {
   }
 }
 
+/**
+ * @brief Algoritmo de seleccion que ordena un vector siguiendo una secuencia
+ * por la cual intercambia elementos del vector entre si hasta ordenarlo
+ * 
+ * @tparam Key Tipo de dato que almacena este vector
+ * @param vec vector a ordenar
+ * @param size_vec numero de elementos al principio del vector que ya ordenados
+ */
+template<class Key>
+void Selection(std::vector<Key>& vec, const int& size_vec) {
+  Key aux; ///< Valor a poner en la parte ordenada en cada iteracion
+  for (int i{0}; i < (n - 1); ++i) {
+    int min_pos{i};
+    for (int j{i + 1}; j < n; ++j) {
+      if (vec[j] < vec[min_pos]) {
+        min_pos = j;
+        aux = vec[min_pos];
+      }
+    }
+
+    vec[min_pos] = vec[i];
+    vec[i] = aux;
+  }
+}
+
+/**
+ * @brief 
+ * 
+ * @tparam Key 
+ * @param vec 
+ * @param size_vec 
+ */
+template<class Key>
+void QuickSort(std::vector<Key>& vec, const int& size_vec) {
+
+}
+
+/**
+ * @brief 
+ * 
+ * @tparam Key 
+ * @param vec 
+ * @param size_vec 
+ */
+template<class Key>
+void ShellSort(std::vector<Key>& vec, const int& size_vec) {
+
+}
+
+/**
+ * @brief 
+ * 
+ * @tparam Key 
+ * @param vec 
+ * @param size_vec 
+ */
+template<class Key>
+void HeapSort(std::vector<Key>& vec, const int& size_vec) {
+
+}
+
+/**
+ * @brief 
+ * 
+ * @tparam Key 
+ * @param vec 
+ * @param size_vec 
+ */
+template<class Key>
+void RadixSort(std::vector<Key>& vec, const int& size_vec) {
+
+}
