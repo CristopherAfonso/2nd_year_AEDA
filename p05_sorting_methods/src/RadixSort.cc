@@ -9,14 +9,14 @@
  * Correo: alu0101402031@ull.edu.es
  * @date 21/04/2022
  * 
- * @file main_functions.h 
- * @brief Donde se aloja la declaración de las funciones del archivo cliente
- * de nuestro programa.
+ * @file RadixSort.cc
+ * @brief Donde se desarrollan las funciones de la clase RadixSort contenida
+ * en el archivo de cabecera RadixSort.h
  *
  * @bug No hay bugs conocidos
  * 
  * Referencias: Enlaces de Interes
- * @see 
+ * @see
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
@@ -26,16 +26,5 @@
  * 23/04/22 - Archivo terminado.
  */
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include "../include/TestOrdenation.h"
+#include "../include/RadixSort.h"
 
-void MainMessage(const std::string& kProgramName, const std::string& kHelp);
-void HelpMessage(const std::string& kProgramName);
-void WrongNumberOfArguments(const std::string& kProgramName, 
-                            const std::string& kHelp);
-bool IsItANumberIntPositive(const std::string& str);
-void WrongArguments(const std::string& kProgramName, const std::string& kHelp);
-bool IsItAPossibleAlpha(const std::string& str);
-void Usage(const int& argc, char* argv[]);
