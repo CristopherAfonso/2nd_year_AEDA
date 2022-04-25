@@ -33,19 +33,65 @@
  * 
  * @tparam Key tipo de datos que tienen los datos a ser ordenados
  * @param vec atributo que contiene los datos a ser ordenados
- * @param n es el digito en el que queremos que se base la ordenacion, si vale
- * 0, el numero entero mas a la derecha sera el que se usara para la ordenacion
- * si vale 1, el segundo mas a la derecha entero, etc...
+ * @param n es el tamaño del parametro vec
  */
 template<typename Key>
 void RadixSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
-  std::vector<std::vector<Key>> aux(10);
-  int div{10 * n}; ///< divisor del numero que nos dira su posicion
-  if (div == 0) div = 1; ///< asi nunca dividiremos por cero
-  for (auto i: vec) aux[((i % (10 * (n + 1)))) / div].emplace_back(i);
-  
+  int max_item{*this->GetMaxItem(vec, n)};
+
+  /// Haga una clasificación de conteo para cada dígito
+  /// Tenga en cuenta que en lugar de pasar el número de dígito, se pasa exp
+  /// exp es 10^i donde i es el número de dígito actual
+  for (int exp{1}; (m / exp) > 0; exp *= 10) *this->CountSort(vec, n, exp);
 }
 
-    // /// mostramos el vector por pantalla tras hacer la iteracion del algoritmo
-    // for (auto j: vec) std::cout << j << " " << std::endl;
-    // std::cout << std::endl;
+/**
+ * @brief Metodo que halla el elemento de mayor valor dentro del parametro vec
+ * y lo retorna
+ * 
+ * @tparam key es el tipo de datos de los datos a ser ordenados
+ * @param vec contenedor de datos a ser ordenados
+ * @param n tamaño del contenedor de datos
+ * @return int elemento de mayor valor dentro del parametro vec
+ */
+template <typename key>
+int RadixSort<Key>::GetMaxItem(const std::vector<Key>& vec, const unsigned int& n) const {
+  int max_item{vec[0]};
+  for (int i{1}; i < n; ++i) if (vec[i] > max_item) max_item = vec[i];
+  return max_item;
+}
+
+/**
+ * @brief Metodo que se encarga de implementar el algoritmo RadixSort
+ * 
+ * @tparam Key tipo de dato de los datos que van a ser ordenados
+ * @param vec contenedor de datos
+ * @param n tamaño del parametro vec
+ * @param exp es un numero multiplo de 10 donde su exponente es el numero del
+ * digito actual como base para la ordenacion
+ */
+template<typename Key>
+void RadixSort<Key>::CountSort(std::vector<Key>& vec, unsigned int& n, unsigned int& exp) {
+  std::vector<Key> output(n);
+  std::vector<int> count(10, 0);
+
+  /// Almacena las cuenta de concurrencias en count
+  for (int i{0}; i < n; ++i) count[(vec[i] / exp) % 10]++;
+
+  /// Cambia count[i] asi que count[i] ahora contiene la posicion actual de
+  /// este digito en output[]
+  for (int i{1}; i < 10; ++i) count[i] += count[i - 1];
+
+  /// Construye el array output
+  for (int i{n - 1}; i >= 0; --i) {
+    output[count[(vec[i] / exp) % 10] - 1] = vec[i]
+    count[(vec[i] / exp) % 10]--;
+
+    for (auto j: output) std::cout << j << " " << std::endl;
+    std::cout << std::endl;
+  }
+
+  /// Copia el array output a vec, asi ahora vec ahora contiene los elementos
+  /// ordenados acorde a los digitos actuales
+  for (int i{0}; i < n; ++i) vec[i] = output[i];
+}

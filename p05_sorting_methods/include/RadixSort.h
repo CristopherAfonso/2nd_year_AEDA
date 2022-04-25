@@ -42,6 +42,10 @@ template<class Key>
 class RadixSort: public Strategy<Key> {
  public:
   void Sort(std::vector<Key>& vec, unsigned int& n) override;
+
+ private:
+  int GetMaxItem(const std::vector<Key>& vec, const unsigned int& n) const;
+  void CountSort(std::vector<Key>& vec, unsigned int& n, unsigned int& exp);
 };
 
 #endif
