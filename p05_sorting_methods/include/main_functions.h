@@ -33,6 +33,11 @@
 #include <stdlib.h>
 
 #include "TestOrdenation.h"
+#include "Selection.h"
+#include "QuickSort.h"
+#include "ShellSort.h"
+#include "HeapSort.h"
+#include "RadixSort.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);

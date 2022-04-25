@@ -39,20 +39,83 @@ int main(int argc, char* argv[]) {
   const std::string kWayToIntroduceElements{argv[1]};
   const std::string kNumberOfElements{argv[2]};
   const std::string kTypeOfAlgorithm{argv[3]};
-  TestOrdenation<int> test_ordenation;
+  TestOrdenation<int>* test_ordenation = new TestOrdenation<int>;
+
+  test_ordenation->SetN(std::stoi(kNumberOfElements)); ///< Primer elemento
 
   if (kWayToIntroduceElements == "-R") {
     srand(time(NULL));
-    std::vector<int> aux(std::stoi(KNumerOfElements));
+    std::vector<int> aux(std::stoi(kNumberOfElements));
 
     for (int i{0}; i < std::stoi(kNumberOfElements); ++i)
       aux[i] = (rand() % 9000) + 1000;
     
-    test_ordenation.SetVec(aux);
+    test_ordenation->SetVec(aux); ///< Segundo elemento
 
   } else if (kWayToIntroduceElements == "-C") {
+    std::string user_number{""};
+    std::vector<int> aux(std::stoi(kNumberOfElements));
+    for (int i{0}; i < std::stoi(kNumberOfElements); ++i) {
+      std::cout << "¿Valor del elemento " << (i + 1) << "º?: ";
+      std::cin >> user_number;
 
+      bool repeat{false};
+      /// Comprobamos si es un string que puede ser pasado a int
+      for (int j{0}; j < int(user_number.size()); ++j) {
+        if ((j == 0) && (user_number[j] == '-')) continue;
+        if (!(isdigit(j) != 0)) {
+          repeat = true;
+          break;
+        }
+      }
+
+      while (repeat) {
+        std::cout << "Por favor intentelo de nuevo, introducza un numero entero: ";
+        std::cin >> user_number;
+        for (int j{0}; j < int(user_number.size()); ++j) {
+          if ((j == 0) && (user_number[j] == '-')) continue;
+          if (!(isdigit(j) != 0)) {
+            repeat = true;
+            break;
+          }
+          if (j == (int(user_number.size()) - 1)) repeat = false;
+        }
+      }
+
+      aux[i] = std::stoi(user_number);
+    }
+
+    test_ordenation->SetVec(aux); ///< Segundo elemento eligiendo el usuario
   }
+
+  std::cout << "Algoritmo a utilizar: ";
+  Strategy<int>* strategy{NULL};
+  if (kTypeOfAlgorithm == "-s") {
+    strategy = new Selection<int>;
+    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    std::cout << "Seleccion\n";
+  } else if (kTypeOfAlgorithm == "-q") {
+    strategy = new QuickSort<int>;
+    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    std::cout << "QuickSort\n";
+  } else if (kTypeOfAlgorithm == "-S") {
+    strategy = new ShellSort<int>;
+    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    std::cout << "ShellSort\n";
+  } else if (kTypeOfAlgorithm == "-h") {
+    strategy = new HeapSort<int>;
+    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    std::cout << "HeapSort\n";
+  } else if (kTypeOfAlgorithm == "-r") {
+    strategy = new RadixSort<int>;
+    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    std::cout << "RadixSort\n";
+  }
+
+  test_ordenation->Execute(); ///< Ejecutamos el algoritmo de ordenacion
+
+  test_ordenation->~TestOrdenation();
+  test_ordenation = NULL;
 
   return 0;
 }

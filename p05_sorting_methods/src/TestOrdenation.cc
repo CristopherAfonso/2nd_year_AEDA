@@ -40,7 +40,7 @@ TestOrdenation<Key>::TestOrdenation(void) : n_(0), vec_(), strategy_(NULL) {}
  * su funcionalidad exacta, deberia consultar el algoritmo particular a usar
  * para saberlo, cada algoritmo puede usar este parametro para distintos fines
  */
-template <typename Key>
+template<typename Key>
 void TestOrdenation<Key>::SetN(const unsigned int& n) {n_ = n;}
 
 /**
@@ -51,7 +51,7 @@ void TestOrdenation<Key>::SetN(const unsigned int& n) {n_ = n;}
  * contenidos en el atributo interno 'vec_')
  * @param vec es el contenedor de los datos que vamos a ordenar
  */
-template <typename Key>
+template<typename Key>
 void TestOrdenation<Key>::SetVec(const std::vector<Key>& vec) {vec_ = vec;}
 
 /**
@@ -62,7 +62,7 @@ void TestOrdenation<Key>::SetVec(const std::vector<Key>& vec) {vec_ = vec;}
  * @param strategy atributo que decide cual sera el algoritmo de ordenacion
  * que se seguira para ordenar los datos
  */
-template <typename Key>
+template<typename Key>
 void TestOrdenation<Key>::SetStrategy(Strategy<Key>* strategy) {strategy_ = strategy;}
 
 /**
@@ -72,5 +72,25 @@ void TestOrdenation<Key>::SetStrategy(Strategy<Key>* strategy) {strategy_ = stra
  * @tparam Key tipo de dato que tienen los datos a ser ordenados
  */
 template<typename Key>
-void TestOrdenation<Key>::Execute(void) {strategy_->Sort(vec_, n_);}
+void TestOrdenation<Key>::Execute(void) {
+  std::cout << "Vector inicial: ";
+  for (auto i: vec_) std::cout << i << " ";
+  std::cout << "\n\n";
+  strategy_->Sort(vec_, n_);
+}
 
+/**
+ * @brief Sobrecarga del operador =
+ * 
+ * @tparam Key es el tipo de dato de los datos que van a ser ordenados
+ * @param test_ordenation es un objeto de la misma clase que el objeto que
+ * invoca al metodo
+ * @return TestOrdenation<Key>& se retorna el mismo objeto que invoca al metodo
+ */
+template<typename Key>
+TestOrdenation<Key>& TestOrdenation<Key>::operator=(const TestOrdenation<Key>& test_ordenation) {
+  n_ = test_ordenation.n_;
+  vec_ = test_ordenation.vec_;
+  strategy_ = test_ordenation.strategy_;
+  return *this;
+}

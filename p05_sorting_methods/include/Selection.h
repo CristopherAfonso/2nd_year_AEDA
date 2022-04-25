@@ -41,6 +41,7 @@
 template<class Key>
 class Selection: public Strategy<Key> {
  public:
+  Selection(void) = default;
   void Sort(std::vector<Key>& vec, unsigned int& n) override;
 };
 

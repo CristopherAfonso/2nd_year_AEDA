@@ -48,6 +48,7 @@ class TestOrdenation {
   void SetVec(const std::vector<Key>& vec);
   void SetStrategy(Strategy<Key>* strategy);
   void Execute(void);
+  TestOrdenation& operator=(const TestOrdenation& test_ordenation);
 
  private:
   unsigned int n_;
