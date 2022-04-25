@@ -42,7 +42,7 @@ void RadixSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
   /// Haga una clasificación de conteo para cada dígito
   /// Tenga en cuenta que en lugar de pasar el número de dígito, se pasa exp
   /// exp es 10^i donde i es el número de dígito actual
-  for (int exp{1}; (m / exp) > 0; exp *= 10) *this->CountSort(vec, n, exp);
+  for (int exp{1}; (max_item / exp) > 0; exp *= 10) *this->CountSort(vec, n, exp);
 }
 
 /**
@@ -54,7 +54,7 @@ void RadixSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
  * @param n tamaño del contenedor de datos
  * @return int elemento de mayor valor dentro del parametro vec
  */
-template <typename key>
+template <typename Key>
 int RadixSort<Key>::GetMaxItem(const std::vector<Key>& vec, const unsigned int& n) const {
   int max_item{vec[0]};
   for (int i{1}; i < n; ++i) if (vec[i] > max_item) max_item = vec[i];
@@ -84,7 +84,7 @@ void RadixSort<Key>::CountSort(std::vector<Key>& vec, unsigned int& n, unsigned 
 
   /// Construye el array output
   for (int i{n - 1}; i >= 0; --i) {
-    output[count[(vec[i] / exp) % 10] - 1] = vec[i]
+    output[count[(vec[i] / exp) % 10] - 1] = vec[i];
     count[(vec[i] / exp) % 10]--;
 
     for (auto j: output) std::cout << j << " " << std::endl;
