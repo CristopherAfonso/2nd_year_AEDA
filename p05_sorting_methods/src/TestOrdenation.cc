@@ -38,7 +38,7 @@
  * para saberlo, cada algoritmo puede usar este parametro para distintos fines
  */
 template <typename Key>
-void TestOrdenation<Key>::SetN(const unsigned int& n) { n_ = n; }
+void TestOrdenation<Key>::SetN(const unsigned int& n) {n_ = n;}
 
 /**
  * @brief Setter del atributo interno 'vec_', este atributo contiene los datos
@@ -49,7 +49,7 @@ void TestOrdenation<Key>::SetN(const unsigned int& n) { n_ = n; }
  * @param vec es el contenedor de los datos que vamos a ordenar
  */
 template <typename Key>
-void TestOrdenation<Key>::SetVec(const std::vector<Key>& vec) { vec_ = vec; }
+void TestOrdenation<Key>::SetVec(const std::vector<Key>& vec) {vec_ = vec;}
 
 /**
  * @brief Setter del atributo interno 'strategy_', este atributo decide cual
@@ -60,9 +60,7 @@ void TestOrdenation<Key>::SetVec(const std::vector<Key>& vec) { vec_ = vec; }
  * que se seguira para ordenar los datos
  */
 template <typename Key>
-void TestOrdenation<Key>::SetStrategy(Strategy<Key>* strategy) {
-  strategy_ = strategy;
-}
+void TestOrdenation<Key>::SetStrategy(Strategy<Key>* strategy) {strategy_ = strategy;}
 
 /**
  * @brief Metodo que se encarga de coger todos los atributos internos del
@@ -71,6 +69,5 @@ void TestOrdenation<Key>::SetStrategy(Strategy<Key>* strategy) {
  * @tparam Key tipo de dato que tienen los datos a ser ordenados
  */
 template<typename Key>
-void TestOrdenation<Key>::Execute(void) {
+void TestOrdenation<Key>::Execute(void) {strategy_->Sort(vec_, n_);}
 
-}

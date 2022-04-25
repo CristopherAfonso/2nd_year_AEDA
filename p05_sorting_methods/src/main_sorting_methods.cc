@@ -35,6 +35,6 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-  std::cout << "piola\n";
+  
   return 0;
 }
