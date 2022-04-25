@@ -28,3 +28,24 @@
 
 #include "../include/RadixSort.h"
 
+/**
+ * @brief Implementación del algoritmo RadixSort para ordenar datos
+ * 
+ * @tparam Key tipo de datos que tienen los datos a ser ordenados
+ * @param vec atributo que contiene los datos a ser ordenados
+ * @param n es el digito en el que queremos que se base la ordenacion, si vale
+ * 0, el numero entero mas a la derecha sera el que se usara para la ordenacion
+ * si vale 1, el segundo mas a la derecha entero, etc...
+ */
+template<typename Key>
+void RadixSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
+  std::vector<std::vector<Key>> aux(10);
+  int div{10 * n}; ///< divisor del numero que nos dira su posicion
+  if (div == 0) div = 1; ///< asi nunca dividiremos por cero
+  for (auto i: vec) aux[((i % (10 * (n + 1)))) / div].emplace_back(i);
+  
+}
+
+    // /// mostramos el vector por pantalla tras hacer la iteracion del algoritmo
+    // for (auto j: vec) std::cout << j << " " << std::endl;
+    // std::cout << std::endl;

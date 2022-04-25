@@ -32,7 +32,7 @@
 #ifndef _TESTORDENATION_
 #define _TESTORDENATION_
 
-#include "../include/Strategy.h"
+#include "Strategy.h"
 
 /**
  * @brief Clase que encapsula un metodo de ordenacion de datos y unos datos, y
@@ -40,7 +40,7 @@
  * 
  * @tparam Key Es el tipo de dato que tienen los datos a ordenar.
  */
-template <typename Key>
+template <class Key>
 class TestOrdenation {
  public:
   TestOrdenation(void);

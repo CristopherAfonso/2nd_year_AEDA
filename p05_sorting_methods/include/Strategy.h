@@ -33,6 +33,7 @@
 #ifndef _STRATEGY_
 #define _STRATEGY_
 
+#include <iostream>
 #include <vector>
 
 /**
@@ -40,11 +41,11 @@
  * 
  * @tparam Key Es el tipo de dato que tienen los datos que se van a ordenar
  */
-template <typename Key>
+template <class Key>
 class Strategy {
-  public:
-   virtual void Sort<Key>(std::vector<Key>& vec, unsigned int& N) = 0;
-   virtual ~Strategy() = default;
+ public:
+  virtual void Sort(std::vector<Key>& vec, unsigned int& n) = 0;
+  virtual ~Strategy() = default;
 };
 
 #endif
