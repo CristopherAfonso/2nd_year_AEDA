@@ -28,6 +28,9 @@
 
 #include "../include/TestOrdenation.h"
 
+template<typename Key>
+TestOrdenation<Key>::TestOrdenation(void) : n_(0), vec_(), strategy_(NULL) {}
+
 /**
  * @brief Setter del atributo n_, dependiendo del metodo de ordenacion, este
  * atributo tendra una u otra funcion dentro del algoritmo

@@ -29,6 +29,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime> ///< Funcion time()
+#include <stdlib.h>
+
 #include "TestOrdenation.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);

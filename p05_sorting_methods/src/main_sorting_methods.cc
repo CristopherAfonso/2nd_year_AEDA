@@ -35,6 +35,24 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-  
+
+  const std::string kWayToIntroduceElements{argv[1]};
+  const std::string kNumberOfElements{argv[2]};
+  const std::string kTypeOfAlgorithm{argv[3]};
+  TestOrdenation<int> test_ordenation;
+
+  if (kWayToIntroduceElements == "-R") {
+    srand(time(NULL));
+    std::vector<int> aux(std::stoi(KNumerOfElements));
+
+    for (int i{0}; i < std::stoi(kNumberOfElements); ++i)
+      aux[i] = (rand() % 9000) + 1000;
+    
+    test_ordenation.SetVec(aux);
+
+  } else if (kWayToIntroduceElements == "-C") {
+
+  }
+
   return 0;
 }
