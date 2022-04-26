@@ -61,7 +61,7 @@ class HeapSort: public Strategy<Key> {
 template<typename Key>
 void HeapSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
   std::cout << "Fase 1, inserciones\n";
-  for (int i{int(n) / 2}; i > 0; --i) {
+  for (int i{int(n) / 2 - 1}; i >= 0; --i) {
     this->PushDown(i, vec, n);
     for (auto j: vec) std::cout << j << " ";
     std::cout << std::endl;
@@ -69,9 +69,9 @@ void HeapSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
   std::cout << std::endl;
   
   std::cout << "Fase 2, extracciones\n";
-  for (int i{int(n)}; i > 1; --i) {
-    this->Swap(vec[1], vec[i]);
-    this->PushDown(1, vec, i - 1);
+  for (int i{int(n) - 1}; i > 0; --i) {
+    this->Swap(vec[0], vec[i]);
+    this->PushDown(0, vec, i);
     for (auto j: vec) std::cout << j << " ";
     std::cout << std::endl;
   }
@@ -89,21 +89,22 @@ void HeapSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
  */
 template<typename Key>
 void HeapSort<Key>::PushDown(int i, std::vector<Key>& vec, int n) {
-  int son{0};
-  int son_first{0};
-  int son_second{0};
-  while ((2 * i) <= n) {
-    son_first = 2 * i;
-    son_second = son_first + 1;
-    if (son_first == n) son = son_first;
-    else if (vec[son_first] > vec[son_second]) son = son_first;
-    else son = son_second;
+  int largest{i};
+  int left{2 * i + 1};
+  int right{2 * i + 2};
 
-    if (vec[son] <= vec[i]) break;
-    else {
-      this->Swap(vec[i], vec[son]);
-      i = son;
-    }
+  /// Si el hijo izquierdo es mas grande que el padre
+  if ((left < n) && (vec[left] > vec[largest])) largest = left;
+  
+  /// Si el hijo derecho es mas grande que el mas grande hasta ahora
+  if ((right < n) && (vec[right] > vec[largest])) largest = right;
+  
+  /// Si el mas grande no es el padre
+  if (largest != i) {
+    this->Swap(vec[i], vec[largest]);
+  
+    /// Llamamos recursivamente al sub-arbol afectado
+    this->PushDown(largest, vec, n);
   }
 }
 
