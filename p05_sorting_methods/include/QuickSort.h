@@ -78,7 +78,7 @@ template<typename Key>
 void QuickSort<Key>::QSort(std::vector<Key>& vec, unsigned int begin, unsigned int end) {
   unsigned int i{begin};
   unsigned int f{end};
-  Key p{vec[(i + f) / 2]}; /// Pivote
+  double p{double(vec[(i + f) / 2])}; ///< Pivote
 
   while (i <= f) {
     while (vec[i] < p) ++i;
