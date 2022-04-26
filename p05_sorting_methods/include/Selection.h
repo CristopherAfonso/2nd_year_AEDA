@@ -45,4 +45,35 @@ class Selection: public Strategy<Key> {
   void Sort(std::vector<Key>& vec, unsigned int& n) override;
 };
 
+/// Todos metodos deberian ir en el archivo .cc pero si estan alli el
+/// compilador no los reconoce y por eso los puse aqui
+
+/**
+ * @brief Implementación del algoritmo de Seleccion para ordenar datos
+ * 
+ * @tparam Key tipo de datos que tienen los datos a ser ordenados
+ * @param vec atributo que contiene los datos a ser ordenados
+ * @param n es el tamaño del parametro vec
+ */
+template<typename Key>
+void Selection<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
+  Key aux; ///< Valor a poner en la parte ordenada en cada iteracion
+  for (int i{0}; i < (int(n) - 1); ++i) {
+    int min_pos{i};
+    for (int j{i + 1}; j < int(n); ++j) {
+      if (vec[j] < vec[min_pos]) {
+        min_pos = j;
+        aux = vec[min_pos];
+      }
+    }
+
+    vec[min_pos] = vec[i];
+    vec[i] = aux;
+
+    /// mostramos el vector por pantalla tras hacer la iteracion del algoritmo
+    for (auto j: vec) std::cout << j << " ";
+    std::cout << std::endl;
+  }
+}
+
 #endif 

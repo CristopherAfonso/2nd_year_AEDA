@@ -32,6 +32,7 @@
  */
 
 #include "../include/main_functions.h"
+#include "../include/TestOrdenation.h"
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
@@ -63,7 +64,7 @@ int main(int argc, char* argv[]) {
       /// Comprobamos si es un string que puede ser pasado a int
       for (int j{0}; j < int(user_number.size()); ++j) {
         if ((j == 0) && (user_number[j] == '-')) continue;
-        if (!(isdigit(j) != 0)) {
+        if (!(isdigit(user_number[j]) != 0)) {
           repeat = true;
           break;
         }
@@ -74,7 +75,7 @@ int main(int argc, char* argv[]) {
         std::cin >> user_number;
         for (int j{0}; j < int(user_number.size()); ++j) {
           if ((j == 0) && (user_number[j] == '-')) continue;
-          if (!(isdigit(j) != 0)) {
+          if (!(isdigit(user_number[j]) != 0)) {
             repeat = true;
             break;
           }
@@ -89,26 +90,20 @@ int main(int argc, char* argv[]) {
   }
 
   std::cout << "Algoritmo a utilizar: ";
-  Strategy<int>* strategy{NULL};
   if (kTypeOfAlgorithm == "-s") {
-    strategy = new Selection<int>;
-    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    test_ordenation->SetStrategy(new Selection<int>); ///< Tercer elemento
     std::cout << "Seleccion\n";
   } else if (kTypeOfAlgorithm == "-q") {
-    strategy = new QuickSort<int>;
-    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    test_ordenation->SetStrategy(new QuickSort<int>); ///< Tercer elemento
     std::cout << "QuickSort\n";
   } else if (kTypeOfAlgorithm == "-S") {
-    strategy = new ShellSort<int>;
-    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    test_ordenation->SetStrategy(new ShellSort<int>); ///< Tercer elemento
     std::cout << "ShellSort\n";
   } else if (kTypeOfAlgorithm == "-h") {
-    strategy = new HeapSort<int>;
-    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    test_ordenation->SetStrategy(new HeapSort<int>); ///< Tercer elemento
     std::cout << "HeapSort\n";
   } else if (kTypeOfAlgorithm == "-r") {
-    strategy = new RadixSort<int>;
-    test_ordenation->SetStrategy(strategy); ///< Tercer elemento
+    test_ordenation->SetStrategy(new RadixSort<int>); ///< Tercer elemento
     std::cout << "RadixSort\n";
   }
 

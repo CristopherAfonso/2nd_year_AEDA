@@ -32,12 +32,12 @@
 #include <ctime> ///< Funcion time()
 #include <stdlib.h>
 
-#include "TestOrdenation.h"
-#include "Selection.h"
-#include "QuickSort.h"
-#include "ShellSort.h"
-#include "HeapSort.h"
-#include "RadixSort.h"
+#include "../include/Selection.h"
+#include "../include/QuickSort.h"
+#include "../include/ShellSort.h"
+#include "../include/HeapSort.h"
+#include "../include/RadixSort.h"
+#include "../include/TestOrdenation.h"
 
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);
