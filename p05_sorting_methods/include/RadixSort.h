@@ -65,7 +65,10 @@ void RadixSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
   /// Haga una clasificación de conteo para cada dígito
   /// Tenga en cuenta que en lugar de pasar el número de dígito, se pasa exp
   /// exp es 10^i donde i es el número de dígito actual
-  for (unsigned int exp{1}; (max_item / int(exp)) > 0; exp *= 10) this->CountSort(vec, n, exp);
+  for (unsigned int exp{1}; (max_item / int(exp)) > 0; exp *= 10) {
+    this->CountSort(vec, n, exp);
+    std::cout << "\n";
+  }
 }
 
 /**

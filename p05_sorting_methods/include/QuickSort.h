@@ -44,7 +44,8 @@ class QuickSort: public Strategy<Key> {
   void Sort(std::vector<Key>& vec, unsigned int& n) override;
   
  private:
-  void QSort(std::vector<Key>& vec, unsigned int begin, unsigned int end);
+  void QSort(std::vector<Key>& vec, int begin, int end);
+  int Partition(std::vector<Key>& vec, const int& begin, const int& end);
   void Swap(Key& i, Key& j);
 };
 
@@ -63,7 +64,7 @@ class QuickSort: public Strategy<Key> {
  */
 template<typename Key>
 void QuickSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
-  this->QSort(vec, static_cast<unsigned int>(0), n - 1);
+  this->QSort(vec, 0, int(n - 1));
 }
 
 /**
@@ -75,25 +76,48 @@ void QuickSort<Key>::Sort(std::vector<Key>& vec, unsigned int& n) {
  * @param end posicion del ultimo elemento donde empieza la subsecuencia
  */
 template<typename Key>
-void QuickSort<Key>::QSort(std::vector<Key>& vec, unsigned int begin, unsigned int end) {
-  unsigned int i{begin};
-  unsigned int f{end};
-  double p{double(vec[(i + f) / 2])}; ///< Pivote
+void QuickSort<Key>::QSort(std::vector<Key>& vec, int begin, int end) {
+  if (begin >= end) return; ///< Caso base
+  int pivot{this->Partition(vec, begin, end)}; ///< Particionamos el vector
+  this->QSort(vec, begin, pivot - 1); ///< Ordenamos la parte izquierda
+  this->QSort(vec, pivot + 1, end); ///< Ordenamos la parte derecha
+}
 
-  while (i <= f) {
-    while (vec[i] < p) ++i;
-    while (vec[f] > p) --f;
-    if (i <= f) {
-      this->Swap(vec[i], vec[f]);
-      ++i;
-      --f;
-    }
+/**
+ * @brief Metodo que ordena una particion en concreta de un vector
+ * 
+ * @tparam Key es el tipo de dato que tienen los datos a ser ordenados
+ * @param vec es el contenedor de los datos a ser ordenados
+ * @param begin es la posicion inicial de la particion
+ * @param end es la posicion final de la particion
+ * @return int es el pivote de la particion que invoco a la funcion
+ */
+template<typename Key>
+int QuickSort<Key>::Partition(std::vector<Key>& vec, const int& begin, const int& end) {
+  int pivot{vec[begin]};
+  int count{0};
+  
+  for (int i{begin + 1}; i <= end; ++i) if (vec[i] <= pivot) ++count;
+
+  /// Le damos al pivote su posicion correcta
+  int pivot_index{begin + count}; 
+  this->Swap(vec[pivot_index], vec[begin]);
+
+  for (auto i: vec) std::cout << i << " ";
+  std::cout << std::endl;
+
+  /// Ordenamos las partes izquierda y derecha del elemento pivote
+  int i{begin};
+  int j{end};
+  while ((i < pivot_index) && (j > pivot_index)) {
+    while (vec[i] <= pivot) ++i;
+    while (vec[j] > pivot) --j;
+    if ((i < pivot_index) && (j > pivot_index)) this->Swap(vec[i++], vec[j--]);
+    for (auto k: vec) std::cout << k << " ";
+    std::cout << std::endl;
   }
 
-  for (auto j: vec) std::cout << j << " ";
-  std::cout << std::endl;
-  if (begin < f) QSort(vec, begin, f);
-  if (i < end) QSort(vec, i, end);
+  return pivot_index;
 }
 
 /**

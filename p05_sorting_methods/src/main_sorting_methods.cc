@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
     test_ordenation->SetVec(aux); ///< Segundo elemento eligiendo el usuario
   }
 
-  std::cout << "Algoritmo a utilizar: ";
+  std::cout << "\nAlgoritmo a utilizar: ";
   if (kTypeOfAlgorithm == "-s") {
     test_ordenation->SetStrategy(new Selection<int>); ///< Tercer elemento
     std::cout << "Seleccion\n";
@@ -108,6 +108,7 @@ int main(int argc, char* argv[]) {
   }
 
   test_ordenation->Execute(); ///< Ejecutamos el algoritmo de ordenacion
+  std::cout << "\n";
 
   test_ordenation->~TestOrdenation();
   test_ordenation = NULL;
