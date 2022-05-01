@@ -28,3 +28,8 @@
 
 #include "../include/main_functions.h"
 
+using std::cout;
+using std::cerr;
+
+
+

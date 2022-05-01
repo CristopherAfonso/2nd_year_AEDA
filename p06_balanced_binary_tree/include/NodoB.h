@@ -32,6 +32,32 @@
 
 #include <iostream>
 
+/**
+ * @brief Clase que implementa un nodo binario de un arbol binario
+ * 
+ * @tparam Key Es el tipo de dato del dato que se guardará en el nodo
+ */
+template<class Key>
+class NodoB {
+ public:
+  NodoB(void);
+  NodoB(const Key& data, NodoB<Key>* izdo = NULL, NodoB<Key>* dcho = NULL);
 
+  Key GetData(void) const;
+  NodoB<Key>* GetPtrIzdo(void) const;
+  NodoB<Key>* GetPtrDcho(void) const;
+  void SetData(const Key& data);
+  void SetPtrIzdo(NodoB<Key>* izdo = NULL);
+  void SetPtrDcho(NodoB<Key>* dcho = NULL);
+
+  NodoB<Key>& operator=(const NodoB<Key>& nodo);
+  template<typename T>
+  friend std::ostream& operator<<(std::ostream& out, const NodoB<T>& nodo);
+
+ private:
+  Key data_;
+  NodoB<Key>* izdo_;
+  NodoB<Key>* dcho_;
+};
 
 #endif
