@@ -35,6 +35,16 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-  
+
+  // paso 1 usar Key = int
+
+  // paso 2 crear un AB<Key> vacio
+
+  // paso 3 presentar un menu con las opciones 0-salir, 1-insertar, 2-buscar, 3-mostrar arbol inorden
+
+  // paso 4 para cada operacion 1 o 2 se pide el valor clave y se realiza la operacion en el AB<Key>
+
+  // paso 5 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
+
   return 0;
 }

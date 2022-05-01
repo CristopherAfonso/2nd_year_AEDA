@@ -32,8 +32,32 @@
 #ifndef _AB_
 #define _AB_
 
+#include <iostream>
+#include <queue>
+
 #include "NodoB.h"
 
+/**
+ * @brief Clase que implementa un arbol binario generico, clase abstracta
+ * 
+ * @tparam Key tipo de dato del dato que se guardará en cada nodo del arbol
+ */
+template<class Key>
+class AB {
+ public:
+  AB(const NodoB<Key>& nodo = NULL);
+  virtual ~AB() = default;
 
+  virtual bool Insert(const Key& data) = 0;
+  virtual bool Search(const Key& data) const = 0;
+  void Inorder(const NodoB<Key>& nodo = NULL) const;
+  void LevelTour(const NodoB<Key>& nodo = NULL) const;
+
+  template<typename T>
+  friend std::ostream& operator<<(std::ostream& out, const AB<T>& ab);
+
+ protected:
+  NodoB<Key>* root_;
+};
 
 #endif

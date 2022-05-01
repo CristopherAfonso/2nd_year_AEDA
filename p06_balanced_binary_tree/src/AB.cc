@@ -28,3 +28,51 @@
 
 #include "../include/AB.h"
 
+/**
+ * @brief Constructor de la clase AB, constructor que usaran sus clases hijas
+ * 
+ * @tparam Key tipo de dato del dato que guardan los nodos del arbol
+ * @param nodo nuevo nodo raiz del arbol
+ */
+template<typename Key>
+AB<Key>::AB(const NodoB<Key>& nodo) : root_(nodo) {}
+
+/**
+ * @brief Metodo que recorre el arbol binario siguiendo el algoritmo de inorden
+ * 
+ * @tparam Key es el tipo de dato que guardan los nodos del arbol
+ */
+template<typename Key>
+void AB<Key>::Inorder(const NodoB<Key>& nodo) const {
+  if (nodo == NULL) return;
+  this->Inorder(nodo->GetPtrIzdo());
+  std::cout << nodo->GetData() << " ";
+  this->Inorder(nodo->GetPtrDcho());
+}
+
+/**
+ * @brief Metodo que permite recorrer un nodo y sus subarboles segun el
+ * algoritmo de recorrido por niveles
+ * 
+ * @tparam Key tipo de dato que guardan los nodos del arbol
+ * @param nodo es donde empezamos el recorrido descendente
+ */
+template<typename Key>
+void AB<Key>::LevelTour(const NodoB<Key>& nodo) const {
+  
+}
+
+/**
+ * @brief Sobrecarga del operador << que permite ver el arbol binario siguiendo
+ * el algoritmo de recorrido por niveles
+ * 
+ * @tparam T tipo de dato que guardan los nodos del arbol
+ * @param out salida estandar a la que vamos a mostrar los datos
+ * @param ab arbol binario que queremos mostrar
+ * @return std::ostream& es lo que se va a mostrar por pantalla
+ */
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const AB<T>& ab) {
+  
+  return out;
+}
