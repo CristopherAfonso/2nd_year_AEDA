@@ -35,4 +35,5 @@ void MainMessage(const std::string& kProgramName, const std::string& kHelp);
 void HelpMessage(const std::string& kProgramName);
 void WrongNumberOfArguments(const std::string& kProgramName, 
                             const std::string& kHelp);
+void WrongArguments(const std::string& kProgramName, const std::string& kHelp);
 void Usage(const int& argc, char* argv[]);
