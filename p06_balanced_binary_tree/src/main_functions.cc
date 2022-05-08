@@ -86,6 +86,12 @@ void WrongArguments(const std::string& kProgramName, const std::string& kHelp) {
   cerr << "para mas información\n";
 }
 
+/**
+ * @brief funcion que comrpueba que los argumentos dados al programa son correctos
+ * 
+ * @param argc numero de argumentos dados al programa
+ * @param argv vector de argumentos del programa
+ */
 void Usage(const int& argc, char* argv[]) {
   const std::string kProgramName{argv[0]};
   const std::string kHelp{"--help"};
