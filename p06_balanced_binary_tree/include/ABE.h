@@ -51,6 +51,8 @@ class ABE : public AB<Key> {
  private:
   int SubtreeSize(const NodoB<Key>* nodo) const;
   bool BalancedBranch(NodoB<Key>* nodo) const;
+  bool InsertInBalancedBranch(const Key& data, NodoB<Key>* nodo);
+  bool SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const;
 };
 
 #endif

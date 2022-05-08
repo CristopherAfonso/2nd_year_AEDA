@@ -49,7 +49,12 @@ ABE<Key>::ABE(const NodoB<Key>* nodo) : AB<Key>::AB(nodo) {}
 template<typename Key>
 bool ABE<Key>::Insert(const Key& data) {
   bool result{false};
-
+  if (this->root_ == nullptr) {
+    this->root_ = new NodoB<Key>(data);
+    result = true;
+  } else {
+    result = this->InsertInBalancedBranch(data, this->root_);
+  }
   return result;
 }
 
@@ -65,7 +70,7 @@ bool ABE<Key>::Insert(const Key& data) {
 template<typename Key>
 bool ABE<Key>::Search(const Key& data) const {
   bool result{false};
-
+  result = this->SearchDataPreorder(this->root_, data);
   return result;
 }
 
@@ -133,4 +138,57 @@ bool ABE<Key>::BalancedBranch(NodoB<Key>* nodo) const {
   default: 
     return false;
   }
+}
+
+/**
+ * @brief metodo que nos permite insertar un dato en una rama concreta de un
+ * arbol binario equilibrado
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param data es el dato que queremos insertar en el arbol
+ * @param nodo es donde empieza la rama donde queremos insertar el dato
+ * @return true el dato si se pudo insertar en la rama
+ * @return false el dato no se pudo insertar en la rama
+ */
+template<typename Key>
+bool ABE<Key>::InsertInBalancedBranch(const Key& data, NodoB<Key>* nodo) {
+  bool result{false};
+  if (this->SizeBranch(nodo->GetPtrIzdo()) <= this->SizeBranch(nodo->GetPtrDcho())) {
+    if (nodo->GetPtrIzdo() != nullptr) {
+      result = this->InsertInBalancedBranch(data, nodo->GetPtrIzdo());
+    } else {
+      nodo->SetPtrIzdo(new NodoB<Key>(data));
+      result = true;
+    }
+  } else {
+    if (nodo->GetPtrDcho() != nullptr) {
+      result = this->InsertInBalancedBranch(data, nodo->GetPtrDcho());
+    } else {
+      nodo->SetPtrDcho(new NodoB<Key>(data));
+      result = true;
+    }
+  }
+  return result;
+}
+
+/**
+ * @brief metodo que busca un dato en un subarbol usando el metodo de Preorder
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo es donde empieza el subarbol
+ * @param data es el dato a buscar
+ * @return true el dato si esta en el arbol
+ * @return false el adto no esta en el arbol
+ */
+template<typename Key>
+bool ABE<Key>::SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const {
+  bool result{false};
+  if (nodo != nullptr) {
+    if (data == nodo->GetData()) result = true;
+    else {
+      result = this->SearchDataPreorder(nodo, data);
+      if (!result) result = this->SearchDataPreorder(nodo, data);
+    }
+  }
+  return result;
 }
