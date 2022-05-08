@@ -38,41 +38,51 @@ template<typename Key>
 AB<Key>::AB(const NodoB<Key>& nodo) : root_(nodo) {}
 
 /**
- * @brief Metodo que recorre el arbol binario siguiendo el algoritmo de inorden
+ * @brief metodo de extraccion que muestra el arbol binario por el algoritmo de
+ * niveles
  * 
- * @tparam Key es el tipo de dato que guardan los nodos del arbol
- */
-template<typename Key>
-void AB<Key>::Inorder(const NodoB<Key>& nodo) const {
-  if (nodo == NULL) return;
-  this->Inorder(nodo->GetPtrIzdo());
-  std::cout << nodo->GetData() << " ";
-  this->Inorder(nodo->GetPtrDcho());
-}
-
-/**
- * @brief Metodo que permite recorrer un nodo y sus subarboles segun el
- * algoritmo de recorrido por niveles
- * 
- * @tparam Key tipo de dato que guardan los nodos del arbol
- * @param nodo es donde empezamos el recorrido descendente
- */
-template<typename Key>
-void AB<Key>::LevelTour(const NodoB<Key>& nodo) const {
-  
-}
-
-/**
- * @brief Sobrecarga del operador << que permite ver el arbol binario siguiendo
- * el algoritmo de recorrido por niveles
- * 
- * @tparam T tipo de dato que guardan los nodos del arbol
- * @param out salida estandar a la que vamos a mostrar los datos
- * @param ab arbol binario que queremos mostrar
- * @return std::ostream& es lo que se va a mostrar por pantalla
+ * @tparam T tipo de dato de los datos del arbol binario
+ * @param out flujo de salida estandar
+ * @param ab puntero que contiene a una clase hija de la clase AB el cual
+ * queremos imprimir su arbol
+ * @return std::ostream& el metodo retorna una serie de caracteres a imprimir
  */
 template<typename T>
-std::ostream& operator<<(std::ostream& out, const AB<T>& ab) {
-  
+std::ostream& operator<<(std::ostream& out, const AB<T>* ab) {
+  std::queue<T> queue_aux;
+  NodoB<T>* nodo_aux();
+  int level{0};
+  int current_level{0};
+  queue_aux.push(ab->root_, 0);
+  while (!queue_aux.empty()) {
+    queue_aux.pop(nodo_aux, level);
+    if (level > current_level) {
+      current_level = level;
+      std::cout << "\n";
+    }
+    if (nodo_aux != nullptr) {
+      std::cout << "[" << *nodo_aux << "]";
+      queue_aux.push(nodo_aux->GetPtrIzdo(), level + 1);
+      queue_aux.push(nodo_aux->GetPtrDcho(), level + 1);
+    } else std::cout << "[.]";
+  }
   return out;
 }
+
+/**
+ * @brief Cambiamos el valor del atributo root_ por el dado al metodo
+ * 
+ * @tparam Key tipo de dato del arbol
+ * @param root nuevo valor del atributo root_
+ */
+template<typename Key>
+void AB<Key>::SetRoot(const NodoB<Key>* root) { root_ = root; }
+
+/**
+ * @brief Retornamos el puntero del atributo root_
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @return NodoB<Key>* puntero que apunta a la raiz del arbol
+ */
+template<typename Key>
+NodoB<Key>* AB<Key>::GetRoot(void) { return root_; }

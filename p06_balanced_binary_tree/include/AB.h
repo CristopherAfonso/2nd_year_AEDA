@@ -45,19 +45,20 @@
 template<class Key>
 class AB {
  public:
-  AB(const NodoB<Key>& nodo = NULL);
+  AB(const NodoB<Key>& nodo = nullptr);
   virtual ~AB() = default;
 
   virtual bool Insert(const Key& data) = 0;
   virtual bool Search(const Key& data) const = 0;
-  void Inorder(const NodoB<Key>& nodo = NULL) const;
-  void LevelTour(const NodoB<Key>& nodo = NULL) const;
-
+  virtual bool Delete(const Key& data) = 0;
+  virtual bool Inorden(const NodoB<Key>& nodo) = 0;
   template<typename T>
-  friend std::ostream& operator<<(std::ostream& out, const AB<T>& ab);
+  friend std::ostream& operator<<(std::ostream& out, const AB<T>* ab);
 
  protected:
   NodoB<Key>* root_;
+  void SetRoot(const NodoB<Key>* root);
+  NodoB<Key>* GetRoot(void);
 };
 
 #endif
