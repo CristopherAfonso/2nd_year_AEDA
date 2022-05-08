@@ -47,11 +47,15 @@ class AB {
  public:
   AB(const NodoB<Key>& nodo = nullptr);
   virtual ~AB() = default;
-
   virtual bool Insert(const Key& data) = 0;
   virtual bool Search(const Key& data) const = 0;
   virtual bool Delete(const Key& data) = 0;
-  virtual bool Inorden(const NodoB<Key>& nodo) = 0;
+  void Inorden(const NodoB<Key>* nodo) const;
+  void Prune(NodoB<Key>* nodo);
+  int Size(void) const;
+  int Height(void) const;
+  bool IsEmpty(const NodoB<Key>* nodo) const;
+  bool IsLeaf(const NodoB<Key>* nodo) const;
   template<typename T>
   friend std::ostream& operator<<(std::ostream& out, const AB<T>* ab);
 
@@ -59,6 +63,8 @@ class AB {
   NodoB<Key>* root_;
   void SetRoot(const NodoB<Key>* root);
   NodoB<Key>* GetRoot(void);
+  int SizeBranch(NodoB<Key>* nodo) const;
+  int HeightN(NodoB<Key>* nodo) const;
 };
 
 #endif

@@ -30,8 +30,26 @@
 #ifndef _ABE_
 #define _ABE_
 
+#include <iostream>
+
 #include "AB.h"
 
-
+/**
+ * @brief implementacion de una clase que es un arbol binario equilibrado
+ * 
+ * @tparam Key tipo de dato de los datos del arbol binario equilibrado
+ */
+template<class Key>
+class ABE : public AB<Key> {
+ public:
+  ABE(const NodoB<Key>* nodo = nullptr);
+  
+  bool Insert(const Key& data) override;
+  bool Search(const Key& data) const override;
+  bool Delete(const Key& data) override;
+  
+ private:
+  
+};
 
 #endif

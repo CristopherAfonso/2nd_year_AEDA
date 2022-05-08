@@ -32,7 +32,6 @@
 
 #include <iostream>
 
-
 /**
  * @brief Clase que implementa un nodo binario de un arbol binario
  * 
