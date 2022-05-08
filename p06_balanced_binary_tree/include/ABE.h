@@ -43,13 +43,14 @@ template<class Key>
 class ABE : public AB<Key> {
  public:
   ABE(const NodoB<Key>* nodo = nullptr);
-  
   bool Insert(const Key& data) override;
   bool Search(const Key& data) const override;
   bool Delete(const Key& data) override;
+  bool Balanced(void) const;
   
  private:
-  
+  int SubtreeSize(const NodoB<Key>* nodo) const;
+  bool BalancedBranch(NodoB<Key>* nodo) const;
 };
 
 #endif

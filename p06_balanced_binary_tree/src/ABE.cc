@@ -84,3 +84,53 @@ bool ABE<Key>::Delete(const Key& data) {
   throw "error, operacion no permitida en este objeto";
   return false;
 }
+
+/**
+ * @brief metodo que se encarga de comprobar si el arbol binario esta
+ * equilibrado o no lo esta
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @return true el arbol si esta equilibrado
+ * @return false el arbol no esta equilibrado
+ */
+template<typename Key>
+bool ABE<Key>::Balanced(void) const {
+  return this->BalancedBranch(this->root_);
+}
+
+/**
+ * @brief metodo que cuenta los nodos de un subarbol, el que cuelga del nodo
+ * que le pasemos como parametro al metodo
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo donde empezaremos a contar lo nodos
+ * @return int es el numero de nodos que hay desde el nodo pasado como
+ * argumento
+ */
+template<typename Key>
+int ABE<Key>::SubtreeSize(const NodoB<Key>* nodo) const {
+  return this->SizeBranch(nodo);
+} 
+
+/**
+ * @brief Metodo que nos permite saber si una rama determinada de un arbol esta
+ * en equilibrio pasandole por parametro el nodo donde empieza
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo es donde empieza la rama
+ * @return true la rama si esta equilibrada
+ * @return false la rama no esta equilibrada
+ */
+template<typename Key>
+bool ABE<Key>::BalancedBranch(NodoB<Key>* nodo) const {
+  if (nodo == nullptr) return true;
+  int eq{this->SizeBranch(nodo->GetPtrIzdo()) - this->SizeBranch(nodo->GetPtrDcho())};
+  switch (eq) {
+  case -1:
+  case  0:
+  case  1:
+    return (this->BalancedBranch(nodo->GetPtrIzdo()) && this->BalancedBranch(nodo->GetPtrDcho()));
+  default: 
+    return false;
+  }
+}
