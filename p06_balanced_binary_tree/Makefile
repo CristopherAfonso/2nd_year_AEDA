@@ -1,7 +1,7 @@
 #Compilador
 CC = g++
 #Flags
-CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
+CFLAGS = -I -g -std=c++20 -Wall -Wextra -Wpedantic -Weffc++ #-Werror
 
 #Variables
 EJECUTABLE = balanced_binary_tree

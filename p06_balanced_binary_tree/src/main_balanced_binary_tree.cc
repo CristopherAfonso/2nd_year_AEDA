@@ -35,16 +35,65 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-
-  // paso 1 usar Key = int
-
-  // paso 2 crear un AB<Key> vacio
-
-  // paso 3 presentar un menu con las opciones 0-salir, 1-insertar, 2-buscar, 3-mostrar arbol inorden
-
-  // paso 4 para cada operacion 1 o 2 se pide el valor clave y se realiza la operacion en el AB<Key>
-
-  // paso 5 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
+  ///< paso 1 usar Key = int
+  AB<int>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
+  std::cout << "\nEste programa es una implementacion de un 'Arbol binario equilibrado'\n\n";
+  /// paso 3 presentar un menu con las opciones:
+  /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
+  std::string user_choice{""};
+  while (true) {
+    user_choice = "";
+    std::cout << "Elija la operacion a usar sobre el arbol binario equilibrado:\n";
+    std::cout << "[0] Salir\n";
+    std::cout << "[1] Insertar Clave\n";
+    std::cout << "[2] Buscar Clave\n";
+    std::cout << "[3] Eliminar Clave\n";
+    std::cout << "[4] Mostrar Arbol Inorden\n\n";
+    std::cout << "¿Operacion a realizar? ";
+    std::cin >> user_choice;
+    std::cout << "\n";
+    if ((user_choice != "0") && (user_choice != "1") && (user_choice != "2") && (user_choice  != "3")) {
+      std::cout << "Error: no se reconoce la operacion que quiere usar, intentelo de nuevo\n\n";
+    } else {
+      if (user_choice == "0") break;
+      if (user_choice == "4") {
+        std::cout << "Recorrido Inorden: ";
+        if (ab != nullptr) ab->InordenRoot();
+        std::cout << "\n\n";
+      }
+      /// paso 4 para cada operacion 1, 2 o 3 se pide el valor clave y se realiza la operacion en el AB<Key>
+      if ((user_choice == "1") || (user_choice == "2") || (user_choice == "3")) {
+        std::string aux;
+        std::cout << "¿Clave para la operacion? ";
+        std::cin >> aux;
+        /// paso 5 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
+        if (user_choice == "1") {
+          if (ab->Insert(std::stoi(aux))) {
+            std::cout << ab;
+          } else {
+            std::cout << "No se pudo insertar el dato";
+          }
+          std::cout << "\n\n";
+        }
+        if (user_choice == "2") {
+          if (ab->Search(std::stoi(aux))) {
+            std::cout << "El dato si se encuentra en el arbol binario";
+          } else {
+            std::cout << "El dato no se encuentra en el arbol binario";
+          }
+          std::cout << "\n\n";
+        }
+        if (user_choice == "3") {
+          if (ab->Delete(std::stoi(aux))) {
+            std::cout << ab;
+          } else {
+            std::cout << "No se pudo eliminar el dato";
+          }
+          std::cout << "\n\n";
+        }
+      }
+    }
+  }
 
   return 0;
 }

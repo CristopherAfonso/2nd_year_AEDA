@@ -51,6 +51,7 @@ class AB {
   virtual bool Search(const Key& data) const = 0;
   virtual bool Delete(const Key& data) = 0;
   void Inorden(const NodoB<Key>* nodo) const;
+  void InordenRoot(void) const;
   void Prune(NodoB<Key>* nodo);
   int Size(void) const;
   int Height(void) const;

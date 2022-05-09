@@ -38,7 +38,7 @@ template<typename Key>
 AB<Key>::AB(const NodoB<Key>& nodo) : root_(nodo) {}
 
 /**
- * @brief Metodo que recorre todo el arbol siguiendo el algoritmo Inorden
+ * @brief Metodo que recorre todo un subarbol siguiendo el algoritmo Inorden
  * 
  * @tparam Key tipo de dato de los datos del arbol
  * @param nodo es el nodo del cual empezamos a recorrre, la raiz de la busqueda
@@ -49,6 +49,17 @@ void AB<Key>::Inorden(const NodoB<Key>* nodo) const {
   this->Inorden(nodo->GetPtrIzdo());
   std::cout << nodo->GetData() << " ";
   this->Inorden(nodo->GetPtrDcho());
+}
+
+/**
+ * @brief metodo que recorre todo el arbol siguiendo el algritmo Inorden
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo es el nodo del cual empezamos a recorrre, la raiz de la busqueda
+ */
+template<typename Key>
+void AB<Key>::InordenRoot(void) const {
+  this->Inorden(this->root_);
 }
 
 /**

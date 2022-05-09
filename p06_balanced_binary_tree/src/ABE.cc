@@ -86,7 +86,7 @@ bool ABE<Key>::Search(const Key& data) const {
  */
 template<typename Key>
 bool ABE<Key>::Delete(const Key& data) {
-  throw "error, operacion no permitida en este objeto";
+  throw "error, operacion no permitida en este objeto\n";
   return false;
 }
 
