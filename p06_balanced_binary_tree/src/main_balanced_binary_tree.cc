@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
           if ((ab != nullptr) && ab->Delete(std::stoi(aux))) {
             std::cout << ab;
           } else {
-            std::cout << "No se pudo eliminar el dato";
+            std::cout << "No se elimino ningun dato";
           }
           std::cout << "\n\n";
         }
