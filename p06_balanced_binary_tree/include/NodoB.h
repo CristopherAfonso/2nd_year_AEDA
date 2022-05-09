@@ -169,5 +169,4 @@ std::ostream& operator<<(std::ostream& out, const NodoB<T>& nodo) {
   return out << nodo.data_;
 }
 
-
 #endif

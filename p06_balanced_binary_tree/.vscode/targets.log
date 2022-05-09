@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May  9 01:10:18 2022
+# Make data base, printed on Mon May  9 16:58:26 2022
 
 # Variables
 
@@ -29,7 +29,7 @@ OBJSRC = src
 # makefile (from 'Makefile', line 10)
 BINDIR = bin
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-efa0f1d5-df85-4dc0-9f4e-85878af10604.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-bcc7bc31-0eee-4ba9-968f-7673b5098797.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -71,7 +71,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = /home/themaster/.config/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
 LANG = C
 # environment
@@ -87,7 +87,7 @@ CURDIR := /home/themaster/Documentos/2nd_year_AEDA/p06_balanced_binary_tree
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -97,7 +97,7 @@ PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-XXXXXXuW95ej/agent.1562
+SSH_AUTH_SOCK = /tmp/ssh-XXXXXX9qVrDN/agent.1520
 # default
 .SHELLFLAGS := -c
 # environment
@@ -117,7 +117,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 21159
+VSCODE_PID = 2229
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -125,7 +125,7 @@ XDG_SESSION_TYPE = x11
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1931,unix/Fenix:/tmp/.ICE-unix/1931
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1900,unix/Fenix:/tmp/.ICE-unix/1900
 # makefile (from 'Makefile', line 7)
 EJECUTABLE = balanced_binary_tree
 # automatic
@@ -215,7 +215,7 @@ XDG_VTNR = 1
 # makefile
 .DEFAULT_GOAL := bin/balanced_binary_tree
 # environment
-SYSTEMD_EXEC_PID = 1484
+SYSTEMD_EXEC_PID = 1454
 # environment
 DISPLAY = :0
 # environment
@@ -237,7 +237,7 @@ SNAP_CONTEXT = PRfI_RZqYwhKj3mP-CADXCuVtfLvYgvOIXS8l7Y4HEnDH1jX_1JB
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 1644
+SSH_AGENT_PID = 1620
 # environment
 _ = /snap/code/95/usr/share/code/code
 # environment
@@ -279,11 +279,11 @@ PAPERSIZE = a4
 # automatic
 <F = $(notdir $<)
 # makefile (from 'Makefile', line 27)
+ 
 DEPS = $(DEPSSRC)/*.h
 # environment
 SNAP_VERSION = 57fd6d01
 # default
- 
 SUFFIXES := 
 # environment
 QT_AUTO_SCREEN_SCALE_FACTOR = 0
@@ -440,6 +440,6 @@ bin/balanced_binary_tree: build/AB.o build/ABE.o build/NodoB.o build/main_balanc
 # strcache performance: lookups = 46 / hit rate = 28%
 # hash-table stats:
 # Load=33/8192=0%, Rehash=0, Collisions=0/46=0%
-# Finished Make data base on Mon May  9 01:10:18 2022
+# Finished Make data base on Mon May  9 16:58:26 2022
 
  

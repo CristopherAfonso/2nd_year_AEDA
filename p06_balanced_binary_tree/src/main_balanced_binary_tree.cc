@@ -37,6 +37,7 @@ int main(int argc, char* argv[]) {
   Usage(argc, argv);
   ///< paso 1 usar Key = int
   AB<int>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
+  ab = new ABE<int>;
   std::cout << "\nEste programa es una implementacion de un 'Arbol binario equilibrado'\n\n";
   /// paso 3 presentar un menu con las opciones:
   /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
@@ -68,7 +69,7 @@ int main(int argc, char* argv[]) {
         std::cin >> aux;
         /// paso 5 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
         if (user_choice == "1") {
-          if (ab->Insert(std::stoi(aux))) {
+          if ((ab != nullptr) && ab->Insert(std::stoi(aux))) {
             std::cout << ab;
           } else {
             std::cout << "No se pudo insertar el dato";
@@ -76,7 +77,7 @@ int main(int argc, char* argv[]) {
           std::cout << "\n\n";
         }
         if (user_choice == "2") {
-          if (ab->Search(std::stoi(aux))) {
+          if ((ab != nullptr) && ab->Search(std::stoi(aux))) {
             std::cout << "El dato si se encuentra en el arbol binario";
           } else {
             std::cout << "El dato no se encuentra en el arbol binario";
@@ -84,7 +85,7 @@ int main(int argc, char* argv[]) {
           std::cout << "\n\n";
         }
         if (user_choice == "3") {
-          if (ab->Delete(std::stoi(aux))) {
+          if ((ab != nullptr) && ab->Delete(std::stoi(aux))) {
             std::cout << ab;
           } else {
             std::cout << "No se pudo eliminar el dato";
@@ -94,7 +95,11 @@ int main(int argc, char* argv[]) {
       }
     }
   }
+  if (ab != nullptr) {
+    ab->~AB();
+    ab = nullptr;
+  }
   std::cout << "Fin del programa\n\n";
-
+  
   return 0;
 }

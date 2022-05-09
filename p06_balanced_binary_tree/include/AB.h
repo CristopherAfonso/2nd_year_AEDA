@@ -45,7 +45,7 @@
 template<class Key>
 class AB {
  public:
-  AB(const NodoB<Key>& nodo = nullptr);
+  AB(NodoB<Key>* nodo = nullptr);
   virtual ~AB() = default;
   virtual bool Insert(const Key& data) = 0;
   virtual bool Search(const Key& data) const = 0;
@@ -58,7 +58,7 @@ class AB {
   bool IsEmpty(const NodoB<Key>* nodo) const;
   bool IsLeaf(const NodoB<Key>* nodo) const;
   template<typename T>
-  friend std::ostream& operator<<(std::ostream& out, const AB<T>* ab);
+  friend std::ostream& operator<<(std::ostream& out, const AB<T>* const ab);
 
  protected:
   NodoB<Key>* root_;
@@ -75,7 +75,7 @@ class AB {
  * @param nodo nuevo nodo raiz del arbol
  */
 template<typename Key>
-AB<Key>::AB(const NodoB<Key>& nodo) : root_(nodo) {}
+AB<Key>::AB(NodoB<Key>* nodo) : root_(nodo) {}
 
 /**
  * @brief Metodo que recorre todo un subarbol siguiendo el algoritmo Inorden
@@ -172,23 +172,23 @@ bool AB<Key>::IsLeaf(const NodoB<Key>* nodo) const {
  * @return std::ostream& el metodo retorna una serie de caracteres a imprimir
  */
 template<typename T>
-std::ostream& operator<<(std::ostream& out, const AB<T>* ab) {
-  std::queue<std::pair<NodoB<T>*, int>> queue_aux;
-  NodoB<T>* nodo_aux = nullptr;
-  int level{0};
+std::ostream& operator<<(std::ostream& out, const AB<T>* const ab) {
+  std::queue<std::pair<NodoB<T>*, int>> aux_queue;
+  std::pair<NodoB<T>*, int> aux_pair{ab->root_, 0};
   int current_level{0};
-  queue_aux.push(std::make_pair(ab->root_, 0));
-  while (!queue_aux.empty()) {
-    queue_aux.pop();
-    if (level > current_level) {
-      current_level = level;
-      std::cout << "\n";
+  aux_queue.push(aux_pair);
+  while (!aux_queue.empty()) {
+    aux_pair = aux_queue.front(); ///< Guardamos la parte inicial de la cola, luego la borramos
+    aux_queue.pop();
+    if (aux_pair.second > current_level) {
+      current_level = aux_pair.second;
+      out << "\n";
     }
-    if (nodo_aux == nullptr) std::cout << "[.]";
+    if (aux_pair.first == nullptr) out << "[.]";
     else {
-      std::cout << "[" << *(nodo_aux) << "]";
-      queue_aux.push(std::make_pair(nodo_aux->GetPtrIzdo(), level + 1));
-      queue_aux.push(std::make_pair(nodo_aux->GetPtrDcho(), level + 1));
+      out << "[" << aux_pair.first->GetData() << "]";
+      aux_queue.push(std::make_pair(aux_pair.first->GetPtrIzdo(), aux_pair.second + 1));
+      aux_queue.push(std::make_pair(aux_pair.first->GetPtrDcho(), aux_pair.second + 1));
     }
   }
   return out;
