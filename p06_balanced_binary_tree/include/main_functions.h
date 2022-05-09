@@ -31,9 +31,8 @@
 
 #include "ABE.h"
 
-void MainMessage(const std::string& kProgramName, const std::string& kHelp);
-void HelpMessage(const std::string& kProgramName);
+void HelpMessage(const std::string& kProgramName,
+                 const std::string& kHelp);
 void WrongNumberOfArguments(const std::string& kProgramName, 
                             const std::string& kHelp);
-void WrongArguments(const std::string& kProgramName, const std::string& kHelp);
 void Usage(const int& argc, char* argv[]);

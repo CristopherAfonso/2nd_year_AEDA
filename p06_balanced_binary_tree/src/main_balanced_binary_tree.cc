@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     std::cout << "¿Operacion a realizar? ";
     std::cin >> user_choice;
     std::cout << "\n";
-    if ((user_choice != "0") && (user_choice != "1") && (user_choice != "2") && (user_choice  != "3")) {
+    if ((user_choice != "0") && (user_choice != "1") && (user_choice != "2") && (user_choice  != "3") && (user_choice != "4")) {
       std::cout << "Error: no se reconoce la operacion que quiere usar, intentelo de nuevo\n\n";
     } else {
       if (user_choice == "0") break;
@@ -94,6 +94,7 @@ int main(int argc, char* argv[]) {
       }
     }
   }
+  std::cout << "Fin del programa\n\n";
 
   return 0;
 }

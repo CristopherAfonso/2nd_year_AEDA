@@ -32,28 +32,21 @@ using std::cout;
 using std::cerr;
 
 /**
- * @brief @brief Función que solo muestra un mensaje por pantalla sobre como
- * usar el programa
- * 
- * @param kProgramName nombre del programa que invoca la funcion
- * @param kHelp palabra clave para pedir mas instrucciones
- */
-void MainMessage(const std::string& kProgramName, const std::string& kHelp) {
-  cout << "Modo de empleo: " << kProgramName << " -d ";
-  cout << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
-  cout << "Para más información\n";
-}
-
-/**
  * @brief Función que solo muestra un mensaje de ayuda por pantalla cuando se
  * introduce la palabra clave para pedir instrucciones más detalladas sobre
  * como usar el programa.
  * 
  * @param kProgramName Es el nombre del actual programa, usado por el mensaje
  */
-void HelpMessage(const std::string& kProgramName) {
-  cout << "\n" << kProgramName << " -d\n\n";
-  cout << "-d ==> Despliega (display) un menu para ejecutar el programa\n\n";
+void HelpMessage(const std::string& kProgramName,
+                 const std::string& kHelp) {
+  cout << "\n" << kProgramName << " (" <<  kHelp << ")\n\n";
+  cout << "--help ==> Palabra clave para pedir indicaciones sobre como\n";
+  cout << "usar el programa\n\n";
+  cout << "Este programa es una implementación de un tipo de dato el cual\n";
+  cout << "es un arbol binario equilibrado, para usar el objeto basta con\n";
+  cout << "llamar al programa y se desplegara un menu interactivo que\n";
+  cout << "permite usar el arbol binario.\n\n";
 }
 
 /**
@@ -72,21 +65,6 @@ void WrongNumberOfArguments(const std::string& kProgramName,
 }
 
 /**
- * @brief Funcion que avisa al usuario mediante un mensaje de texto, que los
- * argumentos dados al programa son erroneos.
- * 
- * @param kProgramName Nombre del actual programa.
- * @param kHelp Palabra clave para pedir instrucciones específicas sobre como
- * usar el programa.
- */
-void WrongArguments(const std::string& kProgramName, const std::string& kHelp) {
-  cerr << "Warning!, hay algun error en los parametros que ha introducido al";
-  cerr << "programa,\nreviselos e intentelo de nuevo";
-  cerr << "\nPruebe: '" << kProgramName << " " << kHelp << "' ";
-  cerr << "para mas información\n";
-}
-
-/**
  * @brief funcion que comrpueba que los argumentos dados al programa son correctos
  * 
  * @param argc numero de argumentos dados al programa
@@ -95,26 +73,14 @@ void WrongArguments(const std::string& kProgramName, const std::string& kHelp) {
 void Usage(const int& argc, char* argv[]) {
   const std::string kProgramName{argv[0]};
   const std::string kHelp{"--help"};
-
-  if (argc == 1) {
-    MainMessage(kProgramName, kHelp);
-    exit(EXIT_SUCCESS);
-  }
-
-  const std::string display_place{argv[1]};
-
-  if ((argc == 2) && (kHelp == display_place)) {
-    HelpMessage(kProgramName);
-    exit(EXIT_SUCCESS);
-  }
-
-  if (argc != 2) {
-    WrongNumberOfArguments(kProgramName, kHelp);
-    exit(EXIT_FAILURE);
-  }
-
-  if (display_place != "-d") {
-    WrongArguments(kProgramName, kHelp);
-    exit(EXIT_FAILURE);
+  if (argc != 1) {
+    const std::string kHelpUser{argv[1]};
+    if ((argc == 2) && (kHelp == kHelpUser)) {
+      HelpMessage(kProgramName, kHelp);
+      exit(EXIT_SUCCESS);
+    } else {
+      WrongNumberOfArguments(kProgramName, kHelp);
+      exit(EXIT_FAILURE);
+    }
   }
 }
