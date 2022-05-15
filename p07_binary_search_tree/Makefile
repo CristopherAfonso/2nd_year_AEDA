@@ -4,7 +4,7 @@ CC = g++
 CFLAGS = -I -g -std=c++20 -Wall -Wextra -Wpedantic -Weffc++ #-Werror
 
 #Variables
-EJECUTABLE = balanced_binary_tree
+EJECUTABLE = binary_search_tree
 
 #Dirección donde se ponen los ejecutables/archivos binarios
 BINDIR = bin
