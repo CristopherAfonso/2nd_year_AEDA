@@ -9,9 +9,10 @@
  * Correo: alu0101402031@ull.edu.es
  * @date 15/05/2022
  * 
- * @file main_functions.h 
- * @brief Donde se aloja la declaración de las funciones del archivo cliente
- * de nuestro programa.
+ * @file ABB.h 
+ * @brief Donde se aloja la declaración de la clase ABB y la declaracion
+ * de sus metodos. La clase ABB es una clase hija de la clase AB, la clase ABB
+ * es una implementacion de un arbol binario de busqueda
  *
  * @bug No hay bugs conocidos
  * 
@@ -26,14 +27,28 @@
  * 17/05/22 - Archivo terminado.
  */
 
+#ifndef _ABB_
+#define _ABB_
+
 #include <iostream>
-#include <regex>
 
-#include "ABE.h"
-#include "ABB.h"
+#include "AB.h"
 
-void HelpMessage(const std::string& kProgramName,
-                 const std::string& kHelp);
-void WrongNumberOfArguments(const std::string& kProgramName, 
-                            const std::string& kHelp);
-void Usage(const int& argc, char* argv[]);
+/**
+ * @brief implementacion de una clase que es un arbol binario de busqueda
+ * 
+ * @tparam Key tipo de dato de los datos del arbol binario equilibrado 
+ */
+template<class Key>
+class ABB : public AB<Key> {
+ public:
+  ABB(void);
+  bool Insert(const Key& data) override;
+  bool Search(const Key& data) const override;
+  bool Delete(const Key& data) override;
+  
+ private:
+  
+};
+
+#endif

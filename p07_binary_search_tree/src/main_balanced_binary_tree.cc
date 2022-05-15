@@ -36,62 +36,79 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-  ///< paso 1 usar Key = int
-  AB<int>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
-  ab = new ABE<int>;
-  std::cout << "\nEste programa es una implementacion de un 'Arbol binario equilibrado'\n\n";
-  /// paso 3 presentar un menu con las opciones:
-  /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
+  using std::cout; ///< nos permite usar std::cout de una buena forma
+  using std::cin; ///< nos permite usar std::cin de una buena forma
   std::string user_choice{""};
+  typedef int data; ///< paso 1 usar Key = int
+  cout << "\nEste programa es una implementacion de un 'Arbol binario'";
+  cout << "\nElija la implementacion concreta del arbol:";
+  cout << "\n[1] Arbol binario equilibrado";
+  cout << "\n[2] Arbol binario de busqueda\n\n";
+  cout << "\n¿Su eleccion? ";
+  cin >> user_choice;
+  if (user_choice != "1" && user_choice != "2") {
+    while (true) {
+      user_choice = "";
+      cout << "\nError, clave incorrecta, intentelo de nuevo";
+      cout << "\n¿Su elección? ";
+      cin >> user_choice;
+      if (user_choice == "1" || user_choice == "2") break;
+    }
+  }
+  AB<data>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
+  if (user_choice == "1") ab = new ABE<data>;
+  if (user_choice == "2") ab = new ABB<data>;
+  /// paso 4 presentar un menu con las opciones:
+  /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
   while (true) {
     user_choice = "";
-    std::cout << "Elija la operacion a usar sobre el arbol binario equilibrado:\n";
-    std::cout << "[0] Salir\n";
-    std::cout << "[1] Insertar Clave\n";
-    std::cout << "[2] Buscar Clave\n";
-    std::cout << "[3] Eliminar Clave\n";
-    std::cout << "[4] Mostrar Arbol Inorden\n\n";
-    std::cout << "¿Operacion a realizar? ";
-    std::cin >> user_choice;
-    std::cout << "\n";
+    cout << "Elija la operacion a usar sobre el arbol binario equilibrado:\n";
+    cout << "[0] Salir\n";
+    cout << "[1] Insertar Clave\n";
+    cout << "[2] Buscar Clave\n";
+    cout << "[3] Eliminar Clave\n";
+    cout << "[4] Mostrar Arbol Inorden\n\n";
+    cout << "¿Operacion a realizar? ";
+    cin >> user_choice;
+    cout << "\n";
     if ((user_choice != "0") && (user_choice != "1") && (user_choice != "2") && (user_choice  != "3") && (user_choice != "4")) {
-      std::cout << "Error: no se reconoce la operacion que quiere usar, intentelo de nuevo\n\n";
+      cout << "Error: no se reconoce la operacion que quiere usar, intentelo de nuevo\n\n";
     } else {
       if (user_choice == "0") break;
       if (user_choice == "4") {
-        std::cout << "Recorrido Inorden: ";
+        cout << "Recorrido Inorden: ";
         if (ab != nullptr) ab->InordenRoot();
-        std::cout << "\n\n";
+        cout << "\n\n";
       }
-      /// paso 4 para cada operacion 1, 2 o 3 se pide el valor clave y se realiza la operacion en el AB<Key>
+      /// paso 5 para cada operacion 1, 2 o 3 se pide el valor clave y se realiza la operacion en el AB<Key>
       if ((user_choice == "1") || (user_choice == "2") || (user_choice == "3")) {
         std::string aux;
-        std::cout << "¿Clave para la operacion? ";
-        std::cin >> aux;
-        /// paso 5 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
+        cout << "¿Clave para la operacion? ";
+        cin >> aux;
+        /// paso 6 despues de cada operacion 1, se muestra el AB<Key> resultante mediante el recorrido por niveles con sobrecarga del operador
         if (user_choice == "1") {
           if ((ab != nullptr) && ab->Insert(std::stoi(aux))) {
-            std::cout << ab;
+            cout << ab;
           } else {
-            std::cout << "No se pudo insertar el dato";
+            cout << "No se pudo insertar el dato";
           }
-          std::cout << "\n\n";
+          cout << "\n\n";
         }
         if (user_choice == "2") {
           if ((ab != nullptr) && ab->Search(std::stoi(aux))) {
-            std::cout << "El dato si se encuentra en el arbol binario";
+            cout << "El dato si se encuentra en el arbol binario";
           } else {
-            std::cout << "El dato no se encuentra en el arbol binario";
+            cout << "El dato no se encuentra en el arbol binario";
           }
-          std::cout << "\n\n";
+          cout << "\n\n";
         }
         if (user_choice == "3") {
           if ((ab != nullptr) && ab->Delete(std::stoi(aux))) {
-            std::cout << ab;
+            cout << ab;
           } else {
-            std::cout << "No se elimino ningun dato";
+            cout << "No se elimino ningun dato";
           }
-          std::cout << "\n\n";
+          cout << "\n\n";
         }
       }
     }
@@ -100,7 +117,6 @@ int main(int argc, char* argv[]) {
     ab->~AB();
     ab = nullptr;
   }
-  std::cout << "Fin del programa\n\n";
-  
+  cout << "Fin del programa\n\n";
   return 0;
 }
