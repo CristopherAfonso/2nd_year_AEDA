@@ -38,12 +38,13 @@ int main(int argc, char* argv[]) {
   Usage(argc, argv);
   using std::cout; ///< nos permite usar std::cout de una buena forma
   using std::cin; ///< nos permite usar std::cin de una buena forma
+  NodoB<int>* nodo_test = nullptr;
   std::string user_choice{""};
   typedef int data; ///< paso 1 usar Key = int
   cout << "\nEste programa es una implementacion de un 'Arbol binario'";
   cout << "\nElija la implementacion concreta del arbol:";
   cout << "\n[1] Arbol binario equilibrado";
-  cout << "\n[2] Arbol binario de busqueda\n\n";
+  cout << "\n[2] Arbol binario de busqueda\n";
   cout << "\n¿Su eleccion? ";
   cin >> user_choice;
   if (user_choice != "1" && user_choice != "2") {
@@ -55,6 +56,7 @@ int main(int argc, char* argv[]) {
       if (user_choice == "1" || user_choice == "2") break;
     }
   }
+  cout << "\n";
   AB<data>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
   if (user_choice == "1") ab = new ABE<data>;
   if (user_choice == "2") ab = new ABB<data>;
@@ -62,7 +64,7 @@ int main(int argc, char* argv[]) {
   /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
   while (true) {
     user_choice = "";
-    cout << "Elija la operacion a usar sobre el arbol binario equilibrado:\n";
+    cout << "Elija la operacion a usar sobre el arbol binario seleccionado:\n";
     cout << "[0] Salir\n";
     cout << "[1] Insertar Clave\n";
     cout << "[2] Buscar Clave\n";

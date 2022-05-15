@@ -55,7 +55,6 @@ class ABE : public AB<Key> {
   bool SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const;
 };
 
-
 /**
  * @brief Constructor de la clase ABE
  * 
@@ -206,7 +205,7 @@ bool ABE<Key>::InsertInBalancedBranch(const Key& data, NodoB<Key>* nodo) {
  * @param nodo es donde empieza el subarbol
  * @param data es el dato a buscar
  * @return true el dato si esta en el arbol
- * @return false el adto no esta en el arbol
+ * @return false el dato no esta en el arbol
  */
 template<typename Key>
 bool ABE<Key>::SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const {

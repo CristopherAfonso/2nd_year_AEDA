@@ -60,7 +60,6 @@ class NodoB {
   NodoB<Key>* dcho_;
 };
 
-
 /**
  * @brief Constructor por defecto de la clase NodoB
  * 
