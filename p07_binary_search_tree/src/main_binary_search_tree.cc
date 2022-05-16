@@ -38,7 +38,6 @@ int main(int argc, char* argv[]) {
   Usage(argc, argv);
   using std::cout; ///< nos permite usar std::cout de una buena forma
   using std::cin; ///< nos permite usar std::cin de una buena forma
-  NodoB<int>* nodo_test = nullptr;
   std::string user_choice{""};
   typedef int data; ///< paso 1 usar Key = int
   cout << "\nEste programa es una implementacion de un 'Arbol binario'";

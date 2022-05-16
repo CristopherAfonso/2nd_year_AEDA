@@ -75,7 +75,7 @@ ABB<Key>::ABB(NodoB<Key>* nodo) : AB<Key>::AB(nodo) {}
  */
 template<typename Key>
 bool ABB<Key>::Insert(const Key& data) {
-  return this->InsertBranch(data, this->root_);
+  return this->InsertBranch(data, this->GetRoot());
 }
 
 /**
