@@ -50,8 +50,8 @@ class ABB : public AB<Key> {
  private:
   bool InsertBranch(const Key& data, NodoB<Key>* &nodo = nullptr);
   bool SearchDataBinary(const Key& data, const NodoB<Key>* nodo = nullptr) const;
-  bool DeleteBranch(const Key& data, NodoB<Key>* nodo = nullptr);
-  void Replace(NodoB<Key>* deleted, NodoB<Key>* sust);
+  bool DeleteBranch(const Key& data, NodoB<Key>* &nodo = nullptr);
+  void Replace(NodoB<Key>* &deleted, NodoB<Key>* &sust);
 };
 
 /**
@@ -122,7 +122,7 @@ bool ABB<Key>::Delete(const Key& data) {
 template<typename Key>
 bool ABB<Key>::InsertBranch(const Key& data, NodoB<Key>* &nodo) {
   if (nodo == nullptr) {
-    nodo = new NodoB<Key>(data); ///< error aquí
+    nodo = new NodoB<Key>(data);
     return true;
   } else if (data == nodo->GetData()) {
     return false;
@@ -162,17 +162,17 @@ bool ABB<Key>::SearchDataBinary(const Key& data,
  */
 template<typename Key>
 bool ABB<Key>::DeleteBranch(const Key& data,
-                            NodoB<Key>* nodo) {
+                            NodoB<Key>* &nodo) {
   if (nodo == nullptr) return false;
   if (data < nodo->GetData())
-    return this->DeleteBranch(data, nodo->GetPtrIzdo());
+    return this->DeleteBranch(data, nodo->GetPtrIzdoRef());
   else if (data > nodo->GetData())
-    return this->DeleteBranch(data, nodo->GetPtrDcho());
+    return this->DeleteBranch(data, nodo->GetPtrDchoRef());
   else { ///< data == nodo->GetData()
     NodoB<Key>* deleted = nodo;
-    if (nodo->GetPtrDcho() == nullptr) nodo = nodo->GetPtrIzdo();
-    else if (nodo->GetPtrIzdo() == nullptr) nodo = nodo->GetPtrDcho();
-    else this->Replace(deleted, nodo->GetPtrIzdo());
+    if (nodo->GetPtrDchoRef() == nullptr) nodo = nodo->GetPtrIzdoRef();
+    else if (nodo->GetPtrIzdoRef() == nullptr) nodo = nodo->GetPtrDchoRef();
+    else this->Replace(deleted, nodo->GetPtrIzdoRef());
     deleted->~NodoB();
     deleted = nullptr;
     return true;
@@ -192,13 +192,13 @@ bool ABB<Key>::DeleteBranch(const Key& data,
  * @return false no se modifico nada en el arbol
  */
 template<typename Key>
-void ABB<Key>::Replace(NodoB<Key>* deleted, NodoB<Key>* sust) {
+void ABB<Key>::Replace(NodoB<Key>* &deleted, NodoB<Key>* &sust) {
   if (sust->GetPtrDcho() != nullptr)
-    this->Replace(deleted, sust->GetPtrDcho());
+    this->Replace(deleted, sust->GetPtrDchoRef());
   else {
     deleted->SetData(sust->GetData());
     deleted = sust;
-    sust = sust->GetPtrIzdo();
+    sust = sust->GetPtrIzdoRef();
   }
 }
 
