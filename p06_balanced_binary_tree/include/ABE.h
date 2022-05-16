@@ -52,7 +52,6 @@ class ABE : public AB<Key> {
   int SubtreeSize(const NodoB<Key>* nodo) const;
   bool BalancedBranch(NodoB<Key>* nodo) const;
   bool InsertInBalancedBranch(const Key& data, NodoB<Key>* nodo);
-  bool SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const;
 };
 
 
@@ -194,28 +193,6 @@ bool ABE<Key>::InsertInBalancedBranch(const Key& data, NodoB<Key>* nodo) {
     } else {
       nodo->SetPtrDcho(new NodoB<Key>(data));
       result = true;
-    }
-  }
-  return result;
-}
-
-/**
- * @brief metodo que busca un dato en un subarbol usando el metodo de Preorder
- * 
- * @tparam Key tipo de dato de los datos del arbol
- * @param nodo es donde empieza el subarbol
- * @param data es el dato a buscar
- * @return true el dato si esta en el arbol
- * @return false el adto no esta en el arbol
- */
-template<typename Key>
-bool ABE<Key>::SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const {
-  bool result{false};
-  if (nodo != nullptr) {
-    if (data == nodo->GetData()) result = true;
-    else {
-      result = this->SearchDataPreorder(nodo->GetPtrIzdo(), data);
-      if (!result) result = this->SearchDataPreorder(nodo->GetPtrDcho(), data);
     }
   }
   return result;

@@ -43,7 +43,7 @@ class NodoB {
   NodoB(void);
   NodoB(const Key& data, NodoB<Key>* izdo = NULL, NodoB<Key>* dcho = NULL);
 
-  Key GetData(void) const;
+  Key& GetData(void);
   NodoB<Key>* GetPtrIzdo(void) const;
   NodoB<Key>* GetPtrDcho(void) const;
   void SetData(const Key& data);
@@ -89,7 +89,7 @@ NodoB<Key>::NodoB(const Key& data, NodoB<Key>* izdo,
  * @return Key retorna el dato del nodo
  */
 template<typename Key>
-Key NodoB<Key>::GetData(void) const { return data_; }
+Key& NodoB<Key>::GetData(void) { return data_; }
 
 /**
  * @brief devuelve un puntero que señala al nodo izquierdo

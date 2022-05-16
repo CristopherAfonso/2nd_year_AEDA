@@ -48,7 +48,7 @@ class ABB : public AB<Key> {
   bool Delete(const Key& data) override;
   
  private:
-  bool InsertBranch(const Key& data, const NodoB<Key>* nodo = nullptr);
+  bool InsertBranch(const Key& data, NodoB<Key>* &nodo = nullptr);
   bool SearchDataBinary(const Key& data, const NodoB<Key>* nodo = nullptr) const;
   bool DeleteBranch(const Key& data, NodoB<Key>* nodo = nullptr);
   void Replace(NodoB<Key>* deleted, NodoB<Key>* sust);
@@ -75,7 +75,7 @@ ABB<Key>::ABB(NodoB<Key>* nodo) : AB<Key>::AB(nodo) {}
  */
 template<typename Key>
 bool ABB<Key>::Insert(const Key& data) {
-  return this->InsertBranch(data, this->GetRoot());
+  return this->InsertBranch(data, this->root_);
 }
 
 /**
@@ -120,15 +120,15 @@ bool ABB<Key>::Delete(const Key& data) {
  * @return false el dato no se pudo insertar en la rama
  */
 template<typename Key>
-bool ABB<Key>::InsertBranch(const Key& data, const NodoB<Key>* nodo) {
+bool ABB<Key>::InsertBranch(const Key& data, NodoB<Key>* &nodo) {
   if (nodo == nullptr) {
-    nodo = new NodoB<Key>(data); ///< errro aquí
+    nodo = new NodoB<Key>(data); ///< error aquí
     return true;
   } else if (data == nodo->GetData()) {
     return false;
   } else if (data < nodo->GetData()) {
-    return this->InsertBranch(data, nodo->GetPtrIzdo());
-  } else return this->InsertBranch(data, nodo->GetPtrDcho());
+    return this->InsertBranch(data, nodo->GetPtrIzdoRef());
+  } else return this->InsertBranch(data, nodo->GetPtrDchoRef());
 }
 
 /**

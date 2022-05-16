@@ -35,6 +35,8 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
+  bool Dummy{true};
+  if (!Dummy) {
   ///< paso 1 usar Key = int
   AB<int>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
   ab = new ABE<int>;
@@ -99,6 +101,23 @@ int main(int argc, char* argv[]) {
     ab->~AB();
     ab = nullptr;
   }
+  } else { ///< if (!Dummy)
+    ABE<dummy> A;
+    dummy d{3, ""};
+    A->Insert(d);
+    
+    if (A->Search(d)) {
+      std::cout << A << "\n\n";
+      A[d].name = "X";
+      std::cout << A << "\n";
+    }
+
+    if (A != nullptr) {
+      A->~AB();
+      A = nullptr;
+    }
+  }
+    
   std::cout << "Fin del programa\n\n";
   
   return 0;

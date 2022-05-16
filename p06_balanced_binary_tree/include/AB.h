@@ -36,6 +36,7 @@
 #include <queue>
 
 #include "NodoB.h"
+#include "dummy.h"
 
 /**
  * @brief Clase que implementa un arbol binario generico, clase abstracta
@@ -50,13 +51,14 @@ class AB {
   virtual bool Insert(const Key& data) = 0;
   virtual bool Search(const Key& data) const = 0;
   virtual bool Delete(const Key& data) = 0;
-  void Inorden(const NodoB<Key>* nodo) const;
-  void InordenRoot(void) const;
+  void Inorden(NodoB<Key>* nodo);
+  void InordenRoot(void);
   void Prune(NodoB<Key>* nodo);
   int Size(void) const;
   int Height(void) const;
   bool IsEmpty(const NodoB<Key>* nodo) const;
   bool IsLeaf(const NodoB<Key>* nodo) const;
+  Key& operator[](const Key& pos);
   template<typename T>
   friend std::ostream& operator<<(std::ostream& out, const AB<T>* const ab);
 
@@ -66,6 +68,8 @@ class AB {
   NodoB<Key>* GetRoot(void);
   int SizeBranch(NodoB<Key>* nodo) const;
   int HeightN(NodoB<Key>* nodo) const;
+  bool SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const;
+  Key& SearchDataDummy(NodoB<Key>* nodo, const Key& data) const;
 };
 
 /**
@@ -84,7 +88,7 @@ AB<Key>::AB(NodoB<Key>* nodo) : root_(nodo) {}
  * @param nodo es el nodo del cual empezamos a recorrre, la raiz de la busqueda
  */
 template<typename Key>
-void AB<Key>::Inorden(const NodoB<Key>* nodo) const {
+void AB<Key>::Inorden(NodoB<Key>* nodo) {
   if (nodo == nullptr) return;
   this->Inorden(nodo->GetPtrIzdo());
   std::cout << nodo->GetData() << " ";
@@ -98,7 +102,7 @@ void AB<Key>::Inorden(const NodoB<Key>* nodo) const {
  * @param nodo es el nodo del cual empezamos a recorrre, la raiz de la busqueda
  */
 template<typename Key>
-void AB<Key>::InordenRoot(void) const {
+void AB<Key>::InordenRoot(void) {
   this->Inorden(this->root_);
 }
 
@@ -159,6 +163,11 @@ bool AB<Key>::IsEmpty(const NodoB<Key>* nodo) const { return nodo == nullptr; }
 template<typename Key>
 bool AB<Key>::IsLeaf(const NodoB<Key>* nodo) const {
   return !nodo->GetPtrDcho() && !nodo->GetPtrIzdo();
+}
+
+template<typename Key>
+Key& AB<Key>::operator[](const Key& pos) {
+  return this->SearchDataDummy(this->root_, pos);
 }
 
 /**
@@ -243,6 +252,48 @@ int AB<Key>::HeightN(NodoB<Key>* nodo) const {
   int height_right{this->HeightN(nodo->GetPtrDcho())};
   if (height_right > height_left) return height_right;
   else return height_left;
+}
+
+/**
+ * @brief metodo que busca un dato en un subarbol usando el metodo de Preorder
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo es donde empieza el subarbol
+ * @param data es el dato a buscar
+ * @return true el dato si esta en el arbol
+ * @return false el adto no esta en el arbol
+ */
+template<typename Key>
+bool AB<Key>::SearchDataPreorder(NodoB<Key>* nodo, const Key& data) const {
+  bool result{false};
+  if (nodo != nullptr) {
+    if (data == nodo->GetData()) result = true;
+    else {
+      result = this->SearchDataPreorder(nodo->GetPtrIzdo(), data);
+      if (!result) result = this->SearchDataPreorder(nodo->GetPtrDcho(), data);
+    }
+  }
+  return result;
+}
+
+/**
+ * @brief metodo que busca un dato en un subarbol usando el metodo de Preorder 
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param nodo es donde empieza el subarbol
+ * @param data es el dato a buscar 
+ * @return Key& Es la direccion de memoria del dato en el arbol
+ */
+template<typename Key>
+Key& AB<Key>::SearchDataDummy(NodoB<Key>* nodo, const Key& data) const {
+  if (nodo != nullptr) {
+    if (data == nodo->GetData()) return nodo->GetData();
+    else {
+      *result = this->SearchDataDummy(nodo->GetPtrIzdo(), data);
+      if (result == nullptr) *result = this->SearchDataDummy(nodo->GetPtrDcho(), data);
+    }
+  }
+  return *result;
 }
 
 #endif

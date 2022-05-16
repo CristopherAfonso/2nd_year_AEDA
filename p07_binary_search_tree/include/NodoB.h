@@ -46,6 +46,8 @@ class NodoB {
   Key GetData(void) const;
   NodoB<Key>* GetPtrIzdo(void) const;
   NodoB<Key>* GetPtrDcho(void) const;
+  NodoB<Key>*& GetPtrIzdoRef(void);
+  NodoB<Key>*& GetPtrDchoRef(void);
   void SetData(const Key& data);
   void SetPtrIzdo(NodoB<Key>* izdo = NULL);
   void SetPtrDcho(NodoB<Key>* dcho = NULL);
@@ -107,6 +109,24 @@ NodoB<Key>* NodoB<Key>::GetPtrIzdo(void) const { return izdo_; }
  */
 template<typename Key>
 NodoB<Key>* NodoB<Key>::GetPtrDcho(void) const { return dcho_; }
+
+/**
+ * @brief devuelve una referencia al puntero que señala al nodo izquierdo
+ * 
+ * @tparam Key es el tipo de dato del dato guardado en el nodo
+ * @return NodoB<Key>*& Puntero que apunta al nodo izquierdo del nodo
+ */
+template<typename Key>
+NodoB<Key>*& NodoB<Key>::GetPtrIzdoRef(void) { return izdo_; }
+
+/**
+ * @brief devuelve una referencia al puntero que señala al nodo derecho
+ * 
+ * @tparam Key es el tipo de dato del dato guardado en el nodo
+ * @return NodoB<Key>*& Puntero que apunta al nodo derecho del nodo
+ */
+template<typename Key>
+NodoB<Key>*& NodoB<Key>::GetPtrDchoRef(void) { return dcho_; }
 
 /**
  * @brief Cambia el dato del nodo por el parametro que se le pasa al metodo
