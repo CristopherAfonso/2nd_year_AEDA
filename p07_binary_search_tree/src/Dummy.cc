@@ -7,34 +7,24 @@
  * Practica 7: Árbol binario de busqueda
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 15/05/2022
+ * @date 11/05/2022
  * 
- * @file main_functions.h 
- * @brief Donde se aloja la declaración de las funciones del archivo cliente
- * de nuestro programa.
+ * @file Dummy.cc
+ * @brief Donde se desarrollan las funciones de la clase Dummy contenida
+ * en el archivo de cabecera Dummy.h
  *
  * @bug No hay bugs conocidos
  * 
  * Referencias: Enlaces de Interes
- * @see 
+ * @see
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 15/05/22 - Creacion (primera version) del codigo:
+ * 11/05/22 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado los #include necesarios.
- * 17/05/22 - Archivo terminado.
+ * 11/05/22 - Archivo terminado.
  */
 
-#include <iostream>
-#include <regex>
+#include "../include/Dummy.h"
 
-#include "Dummy.h"
-#include "ABE.h"
-#include "ABB.h"
-
-void HelpMessage(const std::string& kProgramName,
-                 const std::string& kHelp);
-void WrongNumberOfArguments(const std::string& kProgramName, 
-                            const std::string& kHelp);
-void Usage(const int& argc, char* argv[]);
