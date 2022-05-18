@@ -34,7 +34,6 @@
 /**
  * @brief clase que hace lo que nuestro profesor pide que haga durante la
  * sesion de laboratorio de la asignatura AEDA
- * 
  */
 class Dummy {
  public:
@@ -46,33 +45,33 @@ class Dummy {
   unsigned GetDato(void) const { return dato_; }
   void SetDato(const unsigned& dato) { dato_ = dato; }
   bool operator==(const Dummy& dummy) const {
-  ++counter_;
-  if (clave_ == dummy.GetClave()) return true;
-  else return false;
+    ++counter_;
+    if (clave_ == dummy.GetClave()) return true;
+    else return false;
   }
-  friend std::istream& operator>>(std::istream& entrada, const Dummy& dummy);
+  friend std::istream& operator>>(std::istream& entrada, Dummy& dummy);
   friend std::ostream& operator<<(std::ostream& salida, const Dummy& dummy);
 
   /// Modificación
   bool operator<(const Dummy& dummy) const {
-  ++counter_;
-  if (clave_ < dummy.GetClave()) return true;
-  else return false;
+    ++counter_;
+    if (clave_ < dummy.GetClave()) return true;
+    else return false;
   }
   bool operator>(const Dummy& dummy) const {
-  ++counter_;
-  if (clave_ > dummy.GetClave()) return true;
-  else return false;
+    ++counter_;
+    if (clave_ > dummy.GetClave()) return true;
+    else return false;
   }
   bool operator<=(const Dummy& dummy) const {
-  ++counter_;
-  if (clave_ <= dummy.GetClave()) return true;
-  else return false;
+    ++counter_;
+    if (clave_ <= dummy.GetClave()) return true;
+    else return false;
   }
   bool operator>=(const Dummy& dummy) const {
-  ++counter_;
-  if (clave_ >= dummy.GetClave()) return true;
-  else return false;
+    ++counter_;
+    if (clave_ >= dummy.GetClave()) return true;
+    else return false;
   }
 
  private:
