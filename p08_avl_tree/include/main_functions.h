@@ -4,10 +4,10 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Algorítmos y Estructuras de Datos Avanzados
  * Curso: 2º
- * Practica 7: Árbol binario de busqueda
+ * Practica 8: Árbol binario AVL
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 15/05/2022
+ * @date 21/05/2022
  * 
  * @file main_functions.h 
  * @brief Donde se aloja la declaración de las funciones del archivo cliente
@@ -20,10 +20,10 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 15/05/22 - Creacion (primera version) del codigo:
+ * 21/05/22 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado los #include necesarios.
- * 17/05/22 - Archivo terminado.
+ * 21/05/22 - Archivo terminado.
  */
 
 #include <iostream>

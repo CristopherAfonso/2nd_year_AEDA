@@ -4,19 +4,19 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Algorítmos y Estructuras de Datos Avanzados
  * Curso: 2º
- * Practica 7: Árbol binario de busqueda
+ * Practica 8: Árbol binario AVL
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 15/05/2022
+ * @date 21/05/2022
  * 
- * @file main_binary_search_tree.cc (programa cliente)
+ * @file main_avl_tree.cc (programa cliente)
  * @brief Programa que nos permite usar una implementacion de un árbol binario
- * equilibrado, de busqueda y usus algoritmos, en este programa el término de
+ * equilibrado, de busqueda, avl y sus algoritmos, en este programa el término de
  * árbol binario equilibrado (ABE) es referido a un AB perfectamente
  * equilibrado.
  * 
  * Si quiere saber mas detalles sobre como usar el programa ejecutable,
- * ejecute: ./binary_search_tree --help
+ * ejecute: ./avl_tree --help
  * para mas informacion.
  * 
  * @bug No hay bugs conocidos
@@ -26,14 +26,13 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 15/05/2022 - Creacion (primera version) del codigo:
+ * 21/05/2022 - Creacion (primera version) del codigo:
  *              Solo he creado el archivo, le he puesto el comentario de
  *              cabecera y declarado los #include necesarios.
- * 17/05/2022 - Archivo terminado.
+ * 21/05/2022 - Archivo terminado.
  */
 
 #include "../include/main_functions.h"
-#include "../include/Dummy.h"
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
