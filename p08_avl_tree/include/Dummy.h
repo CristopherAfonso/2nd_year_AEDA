@@ -49,8 +49,9 @@ class Dummy {
     if (clave_ == dummy.GetClave()) return true;
     else return false;
   }
-  friend std::istream& operator>>(std::istream& entrada, Dummy& dummy);
-  friend std::ostream& operator<<(std::ostream& salida, const Dummy& dummy);
+
+  friend std::istream& operator>>(std::istream& in, Dummy& dummy);
+  friend std::ostream& operator<<(std::ostream& out, const Dummy& dummy);
 
   /// Modificación
   bool operator<(const Dummy& dummy) const {
@@ -80,18 +81,18 @@ class Dummy {
   static unsigned counter_;
 };
 
-std::istream& operator>>(std::istream& entrada, Dummy& dummy) {
+std::istream& operator>>(std::istream& in, Dummy& dummy) {
   int clave;
   unsigned dato;
-  entrada >> clave;
+  in >> clave;
   dummy.SetClave(clave);
-  entrada >> dato;
+  in >> dato;
   dummy.SetDato(dato);
-  return entrada;
+  return in;
 }
 
-std::ostream& operator<<(std::ostream& salida, const Dummy& dummy) {
-  return salida << dummy.GetClave();
+std::ostream& operator<<(std::ostream& out, const Dummy& dummy) {
+  return out << dummy.GetClave();
 }
 
 #endif

@@ -42,6 +42,7 @@ class NodoB {
  public:
   NodoB(void);
   NodoB(const Key& data, NodoB<Key>* izdo = NULL, NodoB<Key>* dcho = NULL);
+  ~NodoB() = default;
 
   Key GetData(void) const;
   NodoB<Key>* GetPtrIzdo(void) const;
@@ -56,7 +57,7 @@ class NodoB {
   template<typename T>
   friend std::ostream& operator<<(std::ostream& out, const NodoB<T>& nodo);
 
- private:
+ protected:
   Key data_;
   NodoB<Key>* izdo_;
   NodoB<Key>* dcho_;

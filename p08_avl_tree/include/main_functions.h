@@ -29,9 +29,9 @@
 #include <iostream>
 #include <regex>
 
-
 #include "ABE.h"
 #include "ABB.h"
+#include "AVL.h"
 
 void HelpMessage(const std::string& kProgramName,
                  const std::string& kHelp);

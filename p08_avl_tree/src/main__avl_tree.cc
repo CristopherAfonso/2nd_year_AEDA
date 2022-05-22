@@ -43,22 +43,38 @@ int main(int argc, char* argv[]) {
   cout << "\nEste programa es una implementacion de un 'Arbol binario'";
   cout << "\nElija la implementacion concreta del arbol:";
   cout << "\n[1] Arbol binario equilibrado";
-  cout << "\n[2] Arbol binario de busqueda\n";
+  cout << "\n[2] Arbol binario de busqueda";
+  cout << "\n[3] Arbol binario AVL\n";
   cout << "\n¿Su eleccion? ";
   cin >> user_choice;
-  if (user_choice != "1" && user_choice != "2") {
+  if (user_choice != "1" && user_choice != "2" && user_choice != "3") {
     while (true) {
       user_choice = "";
       cout << "\nError, clave incorrecta, intentelo de nuevo";
       cout << "\n¿Su elección? ";
       cin >> user_choice;
-      if (user_choice == "1" || user_choice == "2") break;
+      if (user_choice == "1" || user_choice == "2" || user_choice == "3") break;
     }
   }
   cout << "\n";
   AB<data>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
   if (user_choice == "1") ab = new ABE<data>;
   if (user_choice == "2") ab = new ABB<data>;
+  if (user_choice == "3") {
+    while (true) {
+      user_choice = "";
+      cout << "\n[0] No activar traza";
+      cout << "\n[1] Si activar traza";
+      cout << "\n¿Activar traza? ";
+      cin >> user_choice;
+      if (user_choice == "0" || user_choice == "1") {
+        if (user_choice == "0") ab = new AVL<data>(false);
+        if (user_choice == "1") ab = new AVL<data>(true);
+        break;
+      }
+    }
+    cout << "\n";
+  }
   /// paso 4 presentar un menu con las opciones:
   /// 0-salir, 1-insertar, 2-buscar, 3-eliminar, 4-mostrar arbol inorden
   while (true) {
