@@ -37,62 +37,27 @@
  */
 class Dummy {
  public:
-  Dummy(void) : clave_(1), dato_(0) {}
-  Dummy(const int& clave, const unsigned& dato) 
-      : clave_(clave), dato_(dato) {}
-  int GetClave(void) const { return clave_; }
-  void SetClave(const int& clave) { clave_ = clave; }
-  unsigned GetDato(void) const { return dato_; }
-  void SetDato(const unsigned& dato) { dato_ = dato; }
-  bool operator==(const Dummy& dummy) const {
-    ++counter_;
-    if (clave_ == dummy.GetClave()) return true;
-    else return false;
-  }
+  Dummy(void);
+  Dummy(const int& clave, const unsigned& dato);
+
+  int GetClave(void) const;
+  unsigned GetDato(void) const;
+  void SetClave(const int& clave);
+  void SetDato(const unsigned& dato);
+
+  bool operator==(const Dummy& dummy) const;
+  bool operator<(const Dummy& dummy) const;
+  bool operator>(const Dummy& dummy) const;
+  bool operator<=(const Dummy& dummy) const;
+  bool operator>=(const Dummy& dummy) const;
 
   friend std::istream& operator>>(std::istream& in, Dummy& dummy);
   friend std::ostream& operator<<(std::ostream& out, const Dummy& dummy);
-
-  /// Modificación
-  bool operator<(const Dummy& dummy) const {
-    ++counter_;
-    if (clave_ < dummy.GetClave()) return true;
-    else return false;
-  }
-  bool operator>(const Dummy& dummy) const {
-    ++counter_;
-    if (clave_ > dummy.GetClave()) return true;
-    else return false;
-  }
-  bool operator<=(const Dummy& dummy) const {
-    ++counter_;
-    if (clave_ <= dummy.GetClave()) return true;
-    else return false;
-  }
-  bool operator>=(const Dummy& dummy) const {
-    ++counter_;
-    if (clave_ >= dummy.GetClave()) return true;
-    else return false;
-  }
 
  private:
   int clave_;
   unsigned dato_;
   static unsigned counter_;
 };
-
-std::istream& operator>>(std::istream& in, Dummy& dummy) {
-  int clave;
-  unsigned dato;
-  in >> clave;
-  dummy.SetClave(clave);
-  in >> dato;
-  dummy.SetDato(dato);
-  return in;
-}
-
-std::ostream& operator<<(std::ostream& out, const Dummy& dummy) {
-  return out << dummy.GetClave();
-}
 
 #endif
