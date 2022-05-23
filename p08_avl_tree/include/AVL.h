@@ -60,12 +60,12 @@ class AVL : public ABB<Key> {
   void Rotacion_ID(NodoAVL<Key>* &nodo);
   void Rotacion_DI(NodoAVL<Key>* &nodo);
   void InsertaBal(NodoAVL<Key>* &root, NodoAVL<Key>* &nuevo, bool& crece);
-  void InsertReBalanceaIzda(NodoAVL<Key>* &nodo, bool& crece);
-  void InsertReBalanceaDcha(NodoAVL<Key>* &nodo, bool& crece);
+  void InsertReBalanceaIzda(NodoAVL<Key>* &nodo);
+  void InsertReBalanceaDcha(NodoAVL<Key>* &nodo);
   void DeleteBranch(NodoAVL<Key>* &nodo, const Key& data, bool& decrece);
   void Replace(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool& decrece);
-  void DeleteReBalanceaIzda(NodoAVL<Key>* &nodo, bool& decrece);
-  void DeleteReBalanceaDcha(NodoAVL<Key>* &nodo, bool& decrece);
+  void DeleteReBalanceaIzda(NodoAVL<Key>* &nodo);
+  void DeleteReBalanceaDcha(NodoAVL<Key>* &nodo);
 };
 
 /**
@@ -251,10 +251,12 @@ void AVL<Key>::InsertaBal(NodoAVL<Key>* &root, NodoAVL<Key>* &nuevo,
     crece = true;
   } else if (nuevo->GetData() < root->GetData()) {
     this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(root->GetPtrIzdoRef()), nuevo, crece);
-    if (crece) this->InsertReBalanceaIzda(root, crece);
-  } else {
+    if (crece) this->InsertReBalanceaIzda(root);
+  } else if (nuevo->GetData() > root->GetData()) {
     this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(root->GetPtrDchoRef()), nuevo, crece);
-    if (crece) this->InsertReBalanceaDcha(root, crece);
+    if (crece) this->InsertReBalanceaDcha(root);
+  } else { ///< nuevo->GetData() == root->GetData()
+    crece = false;
   }
 }
 
@@ -265,11 +267,10 @@ void AVL<Key>::InsertaBal(NodoAVL<Key>* &root, NodoAVL<Key>* &nuevo,
  * @param nodo es el nodo a rebalancear
  */
 template<typename Key>
-void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo, bool& crece) {
+void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo) {
   switch (nodo->GetBal()) {
     case -1: 
       nodo->SetBal(0);
-      crece = false;
       break;
     case 0:
       nodo->SetBal(1);
@@ -278,7 +279,6 @@ void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo, bool& crece) {
       NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
       if (nodo1->GetBal() == 1) this->Rotacion_II(nodo);
       else this->Rotacion_ID(nodo);
-      crece = false;
   }
 }
 
@@ -289,11 +289,10 @@ void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo, bool& crece) {
  * @param nodo es el nodo a rebalancear
  */
 template<typename Key>
-void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo, bool& crece) {
+void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo) {
   switch (nodo->GetBal()) {
     case 1:
       nodo->SetBal(0);
-      crece = false;
       break;
     case 0:
       nodo->SetBal(-1);
@@ -302,7 +301,6 @@ void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo, bool& crece) {
       NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
       if (nodo1->GetBal() == -1) this->Rotacion_DD(nodo);
       else this->Rotacion_DI(nodo);
-      crece = false;
   }
 }
 
@@ -320,26 +318,24 @@ void AVL<Key>::DeleteBranch(NodoAVL<Key>* &nodo, const Key& data, bool& decrece)
   if (nodo == nullptr) return;
   if (data < nodo->GetData()) {
     this->DeleteBranch(reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef()), data, decrece);
-    if (decrece) this->DeleteReBalanceaIzda(nodo, decrece);
-    else if (data > nodo->GetData()) {
-      this->DeleteBranch(reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef()), data, decrece);
-      if (decrece) this->DeleteReBalanceaDcha(nodo, decrece);
-    } else { ///< data == nodo->data_
-      NodoAVL<Key>* eliminado{nodo};
-      if (nodo->GetPtrIzdo() == nullptr) {
-        nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
-        decrece = true;
-      } else if (nodo->GetPtrDcho() == nullptr) {
-        nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
-        decrece = true;
-      } else {
-        this->Replace(eliminado, reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef()), decrece);
-        if (decrece) this->DeleteReBalanceaIzda(nodo, decrece);
-      }
-      eliminado->~NodoAVL();
-      eliminado = nullptr;
+    if (decrece) this->DeleteReBalanceaIzda(nodo);
+  } else if (data > nodo->GetData()) {
+    this->DeleteBranch(reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef()), data, decrece);
+    if (decrece) this->DeleteReBalanceaDcha(nodo);
+  } else { ///< data == nodo->GetData() (encontrado)
+    NodoAVL<Key>* eliminado{nodo};
+    if (nodo->GetPtrIzdo() == nullptr) {
+      nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
+      decrece = true;
+    } else if (nodo->GetPtrDcho() == nullptr) {
+      nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
+      decrece = true;
+    } else {
+      this->Replace(eliminado, reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef()), decrece);
+      if (decrece) this->DeleteReBalanceaIzda(nodo);
     }
-
+    eliminado->~NodoAVL();
+    eliminado = nullptr;
   }
 }
 
@@ -355,7 +351,7 @@ template<typename Key>
 void AVL<Key>::Replace(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool& decrece) {
   if (sust->GetPtrDcho() != nullptr) {
     this->Replace(eliminado, reinterpret_cast<NodoAVL<Key>*&>(sust->GetPtrDchoRef()), decrece);
-    if (decrece) this->DeleteReBalanceaDcha(sust, decrece);
+    if (decrece) this->DeleteReBalanceaDcha(sust);
   } else {
     eliminado->SetData(sust->GetData());
     eliminado = sust;
@@ -372,19 +368,17 @@ void AVL<Key>::Replace(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool& decr
  * @param decrece nos dice si el arbol ha decrecido a causa del borrado del nodo
  */
 template<typename Key>
-void AVL<Key>::DeleteReBalanceaIzda(NodoAVL<Key>* &nodo, bool& decrece) {
+void AVL<Key>::DeleteReBalanceaIzda(NodoAVL<Key>* &nodo) {
   NodoAVL<Key>* nodo1{reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef())};
   switch (nodo->GetBal()) {
     case -1:
       if (nodo1->GetBal() > 0) this->Rotacion_DI(nodo);
       else {
-        if (nodo1->GetBal() == 0) decrece = false;
         this->Rotacion_DD(nodo);
       }
       break;
     case 0:
       nodo->SetBal(-1);
-      decrece = false;
       break;
     case 1:
       nodo->SetBal(0);
@@ -400,19 +394,17 @@ void AVL<Key>::DeleteReBalanceaIzda(NodoAVL<Key>* &nodo, bool& decrece) {
  * @param decrece nos dice si el arbol ha decrecido a causa del borrado del nodo
  */
 template<typename Key>
-void AVL<Key>::DeleteReBalanceaDcha(NodoAVL<Key>* &nodo, bool& decrece) {
+void AVL<Key>::DeleteReBalanceaDcha(NodoAVL<Key>* &nodo) {
   NodoAVL<Key>* nodo1{reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef())};
   switch (nodo->GetBal()) {
     case 1:
       if (nodo1->GetBal() < 0) this->Rotacion_ID(nodo);
       else {
-        if (nodo1->GetBal() == 0) decrece = false;
         this->Rotacion_II(nodo);
       }
       break;
     case 0:
       nodo->SetBal(1);
-      decrece = false;
       break;
     case -1:
       nodo->SetBal(0);
