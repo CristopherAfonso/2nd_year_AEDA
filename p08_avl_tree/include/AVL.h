@@ -276,9 +276,19 @@ void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo) {
       nodo->SetBal(1);
       break;
     case 1:
+      if (this->traza_) {
+        std::cout << "Desbalanceo:\n";
+        AB<Key>* aux{this};
+        std::cout << aux << "\n";
+      }
       NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
-      if (nodo1->GetBal() == 1) this->Rotacion_II(nodo);
-      else this->Rotacion_ID(nodo);
+      if (nodo1->GetBal() == 1) {
+        if (this->traza_) std::cout << "Rotacion II en [" << nodo->GetData() << "]\n";
+        this->Rotacion_II(nodo);
+      } else {
+        if (this->traza_) std::cout << "Rotacion ID en [" << nodo->GetData() << "]\n";
+        this->Rotacion_ID(nodo);
+      }
   }
 }
 
@@ -298,9 +308,19 @@ void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo) {
       nodo->SetBal(-1);
       break;
     case -1:
+      if (this->traza_) {
+        std::cout << "Desbalanceo:\n";
+        AB<Key>* aux{this};
+        std::cout << aux << "\n";
+      }
       NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
-      if (nodo1->GetBal() == -1) this->Rotacion_DD(nodo);
-      else this->Rotacion_DI(nodo);
+      if (nodo1->GetBal() == -1) {
+        if (this->traza_) std::cout << "Rotacion DD en [" << nodo->GetData() << "]\n";
+        this->Rotacion_DD(nodo);
+      } else {
+        if (this->traza_) std::cout << "Rotacion DI en [" << nodo->GetData() << "]\n";
+        this->Rotacion_DI(nodo);
+      }
   }
 }
 
