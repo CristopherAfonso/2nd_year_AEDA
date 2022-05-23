@@ -31,6 +31,7 @@
 #include "ABE.h"
 #include "ABB.h"
 #include "AVL.h"
+#include "Dummy.h"
 
 void HelpMessage(const std::string& kProgramName,
                  const std::string& kHelp);
