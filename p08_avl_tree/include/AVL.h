@@ -51,6 +51,8 @@ class AVL : public ABB<Key> {
  private:
   NodoAVL<Key>* raiz_;
   bool traza_;
+  NodoAVL<Key>*& GetRaiz(void);
+  void SetRaiz(const NodoAVL<Key>*& raiz);
   void Rotacion_II(NodoAVL<Key>* &nodo);
   void Rotacion_DD(NodoAVL<Key>* &nodo);
   void Rotacion_ID(NodoAVL<Key>* &nodo);
@@ -87,8 +89,8 @@ AVL<Key>::AVL(bool traza, NodoAVL<Key>* nodo)
 template<typename Key>
 bool AVL<Key>::Insert(const Key& data) {
   NodoAVL<Key>* nuevo = new NodoAVL<Key>(data);
-  bool crece = false;
-  InsertaBal(this->raiz_, nuevo, crece);
+  bool crece{false};
+  this->InsertaBal(this->GetRaiz(), nuevo, crece);
   return crece;
 }
 
@@ -106,6 +108,24 @@ bool AVL<Key>::Delete(const Key& data) {
   DeleteBranch(raiz_, data, decrece);
   return decrece;
 }
+
+/**
+ * @brief Getter con referencia del atributo raiz
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @return NodoAVL<Key>*& es la raiz del arbol
+ */
+template<typename Key>
+NodoAVL<Key>*& AVL<Key>::GetRaiz(void) { return raiz_; }
+
+/**
+ * @brief Setter de la raiz del arbol
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @param raiz es la nueva raiz del arbol
+ */
+template<typename Key>
+void AVL<Key>::SetRaiz(const NodoAVL<Key>*& raiz) { raiz_ = raiz; }
 
 /**
  * @brief metodo encargado de realizar la rotacion izquierda izquierda al nodo
