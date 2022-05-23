@@ -57,7 +57,7 @@ class NodoB {
   template<typename T>
   friend std::ostream& operator<<(std::ostream& out, const NodoB<T>& nodo);
 
- protected:
+ private:
   Key data_;
   NodoB<Key>* izdo_;
   NodoB<Key>* dcho_;
@@ -181,7 +181,7 @@ NodoB<Key>& NodoB<Key>::operator=(const NodoB<Key>& nodo) {
  * 
  * @tparam T es el tipo de dato guardado en el nodo
  * @param out es la salida estandar de la clase ostream
- * @param nodo es el dato que queremos mostrar por pantalla
+ * @param nodo es el nodo que contiene el dato que queremos mostrar por pantalla
  * @return std::ostream& es lo que vamos a mostrar por pantalla
  */
 template<typename T>

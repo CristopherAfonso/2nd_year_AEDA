@@ -45,8 +45,19 @@ class NodoAVL : public NodoB<Key> {
   NodoAVL(void);
   NodoAVL(const Key& data, NodoAVL<Key>* izdo = NULL, NodoAVL<Key>* dcho = NULL);
   ~NodoAVL() = default;
-  void SetBal(const int& bal);
+
   int GetBal(void);
+  NodoAVL<Key>* GetPtrIzdo(void) const;
+  NodoAVL<Key>* GetPtrDcho(void) const;
+  NodoAVL<Key>*& GetPtrIzdoRef(void);
+  NodoAVL<Key>*& GetPtrDchoRef(void);
+  void SetBal(const int& bal);
+  void SetPtrIzdo(NodoAVL<Key>* izdo = NULL);
+  void SetPtrDcho(NodoAVL<Key>* dcho = NULL);
+
+  NodoAVL<Key>& operator=(const NodoAVL<Key>& nodo);
+  template<typename T>
+  friend std::ostream& operator<<(std::ostream& out, const NodoAVL<T>& nodo);
 
  private:
   int bal_; ///< contiene el factor de balanceo del nodo
@@ -58,10 +69,7 @@ class NodoAVL : public NodoB<Key> {
  * @tparam Key tipo de dato del dato del nodo
  */
 template<typename Key>
-NodoAVL<Key>::NodoAVL(void) : NodoB<Key>::NodoB(), bal_(0) {
-  reinterpret_cast<NodoAVL<Key>*>(this->izdo_);
-  reinterpret_cast<NodoAVL<Key>*>(this->dcho_);
-}
+NodoAVL<Key>::NodoAVL(void) : NodoB<Key>::NodoB(), bal_(0) {}
 
 /**
  * @brief Construct a new Nodo A V L< Key>:: Nodo A V L object
@@ -73,9 +81,59 @@ NodoAVL<Key>::NodoAVL(void) : NodoB<Key>::NodoB(), bal_(0) {
  */
 template<typename Key>
 NodoAVL<Key>::NodoAVL(const Key& data, NodoAVL<Key>* izdo, NodoAVL<Key>* dcho)
-    : NodoB<Key>::NodoB(data, izdo, dcho), bal_(0) {
-  reinterpret_cast<NodoAVL<Key>*>(this->izdo_);
-  reinterpret_cast<NodoAVL<Key>*>(this->dcho_);
+    : NodoB<Key>::NodoB(data, izdo, dcho), bal_(0) {}
+
+/**
+ * @brief Getter del atributo bal_
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @return int es el valor de bal_
+ */
+template<typename Key>
+int NodoAVL<Key>::GetBal(void) { return bal_; }
+
+/**
+ * @brief Metodo que devuelve el puntero izquierdo del objeto, pero una copia
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @return NodoAVL<Key>* es el puntero que apunta al subarbol izquierdo
+ */
+template<typename Key>
+NodoAVL<Key>* NodoAVL<Key>::GetPtrIzdo(void) const {
+  return reinterpret_cast<NodoAVL<Key>*>(this->NodoB<Key>::GetPtrIzdo());
+}
+
+/**
+ * @brief Metodo que devuelve el puntero derecho del objeto, pero una copia
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @return NodoAVL<Key>* es el puntero que apunta al subarbol derecho
+ */
+template<typename Key>
+NodoAVL<Key>* NodoAVL<Key>::GetPtrDcho(void) const {
+  return reinterpret_cast<NodoAVL<Key>*>(this->NodoB<Key>::GetPtrDcho());
+}
+
+/**
+ * @brief Metodo que devuelve el puntero izquierdo del objeto
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @return NodoAVL<Key>*& es el puntero que apunta al subarbol izquierdo
+ */
+template<typename Key>
+NodoAVL<Key>*& NodoAVL<Key>::GetPtrIzdoRef(void) {
+  return reinterpret_cast<NodoAVL<Key>*&>(this->NodoB<Key>::GetPtrIzdoRef());
+}
+
+/**
+ * @brief Metodo que devuelve el puntero derecho del objeto
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @return NodoAVL<Key>*& es el puntero que apunta al subarbol derecho
+ */
+template<typename Key>
+NodoAVL<Key>*& NodoAVL<Key>::GetPtrDchoRef(void) {
+  return reinterpret_cast<NodoAVL<Key>*&>(this->NodoB<Key>::GetPtrDchoRef());
 }
 
 /**
@@ -89,12 +147,51 @@ template<typename Key>
 void NodoAVL<Key>::SetBal(const int& bal) { bal_ = bal; }
 
 /**
- * @brief Getter del atributo bal_
+ * @brief Setter del nodo que apunta al subarbol izquierdo
  * 
  * @tparam Key tipo de dato del dato del nodo
- * @return int es el valor de bal_
+ * @param izdo puntero que contiene al subarbol izquierdo del nodo
  */
 template<typename Key>
-int NodoAVL<Key>::GetBal(void) { return bal_; }
+void NodoAVL<Key>::SetPtrIzdo(NodoAVL<Key>* izdo) { this->NodoB<Key>::SetPtrIzdo(izdo); }
+
+/**
+ * @brief Setter del nodo que apunta al subarbol derecho
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @param dcho puntero que contiene al subarbol derecho del nodo
+ */
+template<typename Key>
+void NodoAVL<Key>::SetPtrDcho(NodoAVL<Key>* dcho) { this->NodoB<Key>::SetPtrDcho(dcho); }
+
+/**
+ * @brief sobrecarga del operador = de la clase NodoAVL
+ * 
+ * @tparam Key tipo de dato del dato del nodo
+ * @param nodo es el objeto del cual queremos copiar su contenido, en el objeto
+ * que llama a la funcion
+ * @return NodoAVL<Key>& es el objeto que llamo a la funcion despues de hacer
+ * la operacion
+ */
+template<typename Key>
+NodoAVL<Key>& NodoAVL<Key>::operator=(const NodoAVL<Key>& nodo) {
+  SetBal(nodo.GetBal());
+  SetData(nodo.GetData());
+  SetPtrIzdo(nodo.GetPtrIzdo());
+  SetPtrDcho(nodo.GetPtrDcho());
+}
+
+/**
+ * @brief sobrecarga del operador <<
+ * 
+ * @tparam T es el tipo de dato guardado en el nodo
+ * @param out es la salida estandar de la clase ostream
+ * @param nodo es el nodo que contiene el dato que queremos mostrar por pantalla
+ * @return std::ostream& es lo que vamos a mostrar por pantalla
+ */
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const NodoAVL<T>& nodo) {
+  return out << nodo.data_;
+}
 
 #endif

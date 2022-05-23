@@ -76,11 +76,11 @@ ABE<Key>::ABE(NodoB<Key>* nodo) : AB<Key>::AB(nodo) {}
 template<typename Key>
 bool ABE<Key>::Insert(const Key& data) {
   bool result{false};
-  if (this->root_ == nullptr) {
-    this->root_ = new NodoB<Key>(data);
+  if (this->GetRoot() == nullptr) {
+    this->SetRoot(new NodoB<Key>(data));
     result = true;
   } else {
-    result = this->InsertInBalancedBranch(data, this->root_);
+    result = this->InsertInBalancedBranch(data, this->GetRoot());
   }
   return result;
 }
@@ -97,7 +97,7 @@ bool ABE<Key>::Insert(const Key& data) {
 template<typename Key>
 bool ABE<Key>::Search(const Key& data) const {
   bool result{false};
-  result = this->SearchDataPreorder(this->root_, data);
+  result = this->SearchDataPreorder(this->GetRoot(), data);
   return result;
 }
 
@@ -113,7 +113,8 @@ bool ABE<Key>::Search(const Key& data) const {
  */
 template<typename Key>
 bool ABE<Key>::Delete(const Key& data) {
-  std::cout <<  "Error, operacion no permitida en este objeto\n";
+  std::cout << "Error, no se puede borrar el dato " << data;
+  std::cout << "\noperacion no permitida en este objeto\n";
   return false;
 }
 
@@ -127,7 +128,7 @@ bool ABE<Key>::Delete(const Key& data) {
  */
 template<typename Key>
 bool ABE<Key>::Balanced(void) const {
-  return this->BalancedBranch(this->root_);
+  return this->BalancedBranch(this->GetRoot());
 }
 
 /**

@@ -61,11 +61,14 @@ class AB {
   friend std::ostream& operator<<(std::ostream& out, const AB<T>* const ab);
 
  protected:
-  NodoB<Key>* root_;
-  void SetRoot(const NodoB<Key>* root);
-  NodoB<Key>* GetRoot(void);
+  void SetRoot(NodoB<Key>* root);
+  NodoB<Key>*& GetRoot(void);
+  NodoB<Key>* GetRoot(void) const;
   int SizeBranch(NodoB<Key>* nodo) const;
   int HeightN(NodoB<Key>* nodo) const;
+
+ private:
+  NodoB<Key>* root_;
 };
 
 /**
@@ -201,7 +204,7 @@ std::ostream& operator<<(std::ostream& out, const AB<T>* const ab) {
  * @param root nuevo valor del atributo root_
  */
 template<typename Key>
-void AB<Key>::SetRoot(const NodoB<Key>* root) { root_ = root; }
+void AB<Key>::SetRoot(NodoB<Key>* root) { root_ = root; }
 
 /**
  * @brief Retornamos el puntero del atributo root_
@@ -210,7 +213,16 @@ void AB<Key>::SetRoot(const NodoB<Key>* root) { root_ = root; }
  * @return NodoB<Key>* puntero que apunta a la raiz del arbol
  */
 template<typename Key>
-NodoB<Key>* AB<Key>::GetRoot(void) { return root_; }
+NodoB<Key>*& AB<Key>::GetRoot(void) { return root_; }
+
+/**
+ * @brief Retornamos el puntero del atributo root_
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @return NodoB<Key>* puntero que apunta a la raiz del arbol
+ */
+template<typename Key>
+NodoB<Key>* AB<Key>::GetRoot(void) const { return root_; }
 
 /**
  * @brief metodo el cual se encarga de contar todos los nodos que hay desde un

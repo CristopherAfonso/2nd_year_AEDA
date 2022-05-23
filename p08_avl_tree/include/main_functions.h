@@ -27,7 +27,6 @@
  */
 
 #include <iostream>
-#include <regex>
 
 #include "ABE.h"
 #include "ABB.h"

@@ -75,7 +75,7 @@ ABB<Key>::ABB(NodoB<Key>* nodo) : AB<Key>::AB(nodo) {}
  */
 template<typename Key>
 bool ABB<Key>::Insert(const Key& data) {
-  return this->InsertBranch(data, this->root_);
+  return this->InsertBranch(data, this->GetRoot());
 }
 
 /**
@@ -89,7 +89,7 @@ bool ABB<Key>::Insert(const Key& data) {
  */
 template<typename Key>
 bool ABB<Key>::Search(const Key& data) const {
-  return this->SearchDataBinary(data, this->root_);
+  return this->SearchDataBinary(data, this->GetRoot());
 }
 
 /**
@@ -104,7 +104,7 @@ bool ABB<Key>::Search(const Key& data) const {
  */
 template<typename Key>
 bool ABB<Key>::Delete(const Key& data) {
-  return this->DeleteBranch(data, this->root_);
+  return this->DeleteBranch(data, this->GetRoot());
 }
 
 /**

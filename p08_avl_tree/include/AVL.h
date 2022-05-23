@@ -37,9 +37,9 @@
 #include "NodoAVL.h"
 
 /**
- * @brief 
+ * @brief clase que implanta un arbol binario AVL
  * 
- * @tparam Key 
+ * @tparam Key tipo de dato de los datos del arbol
  */
 template<class Key>
 class AVL : public ABB<Key> {
@@ -47,17 +47,19 @@ class AVL : public ABB<Key> {
   AVL(bool traza = false, NodoAVL<Key>* nodo = nullptr);
   bool Insert(const Key& data) override;
   bool Delete(const Key& data) override;
+
+ protected:
+  void SetRoot(NodoAVL<Key>* root);
+  NodoAVL<Key>*& GetRoot(void);
+  NodoAVL<Key>* GetRoot(void) const;
   
  private:
-  NodoAVL<Key>* raiz_;
-  bool traza_;
-  NodoAVL<Key>*& GetRaiz(void);
-  void SetRaiz(const NodoAVL<Key>*& raiz);
+  bool traza_{false};
   void Rotacion_II(NodoAVL<Key>* &nodo);
   void Rotacion_DD(NodoAVL<Key>* &nodo);
   void Rotacion_ID(NodoAVL<Key>* &nodo);
   void Rotacion_DI(NodoAVL<Key>* &nodo);
-  void InsertaBal(NodoAVL<Key>* &raiz, NodoAVL<Key>* &nuevo, bool& crece);
+  void InsertaBal(NodoAVL<Key>* &root, NodoAVL<Key>* &nuevo, bool& crece);
   void InsertReBalanceaIzda(NodoAVL<Key>* &nodo, bool& crece);
   void InsertReBalanceaDcha(NodoAVL<Key>* &nodo, bool& crece);
   void DeleteBranch(NodoAVL<Key>* &nodo, const Key& data, bool& decrece);
@@ -72,11 +74,12 @@ class AVL : public ABB<Key> {
  * @tparam Key tipo de dato de los datos del arbol
  * @param traza le decimos a la clase si queremos tener un seguimiento de los
  * cambios que se produciran en el arbol
- * @param nodo sera el nodo raiz del arbol
+ * @param nodo sera el nodo root del arbol
  */
 template<typename Key>
-AVL<Key>::AVL(bool traza, NodoAVL<Key>* nodo)
-    : traza_(traza), raiz_(nodo) {}
+AVL<Key>::AVL(bool traza, NodoAVL<Key>* nodo) : traza_(traza) {
+  this->AB<Key>::SetRoot(nodo);
+}
 
 /**
  * @brief Metodo que se encarga de insertar un dato en el arbol
@@ -90,7 +93,7 @@ template<typename Key>
 bool AVL<Key>::Insert(const Key& data) {
   NodoAVL<Key>* nuevo = new NodoAVL<Key>(data);
   bool crece{false};
-  this->InsertaBal(this->GetRaiz(), nuevo, crece);
+  this->InsertaBal(this->GetRoot(), nuevo, crece);
   return crece;
 }
 
@@ -105,27 +108,42 @@ bool AVL<Key>::Insert(const Key& data) {
 template<typename Key>
 bool AVL<Key>::Delete(const Key& data) {
   bool decrece{false};
-  DeleteBranch(raiz_, data, decrece);
+  DeleteBranch(this->GetRoot(), data, decrece);
   return decrece;
 }
 
 /**
- * @brief Getter con referencia del atributo raiz
+ * @brief Metodo que cambia el valor de la root del arbol
  * 
  * @tparam Key tipo de dato de los datos del arbol
- * @return NodoAVL<Key>*& es la raiz del arbol
+ * @param root nuevo nodo root del arbol
  */
 template<typename Key>
-NodoAVL<Key>*& AVL<Key>::GetRaiz(void) { return raiz_; }
+void AVL<Key>::SetRoot(NodoAVL<Key>* root) {
+  this->AB<Key>::SetRoot(root);
+}
 
 /**
- * @brief Setter de la raiz del arbol
+ * @brief metodo que devuelve una referencia a la root del arbol AVl
  * 
  * @tparam Key tipo de dato de los datos del arbol
- * @param raiz es la nueva raiz del arbol
+ * @return NodoAVL<Key>*& es el nodo root del arbol
  */
 template<typename Key>
-void AVL<Key>::SetRaiz(const NodoAVL<Key>*& raiz) { raiz_ = raiz; }
+NodoAVL<Key>*& AVL<Key>::GetRoot(void) {
+  return reinterpret_cast<NodoAVL<Key>*&>(this->AB<Key>::GetRoot());
+}
+
+/**
+ * @brief metodo que devuelve una copia de la root del arbol AVL
+ * 
+ * @tparam Key tipo de dato de los datos del arbol
+ * @return NodoAVL<Key>* es el nodo root del arbol
+ */
+template<typename Key>
+NodoAVL<Key>* AVL<Key>::GetRoot(void) const {
+  return reinterpret_cast<NodoAVL<Key>*>(this->AB<Key>::GetRoot());
+}
 
 /**
  * @brief metodo encargado de realizar la rotacion izquierda izquierda al nodo
@@ -221,22 +239,22 @@ void AVL<Key>::Rotacion_DI(NodoAVL<Key>* &nodo) {
  * @brief Metodo que inserta un nodo y si el arbol se desequilibra, lo rebalancea
  * 
  * @tparam Key tipo de dato de los datos del arbol
- * @param raiz es el nodo raiz del arbol
+ * @param root es el nodo root del arbol
  * @param nuevo es el nodo a insertar
  * @param crece nos dice si el nodo se ha insertado correctamente
  */
 template<typename Key>
-void AVL<Key>::InsertaBal(NodoAVL<Key>* &raiz, NodoAVL<Key>* &nuevo,
+void AVL<Key>::InsertaBal(NodoAVL<Key>* &root, NodoAVL<Key>* &nuevo,
                           bool& crece) {
-  if (raiz == nullptr) {
-    raiz = nuevo;
+  if (root == nullptr) {
+    root = nuevo;
     crece = true;
-  } else if (nuevo->GetData() < raiz->GetData()) {
-    this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(raiz->GetPtrIzdoRef()), nuevo, crece);
-    if (crece) this->InsertReBalanceaIzda(raiz, crece);
+  } else if (nuevo->GetData() < root->GetData()) {
+    this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(root->GetPtrIzdoRef()), nuevo, crece);
+    if (crece) this->InsertReBalanceaIzda(root, crece);
   } else {
-    this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(raiz->GetPtrDchoRef()), nuevo, crece);
-    if (crece) this->InsertReBalanceaDcha(raiz, crece);
+    this->InsertaBal(reinterpret_cast<NodoAVL<Key>*&>(root->GetPtrDchoRef()), nuevo, crece);
+    if (crece) this->InsertReBalanceaDcha(root, crece);
   }
 }
 
@@ -293,7 +311,7 @@ void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo, bool& crece) {
  * nodos del arbol AVL que cuelga del nodo "nodo" y si lo encuentra, lo borra
  * 
  * @tparam Key tipo de dato de los datos del arbol
- * @param nodo es la raiz del arbol a comprobar el dato a borrar
+ * @param nodo es la root del arbol a comprobar el dato a borrar
  * @param data es el dato que queremos encontrar en un nodo y ese nodo lo borraremos
  * @param decrece nos dice si se ha eliminado el nodo correctamente
  */
