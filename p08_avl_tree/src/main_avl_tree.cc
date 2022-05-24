@@ -34,12 +34,15 @@
 
 #include "../include/main_functions.h"
 
+unsigned Dummy::counter_ = 0; ///< Inicializacion de variable estatica
+
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
   using std::cout; ///< nos permite usar std::cout de una buena forma
   using std::cin; ///< nos permite usar std::cin de una buena forma
   std::string user_choice{""};
-  typedef int data; ///< paso 1 usar Key = int
+  typedef int data_no_mod; ///< paso 1 usar Key = int
+  // typedef Dummy data_mod;
   cout << "\nEste programa es una implementacion de un 'Arbol binario'";
   cout << "\nElija la implementacion concreta del arbol:";
   cout << "\n[1] Arbol binario equilibrado";
@@ -57,9 +60,9 @@ int main(int argc, char* argv[]) {
     }
   }
   cout << "\n";
-  AB<data>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
-  if (user_choice == "1") ab = new ABE<data>;
-  if (user_choice == "2") ab = new ABB<data>;
+  AB<data_no_mod>* ab{nullptr}; ///< paso 2 crear un AB<Key> vacio
+  if (user_choice == "1") ab = new ABE<data_no_mod>;
+  if (user_choice == "2") ab = new ABB<data_no_mod>;
   if (user_choice == "3") {
     while (true) {
       user_choice = "";
@@ -68,8 +71,8 @@ int main(int argc, char* argv[]) {
       cout << "\n¿Activar traza? ";
       cin >> user_choice;
       if (user_choice == "0" || user_choice == "1") {
-        if (user_choice == "0") ab = new AVL<data>(false);
-        if (user_choice == "1") ab = new AVL<data>(true);
+        if (user_choice == "0") ab = new AVL<data_no_mod>(false);
+        if (user_choice == "1") ab = new AVL<data_no_mod>(true);
         break;
       }
     }

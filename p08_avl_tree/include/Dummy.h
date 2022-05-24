@@ -54,10 +54,11 @@ class Dummy {
   friend std::istream& operator>>(std::istream& in, Dummy& dummy);
   friend std::ostream& operator<<(std::ostream& out, const Dummy& dummy);
 
+  static unsigned counter_;
+  
  private:
   int clave_;
   unsigned dato_;
-  static unsigned counter_;
 };
 
 #endif
