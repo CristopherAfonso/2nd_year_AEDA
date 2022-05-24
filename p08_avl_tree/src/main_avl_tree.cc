@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
   if (user_choice == "3") {
     while (true) {
       user_choice = "";
-      cout << "\n[0] No activar traza";
+      cout << "[0] No activar traza";
       cout << "\n[1] Si activar traza";
       cout << "\n¿Activar traza? ";
       cin >> user_choice;
@@ -75,6 +75,7 @@ int main(int argc, char* argv[]) {
         if (user_choice == "1") ab = new AVL<data_no_mod>(true);
         break;
       }
+      cout << "\nEleccion no reconocida, intentelo de nuevo\n";
     }
     cout << "\n";
   }
