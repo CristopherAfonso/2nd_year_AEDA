@@ -52,8 +52,8 @@ class NodoAVL : public NodoB<Key> {
   NodoAVL<Key>*& GetPtrIzdoRef(void);
   NodoAVL<Key>*& GetPtrDchoRef(void);
   void SetBal(const int& bal);
-  void SetPtrIzdo(NodoAVL<Key>* izdo = NULL);
-  void SetPtrDcho(NodoAVL<Key>* dcho = NULL);
+  void SetPtrIzdo(NodoAVL<Key>* &izdo = NULL);
+  void SetPtrDcho(NodoAVL<Key>* &dcho = NULL);
 
   NodoAVL<Key>& operator=(const NodoAVL<Key>& nodo);
   template<typename T>
@@ -153,7 +153,7 @@ void NodoAVL<Key>::SetBal(const int& bal) { bal_ = bal; }
  * @param izdo puntero que contiene al subarbol izquierdo del nodo
  */
 template<typename Key>
-void NodoAVL<Key>::SetPtrIzdo(NodoAVL<Key>* izdo) { this->NodoB<Key>::SetPtrIzdo(izdo); }
+void NodoAVL<Key>::SetPtrIzdo(NodoAVL<Key>* &izdo) { this->NodoB<Key>::SetPtrIzdo(izdo); }
 
 /**
  * @brief Setter del nodo que apunta al subarbol derecho
@@ -162,7 +162,7 @@ void NodoAVL<Key>::SetPtrIzdo(NodoAVL<Key>* izdo) { this->NodoB<Key>::SetPtrIzdo
  * @param dcho puntero que contiene al subarbol derecho del nodo
  */
 template<typename Key>
-void NodoAVL<Key>::SetPtrDcho(NodoAVL<Key>* dcho) { this->NodoB<Key>::SetPtrDcho(dcho); }
+void NodoAVL<Key>::SetPtrDcho(NodoAVL<Key>* &dcho) { this->NodoB<Key>::SetPtrDcho(dcho); }
 
 /**
  * @brief sobrecarga del operador = de la clase NodoAVL

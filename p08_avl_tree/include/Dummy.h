@@ -42,9 +42,11 @@ class Dummy {
 
   int GetClave(void) const;
   unsigned GetDato(void) const;
+  unsigned GetCounter(void) const;
   void SetClave(const int& clave);
   void SetDato(const unsigned& dato);
 
+  Dummy& operator=(const Dummy& dummy);
   bool operator==(const Dummy& dummy) const;
   bool operator<(const Dummy& dummy) const;
   bool operator>(const Dummy& dummy) const;
@@ -54,11 +56,10 @@ class Dummy {
   friend std::istream& operator>>(std::istream& in, Dummy& dummy);
   friend std::ostream& operator<<(std::ostream& out, const Dummy& dummy);
 
-  static unsigned counter_;
-  
  private:
   int clave_;
   unsigned dato_;
+  static unsigned counter_;
 };
 
 #endif

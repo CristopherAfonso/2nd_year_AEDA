@@ -198,12 +198,15 @@ void AVL<Key>::Rotacion_DD(NodoAVL<Key>* &nodo) {
  */
 template<typename Key>
 void AVL<Key>::Rotacion_ID(NodoAVL<Key>* &nodo) {
-  NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
-  NodoAVL<Key>* nodo2 = reinterpret_cast<NodoAVL<Key>*&>(nodo1->GetPtrDchoRef());
-  nodo->SetPtrIzdo(reinterpret_cast<NodoAVL<Key>*&>(nodo2->GetPtrDchoRef()));
+  NodoAVL<Key>* nodo1 = nodo->GetPtrIzdoRef();
+  NodoAVL<Key>* nodo2 = nodo1->GetPtrDchoRef();
+  std::cout << "3333333333333333333333333333333333333333333333333333333333333333333333333\n";
+  nodo->GetPtrIzdoRef() = nodo2->GetPtrDchoRef(); ///< Es esta linea
+  std::cout << "6666666666666666666666666666666666666666666666666666666666666666666666666\n";
   nodo2->SetPtrDcho(nodo);
-  nodo1->SetPtrDcho(reinterpret_cast<NodoAVL<Key>*&>(nodo2->GetPtrIzdoRef()));
-  reinterpret_cast<NodoAVL<Key>*&>(nodo2->GetPtrIzdoRef()) = nodo1;
+  nodo1->SetPtrDcho(nodo2->GetPtrIzdoRef());
+  nodo2->GetPtrIzdoRef() = nodo1;
+  std::cout << "4444444444444444444444444444444444444444444444444444444444444444444444444\n";
   if (nodo2->GetBal() == -1) nodo1->SetBal(1);
   else nodo1->SetBal(0);
   if (nodo2->GetBal() == 1) nodo->SetBal(-1);
@@ -221,12 +224,15 @@ void AVL<Key>::Rotacion_ID(NodoAVL<Key>* &nodo) {
  */
 template<typename Key>
 void AVL<Key>::Rotacion_DI(NodoAVL<Key>* &nodo) {
-  NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
-  NodoAVL<Key>* nodo2 = reinterpret_cast<NodoAVL<Key>*&>(nodo1->GetPtrIzdoRef());
-  nodo->SetPtrDcho(reinterpret_cast<NodoAVL<Key>*&>(nodo2->GetPtrIzdoRef()));
+  NodoAVL<Key>* nodo1 = nodo->GetPtrDchoRef();
+  NodoAVL<Key>* nodo2 = nodo1->GetPtrIzdoRef();
+  std::cout << "1111111111111111111111111111111111111111111111111111111111111111111111111\n";
+  nodo->GetPtrDchoRef() = nodo2->GetPtrIzdoRef(); ///< Y esta otra
+  std::cout << "5555555555555555555555555555555555555555555555555555555555555555555555555\n";
   nodo2->SetPtrIzdo(nodo);
-  nodo1->SetPtrIzdo(reinterpret_cast<NodoAVL<Key>*&>(nodo2->GetPtrDchoRef()));
+  nodo1->SetPtrIzdo(nodo2->GetPtrDchoRef());
   nodo2->SetPtrDcho(nodo1);
+  std::cout << "2222222222222222222222222222222222222222222222222222222222222222222222222\n";
   if (nodo2->GetBal() == 1) nodo1->SetBal(-1);
   else nodo1->SetBal(-1);
   if (nodo2->GetBal() == -1) nodo->SetBal(1);

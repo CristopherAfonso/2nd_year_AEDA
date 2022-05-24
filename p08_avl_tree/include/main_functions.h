@@ -27,6 +27,7 @@
  */
 
 #include <iostream>
+#include <ctime>
 
 #include "ABE.h"
 #include "ABB.h"

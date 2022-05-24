@@ -34,9 +34,19 @@ Dummy::Dummy(const int& clave, const unsigned& dato) : clave_(clave), dato_(dato
 
 int Dummy::GetClave(void) const { return clave_; }
 
+unsigned Dummy::GetDato(void) const { return dato_; }
+
+unsigned Dummy::GetCounter(void) const { return counter_; }
+
 void Dummy::SetClave(const int& clave) { clave_ = clave; }
 
 void Dummy::SetDato(const unsigned& dato) { dato_ = dato; }
+
+Dummy& Dummy::operator=(const Dummy& dummy) {
+  this->clave_ = dummy.clave_;
+  this->dato_ = dummy.dato_;
+  return *this;
+}
 
 bool Dummy::operator==(const Dummy& dummy) const {
   ++counter_;

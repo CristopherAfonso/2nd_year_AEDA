@@ -41,6 +41,8 @@ int main(int argc, char* argv[]) {
   using std::cout; ///< nos permite usar std::cout de una buena forma
   using std::cin; ///< nos permite usar std::cin de una buena forma
   std::string user_choice{""};
+  bool modificacion{true}; ///< nos dice si aplicaremos el codig para la modificacion o no
+  if (!modificacion) {
   typedef int data_no_mod; ///< paso 1 usar Key = int
   // typedef Dummy data_mod;
   cout << "\nEste programa es una implementacion de un 'Arbol binario'";
@@ -137,6 +139,34 @@ int main(int argc, char* argv[]) {
   if (ab != nullptr) {
     ab->~AB();
     ab = nullptr;
+  }
+
+  } else { ///< if (!modificacion)
+    typedef Dummy data_mod;
+    ABB<Dummy> abb;
+    AVL<Dummy> avl(true);
+    srand(time(NULL));
+    int clave{0};
+    for (int i{1}; i <= 1000; ++i) {
+      clave = (rand() % 100000);
+      cout << "Dato a insertar: " << clave << "\n";
+      Dummy aux(clave, 0);
+      abb.Insert(aux);
+      avl.Insert(aux);
+      if (i == 1000) cout << aux.GetCounter();
+    }
+    for (int i{1}; i <= 50; ++i) {
+      Dummy aux((rand() % 10000), 0);
+      abb.Search(aux);
+      avl.Search(aux);
+      if (i == 50) cout << aux.GetCounter();
+    }
+    for (int i{1}; i <= 50; ++i) {
+      Dummy aux((rand() % 10000), 0);
+      abb.Delete(aux);
+      avl.Delete(aux);
+      if (i == 50) cout << aux.GetCounter();
+    }
   }
   cout << "Fin del programa\n\n";
   return 0;
