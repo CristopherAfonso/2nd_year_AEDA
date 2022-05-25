@@ -200,13 +200,10 @@ template<typename Key>
 void AVL<Key>::Rotacion_ID(NodoAVL<Key>* &nodo) {
   NodoAVL<Key>* nodo1 = nodo->GetPtrIzdoRef();
   NodoAVL<Key>* nodo2 = nodo1->GetPtrDchoRef();
-  std::cout << "3333333333333333333333333333333333333333333333333333333333333333333333333\n";
-  nodo->GetPtrIzdoRef() = nodo2->GetPtrDchoRef(); ///< Es esta linea
-  std::cout << "6666666666666666666666666666666666666666666666666666666666666666666666666\n";
+  nodo->GetPtrIzdoRef() = nodo2->GetPtrDcho(); ///< Es esta linea
   nodo2->SetPtrDcho(nodo);
   nodo1->SetPtrDcho(nodo2->GetPtrIzdoRef());
   nodo2->GetPtrIzdoRef() = nodo1;
-  std::cout << "4444444444444444444444444444444444444444444444444444444444444444444444444\n";
   if (nodo2->GetBal() == -1) nodo1->SetBal(1);
   else nodo1->SetBal(0);
   if (nodo2->GetBal() == 1) nodo->SetBal(-1);
@@ -226,13 +223,10 @@ template<typename Key>
 void AVL<Key>::Rotacion_DI(NodoAVL<Key>* &nodo) {
   NodoAVL<Key>* nodo1 = nodo->GetPtrDchoRef();
   NodoAVL<Key>* nodo2 = nodo1->GetPtrIzdoRef();
-  std::cout << "1111111111111111111111111111111111111111111111111111111111111111111111111\n";
-  nodo->GetPtrDchoRef() = nodo2->GetPtrIzdoRef(); ///< Y esta otra
-  std::cout << "5555555555555555555555555555555555555555555555555555555555555555555555555\n";
+  nodo->GetPtrDchoRef() = nodo2->GetPtrIzdo(); ///< Y esta otra
   nodo2->SetPtrIzdo(nodo);
   nodo1->SetPtrIzdo(nodo2->GetPtrDchoRef());
   nodo2->SetPtrDcho(nodo1);
-  std::cout << "2222222222222222222222222222222222222222222222222222222222222222222222222\n";
   if (nodo2->GetBal() == 1) nodo1->SetBal(-1);
   else nodo1->SetBal(-1);
   if (nodo2->GetBal() == -1) nodo->SetBal(1);
@@ -287,7 +281,7 @@ void AVL<Key>::InsertReBalanceaIzda(NodoAVL<Key>* &nodo) {
         AB<Key>* aux{this};
         std::cout << aux << "\n";
       }
-      NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
+      NodoAVL<Key>* nodo1 = nodo->GetPtrIzdoRef();
       if (nodo1->GetBal() == 1) {
         if (this->traza_) std::cout << "Rotacion II en [" << nodo->GetData() << "]\n";
         this->Rotacion_II(nodo);
@@ -319,7 +313,7 @@ void AVL<Key>::InsertReBalanceaDcha(NodoAVL<Key>* &nodo) {
         AB<Key>* aux{this};
         std::cout << aux << "\n";
       }
-      NodoAVL<Key>* nodo1 = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
+      NodoAVL<Key>* nodo1 = nodo->GetPtrDchoRef();
       if (nodo1->GetBal() == -1) {
         if (this->traza_) std::cout << "Rotacion DD en [" << nodo->GetData() << "]\n";
         this->Rotacion_DD(nodo);
@@ -343,21 +337,21 @@ template<typename Key>
 void AVL<Key>::DeleteBranch(NodoAVL<Key>* &nodo, const Key& data, bool& decrece) {
   if (nodo == nullptr) return;
   if (data < nodo->GetData()) {
-    this->DeleteBranch(reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef()), data, decrece);
+    this->DeleteBranch(nodo->GetPtrIzdoRef(), data, decrece);
     if (decrece) this->DeleteReBalanceaIzda(nodo);
   } else if (data > nodo->GetData()) {
-    this->DeleteBranch(reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef()), data, decrece);
+    this->DeleteBranch(nodo->GetPtrDchoRef(), data, decrece);
     if (decrece) this->DeleteReBalanceaDcha(nodo);
   } else { ///< data == nodo->GetData() (encontrado)
     NodoAVL<Key>* eliminado{nodo};
     if (nodo->GetPtrIzdo() == nullptr) {
-      nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef());
+      nodo = nodo->GetPtrDchoRef();
       decrece = true;
     } else if (nodo->GetPtrDcho() == nullptr) {
-      nodo = reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef());
+      nodo = nodo->GetPtrIzdoRef();
       decrece = true;
     } else {
-      this->Replace(eliminado, reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef()), decrece);
+      this->Replace(eliminado, nodo->GetPtrIzdoRef(), decrece);
       if (decrece) this->DeleteReBalanceaIzda(nodo);
     }
     eliminado->~NodoAVL();
@@ -376,12 +370,12 @@ void AVL<Key>::DeleteBranch(NodoAVL<Key>* &nodo, const Key& data, bool& decrece)
 template<typename Key>
 void AVL<Key>::Replace(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool& decrece) {
   if (sust->GetPtrDcho() != nullptr) {
-    this->Replace(eliminado, reinterpret_cast<NodoAVL<Key>*&>(sust->GetPtrDchoRef()), decrece);
+    this->Replace(eliminado, sust->GetPtrDchoRef(), decrece);
     if (decrece) this->DeleteReBalanceaDcha(sust);
   } else {
     eliminado->SetData(sust->GetData());
     eliminado = sust;
-    sust = reinterpret_cast<NodoAVL<Key>*&>(sust->GetPtrIzdoRef());
+    sust = sust->GetPtrIzdoRef();
     decrece = true;
   }
 }
@@ -395,7 +389,7 @@ void AVL<Key>::Replace(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool& decr
  */
 template<typename Key>
 void AVL<Key>::DeleteReBalanceaIzda(NodoAVL<Key>* &nodo) {
-  NodoAVL<Key>* nodo1{reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrDchoRef())};
+  NodoAVL<Key>* nodo1{nodo->GetPtrDchoRef()};
   switch (nodo->GetBal()) {
     case -1:
       if (nodo1->GetBal() > 0) this->Rotacion_DI(nodo);
@@ -421,7 +415,7 @@ void AVL<Key>::DeleteReBalanceaIzda(NodoAVL<Key>* &nodo) {
  */
 template<typename Key>
 void AVL<Key>::DeleteReBalanceaDcha(NodoAVL<Key>* &nodo) {
-  NodoAVL<Key>* nodo1{reinterpret_cast<NodoAVL<Key>*&>(nodo->GetPtrIzdoRef())};
+  NodoAVL<Key>* nodo1{nodo->GetPtrIzdoRef()};
   switch (nodo->GetBal()) {
     case 1:
       if (nodo1->GetBal() < 0) this->Rotacion_ID(nodo);

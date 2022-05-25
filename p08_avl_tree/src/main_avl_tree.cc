@@ -148,24 +148,29 @@ int main(int argc, char* argv[]) {
     srand(time(NULL));
     int clave{0};
     for (int i{1}; i <= 1000; ++i) {
-      clave = (rand() % 100000);
-      cout << "Dato a insertar: " << clave << "\n";
+      clave = (rand() % 3001);
       Dummy aux(clave, 0);
+      cout << "Dato a insertar: " << clave << "\n";
       abb.Insert(aux);
       avl.Insert(aux);
       if (i == 1000) cout << aux.GetCounter();
     }
-    for (int i{1}; i <= 50; ++i) {
-      Dummy aux((rand() % 10000), 0);
+    for (int i{1}; i <= 100; ++i) {
+      clave = (rand() % 3001);
+      Dummy aux(clave, 0);
       abb.Search(aux);
       avl.Search(aux);
-      if (i == 50) cout << aux.GetCounter();
+      if (i == 100) cout << aux.GetCounter();
     }
     for (int i{1}; i <= 50; ++i) {
-      Dummy aux((rand() % 10000), 0);
-      abb.Delete(aux);
-      avl.Delete(aux);
-      if (i == 50) cout << aux.GetCounter();
+      clave = (rand() % 3001);
+      Dummy aux(clave, 0);
+      aux.SetCounter(0);
+      abb.Search(aux);
+      cout << aux.GetCounter() << " ";
+      aux.SetCounter(0);
+      avl.Search(aux);
+      cout << aux.GetCounter();
     }
   }
   cout << "Fin del programa\n\n";

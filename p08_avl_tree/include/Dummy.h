@@ -45,6 +45,7 @@ class Dummy {
   unsigned GetCounter(void) const;
   void SetClave(const int& clave);
   void SetDato(const unsigned& dato);
+  void SetCounter(const unsigned& counter);
 
   Dummy& operator=(const Dummy& dummy);
   bool operator==(const Dummy& dummy) const;

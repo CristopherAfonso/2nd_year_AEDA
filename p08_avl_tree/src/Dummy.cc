@@ -42,6 +42,8 @@ void Dummy::SetClave(const int& clave) { clave_ = clave; }
 
 void Dummy::SetDato(const unsigned& dato) { dato_ = dato; }
 
+void Dummy::SetCounter(const unsigned& counter) { counter_ = counter; }
+
 Dummy& Dummy::operator=(const Dummy& dummy) {
   this->clave_ = dummy.clave_;
   this->dato_ = dummy.dato_;
